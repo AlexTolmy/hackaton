@@ -1,7 +1,0 @@
-{
-    "workbench.preferredLightColorTheme": "Visual Studio Dark",
-    "workbench.preferredHighContrastLightColorTheme": "Visual Studio Dark",
-    "editor.semanticHighlighting.enabled": true,
-    "git-graph.tabIconColourTheme": "colour",
-    "editor.semanticTokenColorCustomizations": {}
-}
