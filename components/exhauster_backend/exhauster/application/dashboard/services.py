@@ -6,7 +6,7 @@ from classic.app import DTO, validate_with_dto
 from classic.messaging import Publisher, Message
 from pydantic import validate_arguments
 
-from .dataclasses import Customer, Product, Cart, Order, OrderLine
+from .entities import Customer, Product, Cart, Order, OrderLine
 from .errors import NoProduct, NoOrder, EmptyCart
 from . import interfaces
 

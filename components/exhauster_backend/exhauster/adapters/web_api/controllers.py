@@ -1,6 +1,6 @@
 from classic.components import component
 
-from simple_shop.application import services
+from exhauster.application import services
 
 from .join_points import join_point
 

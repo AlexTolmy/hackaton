@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Optional, List
 
-from .dataclasses import Product, Customer, Cart, Order
+from .entities import Product, Customer, Cart, Order
 
 
 class CustomersRepo(ABC):

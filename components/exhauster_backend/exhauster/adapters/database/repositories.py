@@ -4,8 +4,8 @@ from classic.components import component
 from classic.sql_storage import BaseRepository
 from sqlalchemy import select
 
-from simple_shop.application import interfaces
-from simple_shop.application.dataclasses import Customer, Product, Order, Cart
+from exhauster.application import interfaces
+from exhauster.application.dataclasses import Customer, Product, Order, Cart
 
 
 @component

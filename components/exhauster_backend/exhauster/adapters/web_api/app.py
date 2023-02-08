@@ -1,6 +1,6 @@
 from classic.http_api import App
 
-from simple_shop.application import services
+from exhauster.application import services
 
 from .auth import auth
 from .join_points import join_points

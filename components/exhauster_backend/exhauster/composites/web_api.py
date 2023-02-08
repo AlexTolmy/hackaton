@@ -4,9 +4,19 @@ from classic.sql_storage import TransactionContext
 from classic.messaging_kombu import KombuPublisher
 from kombu import Connection
 
-from simple_shop.application import services
-from simple_shop.adapters import database, message_bus, shop_api, mail_sending
+from exhauster.adapters import log, settings
+from exhauster.application.dashboard import services
+from exhauster.adapters import database, message_bus, shop_api, mail_sending
 
+class Settings:
+    db = database.Settings()
+    common_settings = settings.Settings()
+
+
+class Logger:
+    log.configure(
+        Settings.db.LOGGING_CONFIG,
+    )
 
 class DB:
     db = database
