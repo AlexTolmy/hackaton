@@ -20,4 +20,7 @@ gunicorn -b 127.0.0.1:8000 exhauster.composites.web_api:app --log-level='debug'
 Установка зависимостей
 
 pip install -e ".[dev]"
-pip install python_libs/spectree-1.0.3.tar.gz  
+pip install python_libs/spectree-1.0.3.tar.gz
+
+#### Путь до документации:
+`/apidoc/swagger`
