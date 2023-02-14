@@ -1,0 +1,76 @@
+stages:
+  - build
+  - test
+  - deploy
+
+services:
+  - docker:dind
+
+variables:
+  BACKEND_FOLDER: "exhauster_backend"
+  BACKEND_IMAGE: ${CI_REGISTRY_IMAGE}/${CI_COMMIT_REF_SLUG}/exhauster_backend:${CI_COMMIT_SHORT_SHA}
+  FRONTEND_FOLDER: "exhauster_frontend"
+  FRONTEND_IMAGE: ${CI_REGISTRY_IMAGE}/${CI_COMMIT_REF_SLUG}/exhauster_frontend:${CI_COMMIT_SHORT_SHA}
+
+build backend:
+  stage: build
+  tags:
+    - runner
+  image: docker:latest
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - docker pull python:3.7
+    - docker build -t ${BACKEND_IMAGE} -f deployment/${BACKEND_FOLDER}/Dockerfile .
+    - docker push ${BACKEND_IMAGE}
+  only:
+    - main
+    - dev
+    - deploy
+
+build frontend:
+  stage: build
+  tags:
+    - runner
+  image: docker:latest
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - docker pull python:3.7
+    - docker build -t ${FRONTEND_IMAGE} -f deployment/${FRONTEND_FOLDER}/Dockerfile .
+    - docker push ${FRONTEND_IMAGE}
+  only:
+    - main
+    - dev
+    - deploy
+
+deploy dev:
+  stage: deploy
+  tags:
+    - dev
+  image: docker:latest
+  variables:
+    DB_NAME: hackaton-dev
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - docker compose -f deployment/docker-compose.yaml down
+    - docker compose -f deployment/docker-compose.yaml up -d
+  only:
+    - dev
+    - deploy
+
+deploy prod:
+  stage: deploy
+  tags:
+    - prod
+  image: docker:latest
+  variables:
+    DB_NAME: hackaton-prod
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - docker compose -f deployment/docker-compose.yaml down
+    - docker compose -f deployment/docker-compose.yaml up -d
+  only:
+    - main
