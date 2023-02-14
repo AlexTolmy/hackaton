@@ -1,105 +1,29 @@
 from classic.components import component
 
-from exhauster.application import services
+from exhauster.application.dashboard import services
 
 from .join_points import join_point
 
 
 @component
-class Catalog:
-    catalog: services.Catalog
+class Information:
+    information: services.AppInformation
 
     @join_point
-    def on_get_show_product(self, request, response):
-        product = self.catalog.get_product(**request.params)
+    def on_get_information(self, request, response):
+        info = self.information.get_version(**request.params)
         response.media = {
-            'sku': product.sku,
-            'title': product.title,
-            'description': product.description,
-            'price': product.price,
+            'text': info.text,
+            'id': info.id
         }
 
     @join_point
-    def on_get_search_product(self, request, response):
-        products = self.catalog.search_products(**request.params)
-        response.media = [
-            {
-                'sku': product.sku,
-                'title': product.title,
-                'description': product.description,
-                'price': product.price,
-            } for product in products
-        ]
+    def on_post_error(self, request, response):
+        self.information.get_error(**request.media)
 
-
-@component
-class Checkout:
-    checkout: services.Checkout
-
-    @join_point
-    def on_get_show_cart(self, request, response):
-        cart = self.checkout.get_cart(request.context.client_id)
-        response.media = {
-            'positions': [
-                {
-                    'product_sku': position.product.sku,
-                    'product_price': position.product.price,
-                    'quantity': position.quantity,
-                }
-                for position in cart.positions
-            ]
-        }
-
-    @join_point
-    def on_post_add_product_to_cart(self, request, response):
-        self.checkout.add_product_to_cart(
-            customer_id=request.context.client_id,
-            **request.media,
-        )
-
-    @join_point
-    def on_post_remove_product_from_cart(self, request, response):
-        self.checkout.remove_product_from_cart(
-            customer_id=request.context.client_id,
-            **request.media,
-        )
-
-    @join_point
-    def on_post_register_order(self, request, response):
-        order_number = self.checkout.create_order(
-            customer_id=request.context.client_id,
-        )
-        response.media = {'order_number': order_number}
-
-
-@component
-class Orders:
-    orders: services.Orders
-
-    @join_point
-    def on_get_show_order(self, request, response):
-        order = self.orders.get_order(
-            customer_id=request.context.client_id,
-            **request.params,
-        )
-        response.media = {
-            'number': order.number,
-            'positions': [
-                {
-                    'sku': line.product_sku,
-                    'product_title': line.product_title,
-                    'quantity': line.quantity,
-                    'price': line.price,
-                }
-                for line in order.lines
-            ]
-        }
-
-
-@component
-class Customers:
-    customers: services.Customers
-
-    @join_point
-    def on_post_add_customer(self, request, response):
-        self.customers.add_customer(**request.media)
+    # @join_point
+    # def on_post_remove_product_from_cart(self, request, response):
+    #     self.checkout.remove_product_from_cart(
+    #         customer_id=request.context.client_id,
+    #         **request.media,
+    #     )

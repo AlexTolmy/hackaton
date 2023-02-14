@@ -1,7 +1,6 @@
 import click
 
 
-
 def create_cli(alembic_run_cmd, ):
 
     @click.group()

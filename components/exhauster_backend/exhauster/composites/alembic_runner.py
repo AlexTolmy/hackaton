@@ -6,24 +6,24 @@ from exhauster.adapters import database, log
 
 
 class Settings:
-    db = database.Settings()
+    database = database.Settings()
 
 
 class Logger:
-    log.configure(Settings.db.LOGGING_CONFIG)
+    log.configure(Settings.database.LOGGING_CONFIG)
 
 
 def make_config():
     config = Config()
     config.set_main_option(
-        'script_location', Settings.db.ALEMBIC_SCRIPT_LOCATION
+        'script_location', Settings.database.ALEMBIC_SCRIPT_LOCATION
     )
     config.set_main_option(
-        'version_locations', Settings.db.ALEMBIC_VERSION_LOCATIONS
+        'version_locations', Settings.database.ALEMBIC_VERSION_LOCATIONS
     )
-    config.set_main_option('sqlalchemy.url', Settings.db.DB_URL)
+    config.set_main_option('sqlalchemy.url', Settings.database.DATABASE_URL)
     config.set_main_option(
-        'file_template', Settings.db.ALEMBIC_MIGRATION_FILENAME_TEMPLATE
+        'file_template', Settings.database.ALEMBIC_MIGRATION_FILENAME_TEMPLATE
     )
     config.set_main_option('compare_type', 'True')
     config.set_main_option('timezone', 'UTC')
@@ -32,11 +32,14 @@ def make_config():
 
 
 def run_cmd(*args):
-    log.configure(Settings.db.LOGGING_CONFIG)
+    log.configure(Settings.database.LOGGING_CONFIG)
 
     cli = CommandLine()
     cli.run_cmd(make_config(), cli.parser.parse_args(args))
 
 
 if __name__ == '__main__':
-    run_cmd(*sys.argv[1:])
+    if len(sys.argv) > 1:
+        run_cmd(*sys.argv[1:])
+    else:
+        run_cmd('-h')

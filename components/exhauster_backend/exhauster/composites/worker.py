@@ -1,12 +1,10 @@
 import logging
 
 from classic.sql_storage import TransactionContext
-from sqlalchemy import create_engine
 from kombu import Connection
-
+from simple_shop.adapters import database, mail_sending, message_bus
 from simple_shop.application import services
-from simple_shop.adapters import database, message_bus, mail_sending
-
+from sqlalchemy import create_engine
 
 logging.basicConfig(level=logging.INFO)
 
@@ -40,9 +38,7 @@ class MessageBus:
     connection = Connection(settings.BROKER_URL)
     message_bus.broker_scheme.declare(connection)
 
-    consumer = message_bus.create_consumer(
-        connection, Application.orders
-    )
+    consumer = message_bus.create_consumer(connection, Application.orders)
 
 
 MessageBus.consumer.run()

@@ -1,4 +1,4 @@
-from .tables import metadata
+from . import repositories
 from .mapping import mapper
 from .settings import Settings
-from . import repositories
+from .tables import metadata, APP_SCHEMA
