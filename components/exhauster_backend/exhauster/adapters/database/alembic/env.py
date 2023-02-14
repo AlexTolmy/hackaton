@@ -3,7 +3,7 @@ from functools import partial
 from alembic import context
 from sqlalchemy import engine_from_config, pool
 
-from exhauster.adapters.database import metadata, APP_SCHEMA
+from exhauster.adapters.database import APP_SCHEMA, metadata
 
 config = context.config
 target_metadata = metadata
