@@ -27,7 +27,7 @@ services:
   # frontend:
 
   rabbitmq:
-    image: pcloud/rabbitmq-stomp:3.9
+    image: aiwin/rabbitmq-stomp:latest
     restart: always
     healthcheck:
       test: rabbitmq-diagnostics -q ping
@@ -38,3 +38,4 @@ services:
       - 5672:5672
       - 15672:15672
       - 61613:61613
+      - 15674:15674
