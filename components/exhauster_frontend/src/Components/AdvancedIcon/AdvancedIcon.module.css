@@ -1,0 +1,17 @@
+.icon_container {
+  position: relative;
+}
+
+.icon :global(.fill) {
+  fill: var(--icon-default-color);
+}
+
+.icon :global(.stroke) {
+  stroke: var(--icon-default-color);
+}
+
+.icon_text {
+  font-size: 0.75em;
+  bottom: 0;
+  color: var(--color-gray-8);
+}

@@ -1,0 +1,53 @@
+.app {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--color-gray-body);
+}
+
+.app_navigation {
+  display: flex;
+  width: auto;
+  max-width: 80%;
+  box-sizing: border-box;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 0;
+}
+
+.app_navigation_bar {
+  --item-background-color-active: var(--color-gray-3);
+  --item-foreground-color: var(--color-gray-0);
+  --item-foreground-color-active: var(--color-gray-0);
+}
+
+.app_clock {
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-gray-3);
+  border-radius: 0.438em;
+  line-height: 1.5;
+  padding: 0.375em 0.625em;
+  width: 8.75em;
+}
+
+.app_top_bar {
+  margin-bottom: 0.313em;
+  min-height: 5em;
+}
+
+* {
+  color: var(--color-gray-0);
+}
+
+* a {
+  text-decoration: none;
+  color: var(--color-gray-2);
+  font-size: 16px;
+}

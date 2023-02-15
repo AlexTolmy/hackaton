@@ -1,0 +1,6 @@
+.chart_container {
+  width: stretch;
+  width: -webkit-fill-available;
+  width: -moz-available;
+  background-color: var(--color-gray-1);
+}

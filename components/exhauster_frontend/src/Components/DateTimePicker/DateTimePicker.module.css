@@ -1,0 +1,40 @@
+.picker {
+  position: relative;
+}
+
+.button.button {
+  padding: 0.308em 0.462em 0.308em 1.154em;
+  line-height: normal;
+  transition: all 120ms ease-out;
+  min-width: 13.385em;
+  justify-content: space-between;
+}
+
+.button_active {
+  border-color: var(--color-gray-3);
+}
+
+.icon {
+  padding: 0.231em;
+  border-radius: 0.308em;
+  border: 0.077em solid var(--color-orange-12);
+}
+
+.icon_active {
+  background-color: var(--color-orange-12);
+}
+
+.icon svg :global(.clock) {
+  fill: var(--icon-default-color);
+  stroke: var(--color-gray-f);
+}
+
+.icon svg :global(.calendar) {
+  fill: var(--icon-default-color);
+}
+
+.icon_active svg :global(.clock),
+.button.button:hover svg :global(.clock),
+.button.button:focus-visible svg :global(.clock) {
+  stroke: var(--color-orange-12);
+}
