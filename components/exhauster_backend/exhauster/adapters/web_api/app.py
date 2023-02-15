@@ -4,8 +4,6 @@ from classic.http_api import App
 from exhauster.application.dashboard import services
 
 from . import controllers
-from .auth import auth
-from .join_points import join_points
 from .settings import SwaggerSettings
 from .spec import setup_spectree
 

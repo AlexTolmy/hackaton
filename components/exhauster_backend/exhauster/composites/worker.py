@@ -2,8 +2,8 @@ import logging
 
 from classic.sql_storage import TransactionContext
 from kombu import Connection
-from simple_shop.adapters import database, mail_sending, message_bus
-from simple_shop.application import services
+from exhauster.adapters import database, message_bus
+from exhauster.application.dashboard import services
 from sqlalchemy import create_engine
 
 logging.basicConfig(level=logging.INFO)
@@ -22,14 +22,9 @@ class DB:
     orders_repo = db.repositories.OrdersRepo(context=context)
 
 
-class MailSending:
-    sender = mail_sending.FileMailSender()
-
-
 class Application:
     orders = services.Orders(
         orders_repo=DB.orders_repo,
-        mail_sender=MailSending.sender,
     )
 
 
