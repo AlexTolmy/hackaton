@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import { NavBar } from '../UIKit';
+import NavBar from '../Components/NavBar';
 
 import { NavigationEndpoint } from './App.interface';
 import AppNavigationItem from './AppNavigationItem';

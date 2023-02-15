@@ -3,7 +3,7 @@
 import { Client } from '@stomp/stompjs';
 import { AnyAction, Dispatch, MiddlewareAPI } from 'redux';
 
-// import mockNewViolationsCount from '../../Mock/mockNewViolationsCount';
+import mockNewViolationsCount from '../../Mock/mockNewViolationsCount';
 
 interface WebsocketServiceInterface {
   Connect: (store: MiddlewareAPI<Dispatch<AnyAction>, any>) => void;
@@ -42,8 +42,8 @@ class WebsocketService implements WebsocketServiceInterface {
     };
     this._client.activate();
 
-    /*   // Should be deleted for prod
-    mockNewViolationsCount(this._client); */
+    // Should be deleted for prod
+    mockNewViolationsCount(this._client);
   }
 
   public Disconnect() {
