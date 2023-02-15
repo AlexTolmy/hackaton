@@ -1,0 +1,58 @@
+{
+  "layout": {
+    "navigation": [
+      {
+        "name": "status",
+        "display_name": "Статус",
+        "icon_name": "status",
+        "layout_name": "ChartsBoard",
+        "layout_options": [
+          ["data_source", "queries/get_charts"],
+          ["option_one", "random string"],
+          ["option_two", true]
+        ]
+      },
+      {
+        "name": "control",
+        "display_name": "Управление",
+        "icon_name": "control",
+        "sub_navigation": [
+          {
+            "name": "production",
+            "display_name": "Производство",
+            "layout_name": "ChartsBoardWithRecommendations",
+            "layout_options": [
+              ["data_source", "queries/get_charts_with_recommendations"]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "data_input",
+        "display_name": "Ручной ввод данных",
+        "icon_name": "pen",
+        "layout_name": "DataInput",
+        "layout_options": [
+          ["data_source", "queries/get_data_input"],
+          ["edit_source", "commands/set_data_input"]
+        ]
+      },
+      {
+        "name": "administration",
+        "display_name": "Администрирование",
+        "icon_name": "tools",
+        "sub_navigation": [
+          {
+            "name": "monitor_settings",
+            "display_name": "Настройка мониторов",
+            "layout_name": "MonitorSettings",
+            "layout_options": [
+              ["data_source", "queries/get_monitor_settings"],
+              ["edit_source", "commands/set_monitor_settings"]
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

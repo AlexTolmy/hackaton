@@ -1,0 +1,11 @@
+.upload_block {
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  font-size: 1em;
+  font-weight: 400;
+  max-width: 15em;
+  margin: 0;
+}
