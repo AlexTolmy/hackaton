@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
-import { useMatomo } from '@jonkoops/matomo-tracker-react';
+import { useDispatch } from 'react-redux';
 
-import NotificationPanelContainer from '../Containers/NotificationPanelContainer';
+import {
+  wsConnectAction,
+  wsDisconnectAction,
+} from '../Store/websocket/websocketActions';
 import getTranslation from '../Utils/getTranslation';
 
 import AppTopBar from './AppTopBar';
@@ -9,16 +12,20 @@ import AppTopBar from './AppTopBar';
 import styles from './App.module.css';
 
 function App() {
-  const { trackPageView } = useMatomo();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    trackPageView({ documentTitle: getTranslation('mainPage') });
-  }, [trackPageView]);
+    document.title = getTranslation('violationsMonitor');
+    dispatch(wsConnectAction());
+
+    return () => {
+      dispatch(wsDisconnectAction());
+    };
+  }, [dispatch]);
 
   return (
     <div className={styles.app}>
       <AppTopBar />
-      <NotificationPanelContainer />
     </div>
   );
 }
