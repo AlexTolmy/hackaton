@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useMatomo } from '@jonkoops/matomo-tracker-react';
 
-import NotificationPanelContainer from '../Containers/NotificationPanelContainer';
 import getTranslation from '../Utils/getTranslation';
 
 import AppTopBar from './AppTopBar';
@@ -18,7 +17,6 @@ function App() {
   return (
     <div className={styles.app}>
       <AppTopBar />
-      <NotificationPanelContainer />
     </div>
   );
 }

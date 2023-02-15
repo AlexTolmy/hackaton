@@ -1,46 +1,11 @@
+import clsx from 'clsx';
 import PropTypes from 'prop-types';
-
-import { joinClassNames } from '../../Utils';
-import Button from '../Button';
-import Glyph from '../Glyph';
 
 import './TopBar.css';
 
-/**
- * Главная панель, используется для навигации, доступу
- * к основному меню, выводу времени и прочее
- *
- * Кнопка главного меню отображается только если есть функция
- * обратного вызова (ФОВ) `onToggleMenu`
- *
- * @param {String} className Имя дополнительного класса
- * @param {Node} children Дочерние компоненты, выводятся в центре
- * @param {Function} onToggleMenu ФОВ вызывается при нажатии на кнопку меню
- * @param {ReactComponent} LogoComponent выводит логотип
- * @param {Function} RightSideRenderFn функция рендера элементов справа
- */
-function TopBar({
-  className,
-  children,
-  onToggleMenu,
-  LogoComponent,
-  RightSideRenderFn,
-}) {
+function TopBar({ className, children, LogoComponent, RightSideRenderFn }) {
   return (
-    <div className={joinClassNames(['top_bar', className])}>
-      {onToggleMenu ? (
-        <>
-          <Button
-            className="top_bar__main_menu_button"
-            type="button"
-            primary
-            onClick={onToggleMenu}
-          >
-            <Glyph name="Menu" className="top_bar__menu_glyph" />
-          </Button>
-          <div className="top_bar__separator" />
-        </>
-      ) : null}
+    <div className={clsx(['top_bar', className])}>
       {LogoComponent}
       <div className="top_bar__body">{children}</div>
       {RightSideRenderFn ? (
@@ -55,7 +20,6 @@ TopBar.propTypes = {
   children: PropTypes.node,
   LogoComponent: PropTypes.node,
   RightSideRenderFn: PropTypes.func,
-  onToggleMenu: PropTypes.func,
 };
 
 TopBar.defaultProps = {
@@ -63,7 +27,6 @@ TopBar.defaultProps = {
   children: undefined,
   LogoComponent: undefined,
   RightSideRenderFn: undefined,
-  onToggleMenu: undefined,
 };
 
 export default TopBar;
