@@ -5,7 +5,7 @@ from spectree.models import Tag
 from exhauster.application.dashboard import services
 
 from .join_points import join_point
-from .models import TestRequest, TestResponse
+from .models import TestRequest, TestResponse, CustomerID, Customer
 from .spec import spectree
 
 tags = (Tag(name='заголовок'), )
@@ -33,6 +33,24 @@ class Information:
         self.information.get_error(**request.media)
         # json_body: AllowedEmailAddRequest = request.context.json
         # self.allowed_emails.add(**json_body.dict(exclude_none=False))
+
+
+@component
+class Customers:
+    customers: services.Customer
+
+    @join_point
+    @spectree.validate(
+        query=CustomerID, resp=Response(HTTP_200=Customer), tags=tags
+    )
+    def on_get_customer(self, request, response):
+        query:  CustomerID = request.context.query
+        customer = self.customers.get_costumer(query.id)
+
+        response.media = {
+            'id': customer.id,
+            'email': customer.email
+        }
 
     # @join_point
     # def on_post_remove_product_from_cart(self, request, response):

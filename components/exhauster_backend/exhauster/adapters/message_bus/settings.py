@@ -13,7 +13,5 @@ class Settings(BaseSettings):
 
     @property
     def BROKER_URL(self) -> str:
-        return (
-            f'amqp://{self.USER}:{self.PASS}@'
-            f'{self.HOST}:{self.PORT}/'
-        )
+        return (f'amqp://{self.USER}:{self.PASS}@'
+                f'{self.HOST}:{self.PORT}/')

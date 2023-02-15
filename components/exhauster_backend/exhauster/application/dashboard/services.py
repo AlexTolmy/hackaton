@@ -7,7 +7,7 @@ from classic.messaging import Message, Publisher
 from pydantic import validate_arguments
 
 from . import interfaces
-from .entities import InformationEntity
+from .entities import InformationEntity, Customer
 from .errors import TestError
 
 join_points = PointCut()
@@ -28,3 +28,14 @@ class AppInformation:
 
     def get_error(self, sku: str):
         raise TestError(sku=sku)
+
+
+@component
+class Customer:
+    customer_repo: interfaces.CustomersRepo
+
+    @join_point
+    @validate_arguments
+    def get_costumer(self, id_: int) -> Customer:
+        customer = self.customer_repo.get_or_create(id_)
+        return customer

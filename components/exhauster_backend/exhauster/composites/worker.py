@@ -23,9 +23,7 @@ class DB:
 
 
 class Application:
-    orders = services.Orders(
-        orders_repo=DB.orders_repo,
-    )
+    orders = services.Orders(orders_repo=DB.orders_repo, )
 
 
 class MessageBus:

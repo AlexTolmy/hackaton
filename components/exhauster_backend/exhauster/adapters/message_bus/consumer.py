@@ -5,7 +5,6 @@ from exhauster.application.dashboard import services
 
 from .scheme import broker_scheme
 
-
 # def create_consumer(
 #     connection: Connection, orders: services.
 # ) -> KombuConsumer:

@@ -4,7 +4,21 @@ from classic.components import component
 from classic.sql_storage import BaseRepository
 from sqlalchemy import select
 
-from exhauster.application import interfaces
+from exhauster.application.dashboard import interfaces
+from exhauster.application.dashboard.entities import Customer
+
+
+@component
+class CustomersRepo(BaseRepository, interfaces.CustomersRepo):
+
+    def get_by_id(self, id_: int) -> Optional[Customer]:
+        query = select(Customer).where(Customer.id == id_)
+        return self.session.execute(query).scalars().one_or_none()
+
+    def add(self, customer: Customer):
+        self.session.add(customer)
+        self.session.flush()
+
 
 # @component
 # class ProductsRepo(BaseRepository, interfaces.ProductsRepo):

@@ -19,9 +19,9 @@ naming_convention = {
 APP_SCHEMA = 'app'
 metadata = MetaData(schema=APP_SCHEMA, naming_convention=naming_convention)
 
-# customers = Table(
-#     'customers',
-#     metadata,
-#     Column('id', Integer, primary_key=True),
-#     Column('email', String),
-# )
+customers = Table(
+    'customers',
+    metadata,
+    Column('id', Integer, primary_key=True),
+    Column('email', String),
+)

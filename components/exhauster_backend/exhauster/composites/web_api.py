@@ -8,6 +8,7 @@ from exhauster.adapters import database, log, settings, web_api
 from exhauster.application.dashboard import services
 
 
+
 class Settings:
     db = database.Settings()
     common_settings = settings.Settings()
@@ -19,8 +20,10 @@ class Logger:
 
 
 class DB:
+
     engine = create_engine(Settings.db.DATABASE_URL)
     context = TransactionContext(bind=engine, expire_on_commit=False)
+    customer_repo = database.repositories.CustomersRepo(context=context)
     # orders_repo = db.repositories.OrdersRepo(context=context)
 
 
@@ -37,14 +40,16 @@ class DB:
 
 class Application:
     app_information = services.AppInformation()
+    customer = services.Customer(customer_repo=DB.customer_repo)
 
 
-# class Aspects:
-#     services.join_points.join(DB.context)
-#     web_api.join_points.join(DB.context)
+class Aspects:
+    services.join_points.join(DB.context)
+    web_api.join_points.join(DB.context)
 
 app = web_api.create_app(
     swagger_settings=Settings.web_api.SWAGGER,
     allow_origins=Settings.web_api.ALLOW_ORIGINS,
-    app_information=Application.app_information
+    app_information=Application.app_information,
+    customers=Application.customer,
 )
