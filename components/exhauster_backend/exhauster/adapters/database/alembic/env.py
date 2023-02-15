@@ -42,28 +42,29 @@ def run_migrations_online():
         )
 
         with context.begin_transaction():
-            schema_exists = connection.execute(
-                "select exists (select schema_name "
-                "from information_schema.schemata "
-                f"where schema_name = '{APP_SCHEMA}');"
-            ).scalar()
-            group_pg = 'backend'
-            if not schema_exists:
-                # TODO: сменить имя группы если нужно
-                connection.execute(
-                    'create schema app;'
-                    'grant all privileges on schema app '
-                    f'to group "{group_pg}";'
-                )
-            group_exist = connection.execute(
-                f"select exists "
-                f"(select pg_roles.rolname from pg_roles "
-                f"where pg_roles.rolname = '{group_pg}');"
-            )
-            if not group_exist:
-                connection.execute(
-                    f'CREATE GROUP {group_pg} WITH USER postgres;'
-                )
+            # TODO: раскоменить для локальной разработки для удобства перовго запуска
+            # schema_exists = connection.execute(
+            #     "select exists (select schema_name "
+            #     "from information_schema.schemata "
+            #     f"where schema_name = '{APP_SCHEMA}');"
+            # ).scalar()
+            # group_pg = 'backend'
+            # if not schema_exists:
+            #     # TODO: сменить имя группы если нужно
+            #     connection.execute(
+            #         'create schema app;'
+            #         'grant all privileges on schema app '
+            #         f'to group "{group_pg}";'
+            #     )
+            # group_exist = connection.execute(
+            #     f"select exists "
+            #     f"(select pg_roles.rolname from pg_roles "
+            #     f"where pg_roles.rolname = '{group_pg}');"
+            # )
+            # if not group_exist:
+            #     connection.execute(
+            #         f'CREATE GROUP {group_pg} WITH USER postgres;'
+            #     )
             context.run_migrations()
 
 
