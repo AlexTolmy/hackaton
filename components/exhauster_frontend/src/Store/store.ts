@@ -1,5 +1,4 @@
 import { handleRequests } from '@redux-requests/core';
-import { KeycloakInstance } from 'keycloak-js';
 import {
   applyMiddleware,
   combineReducers,
@@ -9,32 +8,22 @@ import {
 } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { all } from 'redux-saga/effects';
-import thunk from 'redux-thunk';
 
 import appThemeReducer from './reducers/appThemeReducer';
-import notificationPanelReducer from './reducers/notificationPanelReducer';
-import userDataReducer, {
-  setUserName,
-  setUserRole,
-} from './reducers/userDataReducer';
-import { UserRole } from './types/UserDataReducerType';
 import getApiAccessDriver from './utils/axios';
-import readUserRole from './utils/readUserRole';
 import getWebsocketMiddleware from './websocket/getWebsocketMiddleware';
 
 function* rootSaga() {
   yield all([]);
 }
 
-function getStoreInstance(keycloakInstance?: KeycloakInstance): Store {
+function getStoreInstance(): Store {
   const { requestsReducer, requestsMiddleware } = handleRequests({
-    driver: getApiAccessDriver(keycloakInstance),
+    driver: getApiAccessDriver(),
   });
 
   const reducers = combineReducers({
     requests: requestsReducer,
-    notificationPanel: notificationPanelReducer,
-    userData: userDataReducer,
     appTheme: appThemeReducer,
   });
 
@@ -43,7 +32,6 @@ function getStoreInstance(keycloakInstance?: KeycloakInstance): Store {
   const middlewares = [
     sagaMiddleware,
     ...requestsMiddleware,
-    thunk,
     websocketMiddleware,
   ];
 
@@ -56,26 +44,6 @@ function getStoreInstance(keycloakInstance?: KeycloakInstance): Store {
     reducers,
     composeEnhancers(applyMiddleware(...middlewares)),
   );
-
-  if (keycloakInstance) {
-    const {
-      groups,
-      given_name: firstName,
-      family_name: secondName,
-    } = keycloakInstance.tokenParsed;
-
-    const role = readUserRole(groups);
-    configuredStore.dispatch(setUserRole(role));
-
-    configuredStore.dispatch(
-      setUserName({
-        firstName,
-        secondName,
-      }),
-    );
-  } else {
-    configuredStore.dispatch(setUserRole(UserRole.Admin));
-  }
 
   sagaMiddleware.run(rootSaga);
 
