@@ -1,9 +1,0 @@
-.container {
-  background-color: var(--color-gray-3);
-  width: 2.5em;
-  height: 2.5em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.313em;
-}
