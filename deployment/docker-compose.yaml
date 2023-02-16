@@ -32,7 +32,7 @@ services:
     environment:
       - FRONT_PORT=8081
     ports:
-      - 8081:8081
+      - 80:8081
     depends_on:
       rabbitmq:
         condition: service_healthy
@@ -50,8 +50,6 @@ services:
       - RABBITMQ_PASSWORD=${RABBIT_PASS}
       - RABBITMQ_SECURE_PASSWORD=yes
       - RABBITMQ_PLUGINS=rabbitmq_management,rabbitmq_web_stomp,rabbitmq_stomp
-    # volumes:
-    #   - /root/rabbitmq:/bitnami
     ports:
       - 5672:5672
       - 15672:15672

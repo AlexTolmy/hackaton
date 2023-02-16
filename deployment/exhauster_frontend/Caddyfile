@@ -3,16 +3,21 @@
 }
 
 :{$FRONT_PORT} {
-  route /api/* {
-    reverse_proxy localhost:8000
-  }
 	@nostaticFile {
 		method GET
 		not path_regexp static \.(js|svg|gif|png|html|ttf|woff|ico|jpg|jpeg|css)$
 	}
-	rewrite @nostaticFile /
-	root * /var/www
-	file_server
+	route /api/* {
+    reverse_proxy http://backend:8000
+  }
+	route /apidoc/* {
+    reverse_proxy http://backend:8000
+  }
+  route /* {
+		rewrite @nostaticFile /
+		root * /var/www
+		file_server
+  }
 	log {
 		output stdout
 		format filter {
