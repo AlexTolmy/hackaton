@@ -3,6 +3,7 @@ version: "3"
 services:
   backend:
     image: ${BACKEND_IMAGE}
+    container_name: backend
     restart: always
     entrypoint: entrypoint_api.sh
     environment:
@@ -24,16 +25,33 @@ services:
       rabbitmq:
         condition: service_healthy
 
-  # frontend:
-
+  frontend:
+    image: ${FRONTEND_IMAGE}
+    container_name: frontend
+    restart: always
+    environment:
+      - FRONT_PORT=8081
+    ports:
+      - 8081:8081
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
   rabbitmq:
-    image: aiwin/rabbitmq-stomp:latest
+    image: bitnami/rabbitmq:3.9.28
+    container_name: rabbitmq
     restart: always
     healthcheck:
       test: rabbitmq-diagnostics -q ping
       interval: 30s
       timeout: 30s
       retries: 3
+    environment:
+      - RABBITMQ_USERNAME=hackaton
+      - RABBITMQ_PASSWORD=${RABBIT_PASS}
+      - RABBITMQ_SECURE_PASSWORD=yes
+      - RABBITMQ_PLUGINS=rabbitmq_management,rabbitmq_web_stomp,rabbitmq_stomp
+    # volumes:
+    #   - /root/rabbitmq:/bitnami
     ports:
       - 5672:5672
       - 15672:15672
