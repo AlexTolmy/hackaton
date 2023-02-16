@@ -55,3 +55,20 @@ services:
       - 15672:15672
       - 61613:61613
       - 15674:15674
+
+  redpanda:
+    image: redpandadata/console:v2.1.1
+    container_name: redpanda
+    restart: always
+    environment:
+      - KAFKA_BROKERS=rc1a-b5e65f36lm3an1d5.mdb.yandexcloud.net:9091
+      - KAFKA_TLS_ENABLED=true
+      - KAFKA_SASL_ENABLED=true
+      - KAFKA_SASL_MECHANISM=SCRAM-SHA-512
+      - KAFKA_SASL_USERNAME=9433_reader
+      - KAFKA_SASL_PASSWORD=${KAFKA_PASS}
+      - KAFKA_TLS_CAFILEPATH=/tmp/ca.pem
+    ports:
+      - 8080:8080
+    volumes:
+      - "/tmp/ca.pem:/tmp/ca.pem"
