@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
+import ExhaustersMonitorPage from '../Pages/ExhaustersMonitorPage';
 import {
   wsConnectAction,
   wsDisconnectAction,
 } from '../Store/websocket/websocketActions';
-import getTranslation from '../Utils/getTranslation';
 
+import { NavigationEndpoint } from './App.interface';
 import AppTopBar from './AppTopBar';
 
 import styles from './App.module.css';
@@ -15,7 +17,6 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    document.title = getTranslation('violationsMonitor');
     dispatch(wsConnectAction());
 
     return () => {
@@ -26,6 +27,16 @@ function App() {
   return (
     <div className={styles.app}>
       <AppTopBar />
+      <Routes>
+        <Route
+          path={NavigationEndpoint.Home}
+          element={<ExhaustersMonitorPage />}
+        />
+        <Route
+          path={NavigationEndpoint.Any}
+          element={<Navigate to={NavigationEndpoint.Home} replace />}
+        />
+      </Routes>
     </div>
   );
 }

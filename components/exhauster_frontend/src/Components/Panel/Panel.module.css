@@ -1,0 +1,13 @@
+.panel_title {
+  background-color: var(--color-gray-7);
+  color: var(--color-gray-1);
+  font-size: 1.2em;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.4em;
+}
+
+.panel_body {
+  background-color: var(--color-gray-1);
+  padding: 1em;
+}

@@ -8,15 +8,11 @@ import AppNavigation from './AppNavigation';
 import styles from './App.module.css';
 
 function AppTopBar() {
-  const renderRightSideFn = () => <ThemeSwitcherContainer />;
-
   return (
-    <TopBar
-      className={styles.app_top_bar}
-      RightSideRenderFn={renderRightSideFn}
-    >
+    <div className={styles.app_top_bar}>
       <AppNavigation />
-    </TopBar>
+      <ThemeSwitcherContainer />
+    </div>
   );
 }
 

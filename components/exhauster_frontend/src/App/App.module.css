@@ -21,25 +21,14 @@
   min-height: 0;
 }
 
-.app_navigation_bar {
-  --item-background-color-active: var(--color-gray-3);
-  --item-foreground-color: var(--color-gray-0);
-  --item-foreground-color-active: var(--color-gray-0);
-}
-
-.app_clock {
-  display: flex;
-  justify-content: center;
-  background-color: var(--color-gray-3);
-  border-radius: 0.438em;
-  line-height: 1.5;
-  padding: 0.375em 0.625em;
-  width: 8.75em;
-}
-
 .app_top_bar {
   margin-bottom: 0.313em;
   min-height: 5em;
+  background-color: var(--color-gray-f);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2em;
+  align-items: center;
 }
 
 * {
