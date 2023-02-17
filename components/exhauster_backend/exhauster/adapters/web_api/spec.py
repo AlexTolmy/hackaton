@@ -5,7 +5,6 @@ from falcon import App
 from spectree import SpecTree
 from spectree.models import Server
 
-
 spectree = SpecTree(
     'falcon',
     mode='strict',
