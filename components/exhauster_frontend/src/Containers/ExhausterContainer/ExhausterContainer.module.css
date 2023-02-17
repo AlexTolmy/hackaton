@@ -1,0 +1,38 @@
+.exhauster {
+  border: 1px solid gray;
+}
+
+.exhauster_rotor_forecast {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  background-color: var(--color-gray-3);
+  padding: 0.5em;
+}
+
+.exhauster_rotor_forecast h4 {
+  background-color: var(--color-gray-f);
+  border-radius: 5px;
+  padding: 0.4em;
+  margin: 1em;
+}
+
+.exhauster_rotor_date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exhauster_rotor_calendar {
+  font-size: 0.8em;
+}
+
+.exhauster_rotor_days {
+  display: flex;
+  align-items: center;
+}
+
+.exhauster_sensors {
+  margin: 1em 0;
+}

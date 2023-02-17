@@ -1,0 +1,14 @@
+.machine {
+  display: grid;
+  width: 100%;
+  flex: 1 0 20%;
+  font-size: 0.8em;
+}
+
+.machine_body {
+  display: flex;
+  gap: 0.2em;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}

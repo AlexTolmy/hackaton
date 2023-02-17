@@ -41,8 +41,6 @@ class WebsocketService implements WebsocketServiceInterface {
       this.subscribeNewViolationsCount();
     };
     this._client.activate();
-
-    // Should be deleted for prod
     mockNewViolationsCount(this._client);
   }
 

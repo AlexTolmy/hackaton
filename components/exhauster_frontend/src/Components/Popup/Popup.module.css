@@ -1,0 +1,27 @@
+/*Popup.tsx*/
+.popup {
+  --corner-color: var(--color-gray-f);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 0 0.25em 0.938em var(--color-shadow);
+  border-radius: 0.25em;
+  position: absolute;
+  background-color: var(--color-gray-f);
+  margin-top: 0.813em;
+  z-index: 1;
+}
+
+/*PopupCorner.tsx*/
+.corner_container {
+  position: absolute;
+}
+
+.corner_body {
+  width: 0;
+  height: 0;
+  border: 0.563em solid transparent;
+  border-bottom: 0.563em solid var(--corner-color);
+  z-index: 1;
+}
