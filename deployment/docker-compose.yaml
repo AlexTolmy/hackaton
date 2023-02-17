@@ -72,3 +72,20 @@ services:
       - 8080:8080
     volumes:
       - "/tmp/ca.pem:/tmp/ca.pem"
+
+  influxdb:
+    image: influxdb:latest
+    container_name: influxdb
+    restart: always
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=hackaton
+      - DOCKER_INFLUXDB_INIT_PASSWORD=${INFLUXDB_PASS}
+      - DOCKER_INFLUXDB_INIT_ORG=hackaton
+      - DOCKER_INFLUXDB_INIT_BUCKET=hackaton
+    ports:
+      - '8086:8086'
+    volumes:
+      - influxdb_data:/var/lib/influxdb2
+volumes:
+  influxdb_data: {}
