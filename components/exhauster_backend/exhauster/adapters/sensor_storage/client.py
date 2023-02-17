@@ -52,7 +52,8 @@ data = {
 for key in data:
     point = (
         Point("census").tag("location", data[key]["location"]
-                            ).field(data[key]["species"], data[key]["count"]).field('sad', 1)
+                            ).field(data[key]["species"],
+                                    data[key]["count"]).field('sad', 1)
     )
     # import ipdb;ipdb.set_trace()
     write_api.write(bucket=bucket, org=org, record=point)
@@ -68,4 +69,4 @@ for table in tables:
         print(row.get_value())
         print(row.get_field())
         print(row.values)
-        print('='*10)
+        print('=' * 10)

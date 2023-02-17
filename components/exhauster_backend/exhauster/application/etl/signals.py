@@ -1,6 +1,7 @@
 from dataclasses import dataclass
+from datetime import datetime
 from enum import Enum
-from typing import List, Union
+from typing import List, Union, Dict, Any
 
 
 class SignalType(Enum):
@@ -9,31 +10,54 @@ class SignalType(Enum):
 
 
 # name = 'exhauster_3_bearing_1_vibration_horizontal',
+# {
+#     'breading': {
+#         'value': 1,
+#         'node': {
+#             'temp_warm': {
+#                 'node': {
+#                     'temp': {
+#                         'value': 1
+#                     },
+#                     'setup': {
+#                         'node':{
+#                             'alarm_max': {
+#                                 'value': 1
+#                             }
+#                         }
+#                     }
+#                 }
+#             },
+#             'comment': {
+#                 'value': 'asdasdasd'
+#             }
+#         }
+#     }
+# }
+
 
 @dataclass
 class Tag:
     name: str
-    value: str
 
+@dataclass
+class Value:
+    name: str
 
 @dataclass
 class Signal:
     type: SignalType
-    name: str
+    measurment: str
     active: bool
     comment: str
-    place: str
-    raw: str
+    params: Dict[str, Any]
+    value: List[Value]
+    tags: List[Tag]
 
+# эксгаустер
+# Узел
 
 
 mapper = {
-
+    'place': Signal,
 }
-
-
-@dataclass
-class Sensor:
-    name: str
-    tags: List[Tag]
-    value: Union[str, float, bool, int]
