@@ -1,5 +1,9 @@
+from datetime import datetime
+
 from sqlalchemy import (
+    Boolean,
     Column,
+    DateTime,
     Float,
     ForeignKey,
     Integer,
@@ -19,9 +23,50 @@ naming_convention = {
 APP_SCHEMA = 'app'
 metadata = MetaData(schema=APP_SCHEMA, naming_convention=naming_convention)
 
-# customers = Table(
-#     'customers',
-#     metadata,
-#     Column('id', Integer, primary_key=True),
-#     Column('email', String),
-# )
+rotors = Table(
+    'rotors',
+    metadata,
+    Column('id', Integer, primary_key=True),
+    Column('created_at', DateTime, nullable=False, default=datetime.utcnow),
+    Column(
+        'name',
+        String(length=150),
+        nullable=False,
+        unique=True,
+    ),
+)
+
+exhausters = Table(
+    'exhausters',
+    metadata,
+    Column('id', Integer, primary_key=True),
+    Column(
+        'number',
+        Integer,
+        nullable=False,
+    ),
+    Column(
+        'name',
+        String(length=255),
+        nullable=False,
+        unique=True,
+        comment='Имя эксгаустера.'
+    ),
+    Column('is_active', Boolean, nullable=False, default=True),
+)
+
+rotors_prediction = Table(
+    'rotors_prediction',
+    metadata,
+    Column('id', Integer, primary_key=True),
+    Column(
+        'created_at',
+        DateTime,
+        nullable=False,
+        default=datetime.utcnow,
+    ),
+    Column(
+        'stop_at',
+        DateTime,
+    ),
+)

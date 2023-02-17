@@ -1,5 +1,6 @@
 import React from 'react';
 
+import TopBar from '../Components/TopBar';
 import ThemeSwitcherContainer from '../Containers/ThemeSwitcherContainer';
 
 import AppNavigation from './AppNavigation';

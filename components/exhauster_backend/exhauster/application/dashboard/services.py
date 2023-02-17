@@ -7,7 +7,7 @@ from classic.messaging import Message, Publisher
 from pydantic import validate_arguments
 
 from . import interfaces
-from .entities import InformationEntity
+from .entities import Customer, InformationEntity
 from .errors import TestError
 
 join_points = PointCut()

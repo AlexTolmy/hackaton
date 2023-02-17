@@ -9,6 +9,12 @@ class InformationEntity:
     text: Optional[str] = None
 
 
+@attr.dataclass
+class Customer:
+    id: Optional[int] = None
+    email: Optional[str] = None
+
+
 # @attr.dataclass
 # class Cart:
 #     customer_id: int
