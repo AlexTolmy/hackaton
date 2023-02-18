@@ -50,7 +50,8 @@ services:
     depends_on:
       influxdb:
         condition: service_healthy
-
+      rabbitmq:
+        condition: service_healthy
   frontend:
     image: ${FRONTEND_IMAGE}
     container_name: frontend
