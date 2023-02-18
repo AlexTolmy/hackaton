@@ -7,7 +7,7 @@ import pmdarima as pm
 from classic.components import component
 
 from exhauster.application import interfaces
-from .dto import ActualDataTable, Prediction
+from .dto import ActualDataTable, Prediction, Rotor
 from .settings import Settings
 
 
@@ -22,8 +22,11 @@ class Predictor(interfaces.PredictService):
     predictions_repo: interfaces.PredictionsRepo
     vibration_repo: interfaces.VibrationsRepo
 
-    def predict(self, exhauster_id: int, arima=False):
+    def predict(self, exhauster_id: str, arima=False):
         all_rotors_start_date = self.rotor_repo.all()
+        fact_failures, pred_failures = self.rotor_repo.\
+            get_10_failures(exhauster_id)
+
         rotor_start_date = self._get_start_rotor(
             all_rotors_start_date, exhauster_id
         )
@@ -50,6 +53,11 @@ class Predictor(interfaces.PredictService):
             )
         else:
             expressions_dict = self._get_linear_expressions(rolled_data)
+
+            if len(fact_failures) >= 10:
+                remains = self._calc_failure_errors(fact_failures, pred_failures)
+                expressions_dict = self._fined_model(remains, expressions_dict)
+
             failure_days_by_col = self._calc_failure_days(
                 expressions_dict, warnings
             )
@@ -62,28 +70,29 @@ class Predictor(interfaces.PredictService):
         )
         self.predictions_repo.save(prediction)
 
-    def _fined_model(self, remains: List[int], model) -> Tuple[float, float]:
+    def _fined_model(self, remains: List[int], expressions) -> Tuple[float, float]:
         """
         штраф модели (изменения угла линейной регрессии) в зависимости
         от того, в какую сторону ошибались в последнее время,
         реализовано через затухание важности
         """
-        multiplier = model[0]
-        correct_coeff = np.mean(
-            np.array(remains) * np.array([i for i in range(len(remains))])
-        )
-        # уменьшаем угол наклона прямой прогноза, если ошибаемся вверх
-        # (прогноз всегда выше факта), в противном случае наоборот
-        new_multiplier = multiplier - (multiplier * correct_coeff) * 100
-        model[0] = new_multiplier
-        return model
+        for col in expressions:
+            multiplier = expressions[col][0]
+            correct_coeff = np.mean(
+                np.array(remains) * np.array([i for i in range(len(remains))])
+            )
+            # уменьшаем угол наклона прямой прогноза, если ошибаемся вверх
+            # (прогноз всегда выше факта), в противном случае наоборот
+            new_multiplier = multiplier - (multiplier * correct_coeff) * 100
+            expressions[col][0] = new_multiplier
 
-    def _calc_failure_errors(self, exhaust_id: str) -> List[int]:
+        return expressions
+
+    def _calc_failure_errors(
+        self, fact_failures: List[Rotor], pred_failures: List[Prediction]
+    ) -> List[int]:
         """функция для получения ошибок по предсказаниям замен ротора"""
         remains = []
-        fact_failures, pred_failures = self.rotor_repo.get_10_failures(
-            exhaust_id
-        )
         fact_failures_dates = dict()
         for val in pred_failures:
             fact_failures_dates[val] = val.days_to_failure
@@ -101,7 +110,6 @@ class Predictor(interfaces.PredictService):
             remains.append(pred_delta)
 
         return remains
-
 
     @staticmethod
     def _get_start_rotor(all_rotors_start_date, exhauster_id):
