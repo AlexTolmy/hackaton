@@ -123,7 +123,7 @@ services:
 
   etl-local:
     image: ${BACKEND_IMAGE}
-    container_name: etl
+    container_name: etl-local
     restart: always
     entrypoint: entrypoint_etl.sh
     environment:
