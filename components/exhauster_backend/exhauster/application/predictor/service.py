@@ -49,7 +49,7 @@ class Predictor(interfaces.PredictService):
         )
 
         actual_data: ActualDataTable = self.vibration_repo.get_vibrations(
-            exhauster_id=exhauster_id,
+            exhauster_id=str(exhauster_id),
             bearing_id=[7, 8],
             start=rotor_start_date,
         )
@@ -161,11 +161,13 @@ class Predictor(interfaces.PredictService):
         for vibration_val in actual_data.data:
             col_name = f'Подшипник_{vibration_val.bearing_id}. ' \
                        f'Вибрация {vibration_val.vibration_type}'
-            if vibration_val.moment not in data_by_time:
-                data_by_time[vibration_val.moment] = dict()
-            data_by_time[vibration_val.moment][col_name] = vibration_val.value
-            if col_name not in warnings:
-                warnings[col_name] = vibration_val.warning_max
+            if 'vibration' in vibration_val.field_name:
+                if vibration_val.moment not in data_by_time:
+                    data_by_time[vibration_val.moment] = dict()
+                data_by_time[vibration_val.moment][col_name] = vibration_val.value
+            elif 'warning' in vibration_val.field_name:
+                if col_name not in warnings:
+                    warnings[col_name] = vibration_val.value
 
         df = pd.DataFrame.from_dict(data_by_time, orient='index')
         df.index = df.index.astype('datetime[64]')
