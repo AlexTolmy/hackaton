@@ -46,6 +46,5 @@ class InfluxClient(interfaces.InfluxClient):
         """
         self._logger.info('start loading data')
         writer = self._create_writer()
-        import ipdb;ipdb.set_trace()
         writer.write(self.buket, self.org, data)
         self._logger.info('end loading data')
