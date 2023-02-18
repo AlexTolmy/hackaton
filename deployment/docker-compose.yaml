@@ -33,7 +33,7 @@ services:
     environment:
       - KAFKA_SERVERS=rc1a-2ar1hqnl386tvq7k.mdb.yandexcloud.net:9091
       - KAFKA_TOPIC=zsmk-9433-dev-01
-      - KAFKA_GROUP_ID=${KAFKA_GROUP_ID}_002
+      - KAFKA_GROUP_ID=${KAFKA_GROUP_ID}_003
       - KAFKA_PASSWORD=${KAFKA_PASS}
       - KAFKA_USER=9433_reader
       - KAFKA_SSL_PATH_CERTIFICATE=/tmp/ca.pem
@@ -83,7 +83,7 @@ services:
     container_name: redpanda
     restart: always
     environment:
-      - KAFKA_BROKERS=rc1a-b5e65f36lm3an1d5.mdb.yandexcloud.net:9091
+      - KAFKA_BROKERS=rc1a-2ar1hqnl386tvq7k.mdb.yandexcloud.net:9091
       - KAFKA_CLIENTID=${KAFKA_GROUP_ID}_panda
       - KAFKA_TLS_ENABLED=true
       - KAFKA_SASL_ENABLED=true
