@@ -8,6 +8,8 @@ import { getExhausterVisibleChartDataSelector } from '../../Store/reducers/exhau
 
 import getChartOption from './getChartOption';
 
+import styles from './ExhausterChartContainer.module.css';
+
 function ExhausterChart() {
   const { exhausterName } = useParams();
   const exhausterChart = useSelector(
@@ -21,7 +23,7 @@ function ExhausterChart() {
   );
 
   return (
-    <div>
+    <div className={styles.chart}>
       <EchartLineChart option={chartOption} />
     </div>
   );

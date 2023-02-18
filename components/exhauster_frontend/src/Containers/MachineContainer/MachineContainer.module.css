@@ -12,4 +12,9 @@
   align-items: center;
   justify-content: center;
   padding-top: 0.2em;
+  height: 100%;
+}
+
+.machine_panel {
+  height: 100%;
 }

@@ -15,11 +15,12 @@ import exhausterChartDataReducer from './reducers/exhausterChartDataReducer';
 import exhausterMnemoSchemeReducer from './reducers/exhausterMnemoSchemeReducer';
 import exhaustersMonitorReducer from './reducers/exhaustersMonitorReducer';
 import notificationReducer from './reducers/notificationReducer';
+import { fetchExhaustersGenerator } from './requests/fetchExhausters';
 import getApiAccessDriver from './utils/axios';
 import getWebsocketMiddleware from './websocket/getWebsocketMiddleware';
 
 function* rootSaga() {
-  yield all([]);
+  yield all([fetchExhaustersGenerator()]);
 }
 
 function getStoreInstance(): Store {

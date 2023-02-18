@@ -228,7 +228,7 @@ const schemeMock = {
 };
 
 export const exhaustersSchemesMock: Record<string, ExhausterGeneralScheme> = {
-  'Эксгаустер Ф-172': {
+  'Эксгаустер У-171': {
     exhausterName: 'Эксгаустер Ф-172',
     schemeData: schemeMock,
   },
@@ -489,7 +489,7 @@ const chartSensors: ChartSensorType[] = [
 ];
 
 export const exhaustersChartsMock: Record<string, ExhausterChart> = {
-  'Эксгаустер Ф-172': {
+  'Эксгаустер У-171': {
     exhausterName: 'Эксгаустер Ф-172',
     chartSensors,
     chartSensorsData,

@@ -1,0 +1,16 @@
+.date-tick-timer {
+  font-weight: 500;
+  color: var(--color-gray-one);
+  min-width: 2em;
+  text-align: center;
+  border-radius: 0.3em;
+  background-color: var(--color-gray-seven);
+}
+
+.date-tick-timer--in-range {
+  background-color: var(--color-success);
+}
+
+.date-tick-timer--out-of-range {
+  background-color: var(--color-error);
+}

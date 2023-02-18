@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { exhaustersMock } from '../../Mock/mock';
 import {
   ExhaustersMonitorReducerType,
   ExhausterType,
@@ -8,7 +7,7 @@ import {
 import RootStoreType from '../types/RootStoreType';
 
 const initialState: ExhaustersMonitorReducerType = {
-  exhausters: exhaustersMock,
+  exhausters: {},
   lastUpdateDate: new Date(),
 };
 
