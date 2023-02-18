@@ -14,7 +14,7 @@ class StorageDB:
     influxdb_client: InfluxClient
 
     def get_vibrations(
-        self, exhauster_id: str, bearing_id: str, field: str, start
+        self, exhauster_id: str, bearing_id: str, start
     ):
         query_api, bucket = self.influxdb_client.create_reader()
 
