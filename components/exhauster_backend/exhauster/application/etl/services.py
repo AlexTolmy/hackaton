@@ -48,6 +48,7 @@ class ETL:
                         'time': time_
                     }
                 )
+                self._logger.info('message time %s', time_)
         self._logger.info('end processing message')
 
         if result:
