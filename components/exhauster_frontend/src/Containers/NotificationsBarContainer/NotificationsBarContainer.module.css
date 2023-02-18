@@ -1,0 +1,11 @@
+.bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20em;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  margin-top: 5em;
+  margin-right: 1em;
+}

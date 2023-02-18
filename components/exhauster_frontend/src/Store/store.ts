@@ -14,6 +14,7 @@ import datesPeriodSelectorReducer from './reducers/datesPeriodSelectorReducer';
 import exhausterChartDataReducer from './reducers/exhausterChartDataReducer';
 import exhausterMnemoSchemeReducer from './reducers/exhausterMnemoSchemeReducer';
 import exhaustersMonitorReducer from './reducers/exhaustersMonitorReducer';
+import notificationReducer from './reducers/notificationReducer';
 import getApiAccessDriver from './utils/axios';
 import getWebsocketMiddleware from './websocket/getWebsocketMiddleware';
 
@@ -33,6 +34,7 @@ function getStoreInstance(): Store {
     exhausterMnemoScheme: exhausterMnemoSchemeReducer,
     exhausterChart: exhausterChartDataReducer,
     timePeriod: datesPeriodSelectorReducer,
+    notificationBar: notificationReducer,
   });
 
   const websocketMiddleware = getWebsocketMiddleware();
