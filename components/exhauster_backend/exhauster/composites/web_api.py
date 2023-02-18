@@ -23,6 +23,7 @@ class DB:
 
     engine = create_engine(Settings.db.DATABASE_URL)
     context = TransactionContext(bind=engine, expire_on_commit=False)
+    exhausters_repo = database.repositories.ExhausterRepo(context=context)
 
 
 class Storage:
@@ -36,7 +37,9 @@ class Storage:
 
 
 class Application:
-    app_information = services.AppInformation()
+    exhausers_service = services.ExhausterService(
+        exhausters_repo=DB.exhausters_repo
+    )
 
 
 class Aspects:
@@ -47,5 +50,5 @@ class Aspects:
 app = web_api.create_app(
     swagger_settings=Settings.web_api.SWAGGER,
     allow_origins=Settings.web_api.ALLOW_ORIGINS,
-    app_information=Application.app_information,
+    exhauster_service=Application.exhausers_service
 )

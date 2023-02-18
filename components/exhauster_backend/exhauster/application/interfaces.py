@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from typing import List
 
 from exhauster.application.predictor import dto
+from exhauster.application.dashboard import dto as dashboard_dto
 
 
 class PredictService(ABC):
@@ -31,4 +32,12 @@ class VibrationsRepo(ABC):
 
     @abstractmethod
     def get_vibrations(self, exhauster_id: str, bearing_id: str, start):
+
+        ...
+
+
+class ExhausterRepo(ABC):
+
+    @abstractmethod
+    def all(self) -> List[dashboard_dto.Exhauster]:
         ...
