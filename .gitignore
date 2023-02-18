@@ -100,3 +100,5 @@ Temporary Items
 .idea/
 /tmp/
 .vscode
+/data
+.tool-versions
