@@ -1,14 +1,11 @@
-from datetime import datetime
-from typing import Dict, List
+from typing import Dict
 
 import numpy as np
 import pandas as pd
 import pmdarima as pm
-from classic.app import DTO
 from classic.components import component
 
 from exhauster.application import interfaces
-
 from .dto import ActualDataTable, Prediction
 from .settings import Settings
 
@@ -32,8 +29,15 @@ class Predictor(interfaces.PredictService):
 
         actual_data: ActualDataTable = self.vibration_repo.get_vibrations(
             exhauster_id=str(exhauster_id),
-            bearing_id=[7, 8],
+            bearing_id=str(7),
             start=rotor_start_date,
+        )
+        actual_data.data.append(
+            self.vibration_repo.get_vibrations(
+                exhauster_id=str(exhauster_id),
+                bearing_id=str(8),
+                start=rotor_start_date,
+            )
         )
 
         vibrations_data, warnings = self._dto_to_dataframe(actual_data)
