@@ -47,5 +47,5 @@
 .indicators {
   display: flex;
   gap: 0.2em;
-  justify-content: end;
+  justify-content: flex-end;
 }

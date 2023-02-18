@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  margin: 0.313em;
+  align-items: center;
+  width: 100%;
+  --label_color: var(--color-yellow-8);
+}
+
+div.value {
+  height: 1.5em;
+  line-height: 1.5em;
+  background-color: var(--label_color);
+  font-weight: 700;
+  border-radius: 0.313em;
+  padding: 0px 0.313em;
+  max-width: 12.5em;
+}
+
+div.description {
+  max-width: 80%;
+  width: min-content;
+}

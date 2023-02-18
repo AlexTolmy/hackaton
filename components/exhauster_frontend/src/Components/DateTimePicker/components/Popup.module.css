@@ -1,0 +1,110 @@
+/*PopupContainer.tsx*/
+.column {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  min-height: 13.188em;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-bottom: 0.938em;
+}
+
+.table {
+  padding: 0.625em 0.438em 0.938em 1em;
+}
+
+div.popup {
+  z-index: 2;
+}
+
+/*PopupTable.tsx*/
+.header_cell {
+  --color: var(--color-gray-0);
+  opacity: 0.4;
+  font-size: 0.688em;
+  line-height: 0.813em;
+}
+
+/*PopupTableCell.tsx*/
+.cell {
+  --color: var(--color-gray-0);
+  font-size: 0.688em;
+  font-weight: 300;
+  line-height: 1.182em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.273em;
+  height: 2.273em;
+  color: var(--color);
+  margin: 0.091em;
+}
+
+.text {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*PopupTableBody.tsx*/
+.not_current {
+  --color: var(--color-gray-0);
+  opacity: 0.3;
+}
+
+.active_day {
+  --color: var(--color-gray-0);
+  font-weight: 500;
+  background-color: var(--color-yellow-8);
+  border-radius: 50%;
+}
+
+.button {
+  background-color: unset;
+  border: unset;
+  padding: unset;
+  box-sizing: unset;
+  border-radius: unset;
+  font-size: unset;
+  width: unset;
+  font-weight: unset;
+  margin: unset;
+  line-height: unset;
+}
+
+.button:focus-visible {
+  outline-offset: 0.063em;
+}
+
+/*PopupMonthSelector.tsx*/
+.selector {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 12.75em;
+}
+
+.title {
+  font-size: 0.813em;
+  font-weight: 400;
+  line-height: 1.154em;
+  color: var(--color-gray-0);
+  padding: 0;
+  margin: 0;
+}
+
+.ms_button {
+  width: 1.769em;
+  height: 1.769em;
+}
+
+.ms_button svg {
+  stroke: var(--color-gray-0);
+}
