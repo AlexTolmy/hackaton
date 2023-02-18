@@ -120,5 +120,34 @@ services:
       - "8086:8086"
     volumes:
       - influxdb_data:/var/lib/influxdb2
+
+  etl-local:
+    image: ${BACKEND_IMAGE}
+    container_name: etl-local
+    restart: always
+    entrypoint: entrypoint_etl.sh
+    environment:
+      - KAFKA_SERVERS=rc1a-2ar1hqnl386tvq7k.mdb.yandexcloud.net:9091
+      - KAFKA_TOPIC=zsmk-9433-dev-01
+      - KAFKA_GROUP_ID=${KAFKA_GROUP_ID}_local_001
+      - KAFKA_PASSWORD=${KAFKA_PASS}
+      - KAFKA_USER=9433_reader
+      - KAFKA_SSL_PATH_CERTIFICATE=/tmp/ca.pem
+      - INFLUXDB_TOKEN=${INFLUX_TOKEN_LOCAL}
+      - INFLUXDB_ORGANIZATION=hackaton
+      - INFLUXDB_URL=http://influxdb:8086
+      - INFLUXDB_BUCKET=${INFLUXDB_BUCKET_NAME}_local
+      - BROKER_HOST=rabbitmq
+      - BROKER_PORT=5672
+      - BROKER_USER=hackaton
+      - BROKER_PASS=${RABBIT_PASS}
+    volumes:
+      - "/tmp/ca.pem:/tmp/ca.pem"
+    depends_on:
+      influxdb:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+
 volumes:
   influxdb_data: {}

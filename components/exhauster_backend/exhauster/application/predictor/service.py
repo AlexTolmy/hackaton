@@ -1,11 +1,12 @@
 from datetime import datetime
-from typing import List, Dict
+from typing import Dict, List
 
-import pandas as pd
 import numpy as np
+import pandas as pd
 from classic.app import DTO
 
 from exhauster.application import interfaces
+
 from .settings import Settings
 
 
@@ -13,17 +14,17 @@ class VibrationValue(DTO):
     moment: datetime
     value: float
     bearing_id: int
-    vibration_type: str  # horizontal | vertical
-    warning_max: float
+    vibration_type: str
+    field_name: str
 
 
 class ActualDataTable(DTO):
-    exhauster_id: int  # номер эксгаустера
+    exhauster_id: int    # номер эксгаустера
     data: List[VibrationValue]
 
 
 class Prediction(DTO):
-    exhauster_id: int  # номер эксгаустера
+    exhauster_id: int    # номер эксгаустера
     days_to_failure: int
     message: str
 
@@ -40,7 +41,9 @@ class Predictor(interfaces.PredictService):
         rolled_data = self._rolling_data(vibrations_data)
 
         expressions_dict = self._get_linear_expressions(rolled_data)
-        failure_days_by_col = self._calc_failure_days(expressions_dict, warnings)
+        failure_days_by_col = self._calc_failure_days(
+            expressions_dict, warnings
+        )
         days_to_failure = min(failure_days_by_col.values())
         prediction = Prediction(
             exhauster_id=actual_data.exhauster_id,
@@ -53,9 +56,7 @@ class Predictor(interfaces.PredictService):
     def _get_linear_expressions(data: pd.DataFrame):
         expressions_dict = dict()
         for col in data.columns:
-            model = np.polynomial.polynomial.polyfit(
-                data.index, data[col], 1
-            )
+            model = np.polynomial.polynomial.polyfit(data.index, data[col], 1)
             expressions_dict[col] = model
 
         return expressions_dict
@@ -75,9 +76,9 @@ class Predictor(interfaces.PredictService):
         depth_prediction = 30 * day_step
         days_wo_failure = 0
 
-        for i in range(0, depth_prediction+day_step, day_step):
+        for i in range(0, depth_prediction + day_step, day_step):
             pred_vibration = np.poly1d(model)(i)
-            if pred_vibration > warning-Settings.WARNING_VIBRATION_SENSITIVITY:
+            if pred_vibration > warning - Settings.WARNING_VIBRATION_SENSITIVITY:
                 break
             else:
                 days_wo_failure = i
@@ -99,9 +100,9 @@ class Predictor(interfaces.PredictService):
         return rolled
 
     @staticmethod
-    def _dto_to_dataframe(actual_data: ActualDataTable) -> (
-        pd.DataFrame, Dict[str, float]
-    ):
+    def _dto_to_dataframe(
+        actual_data: ActualDataTable
+    ) -> (pd.DataFrame, Dict[str, float]):
         """
         moment - index, остальные значения в колонках dataframe
         также возвращает предупредительные уставки по вибрациям
