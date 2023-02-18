@@ -53,7 +53,7 @@ class ETL:
         self._logger.info('end processing message')
 
         if result:
-            self._logger.info('send message to fronted for update')
-            self.publisher.publish(Message('ui_exchange', 'new_data'))
             self.influx_client.load_raws(result)
+            self.publisher.publish(Message('ui_exchange', 'new_data'))
+            self._logger.info('send message to fronted for update')
         return None
