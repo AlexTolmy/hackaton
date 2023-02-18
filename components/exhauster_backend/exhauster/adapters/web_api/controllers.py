@@ -29,7 +29,8 @@ class Dashboard:
             {
                 'number': exhauster.number,
                 'aglomachine': exhauster.aglomachine.value,
-                'name': 'Эксгаустер Ф-172',
+                'name': exhauster.name,
+                'is_active': exhauster.is_active,
                 'rotor_name': 'Ротор № 24',
                 'rotor_last_change': '2023-02-13T10:00:00.00',
                 'rotor_next_change': '2023-02-23T10:00:00.00',

@@ -26,7 +26,7 @@ class ExhausterRepo(BaseRepository, interfaces.ExhausterRepo):
                 dto.Exhauster(
                     id=row.id,
                     number=row.number,
-                    name=row.number,
+                    name=row.name,
                     aglomachine=row.aglomachine
                 )
             )
