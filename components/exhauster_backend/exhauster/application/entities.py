@@ -64,7 +64,6 @@ class MainDrive:
     stator: MainDriveParams
 
 
-
 @dataclass
 class Exhauster:
     id: int

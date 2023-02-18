@@ -40,9 +40,11 @@ class SignalType(Enum):
 class Tag:
     name: str
 
+
 @dataclass
 class Value:
     name: str
+
 
 @dataclass
 class Signal:
@@ -54,9 +56,9 @@ class Signal:
     value: List[Value]
     tags: List[Tag]
 
+
 # эксгаустер
 # Узел
-
 
 mapper = {
     'place': Signal,
