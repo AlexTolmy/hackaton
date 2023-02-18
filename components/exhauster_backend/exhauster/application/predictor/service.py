@@ -13,7 +13,7 @@ class VibrationValue(DTO):
     moment: datetime
     value: float
     bearing_id: int
-    direction: str  # horizontal | vertical
+    vibration_type: str  # horizontal | vertical
     warning_max: float
 
 
@@ -85,7 +85,7 @@ class Predictor(interfaces.PredictService):
         return int(days_wo_failure / day_step)
 
     @staticmethod
-    def _rolling_data(df):
+    def _rolling_data(df: pd.DataFrame):
         # фильтруем околонулевые значения вибраций
         for col in df.columns:
             df = df[df[col] > Settings.VIBRATION_SENSITIVITY]
@@ -94,6 +94,7 @@ class Predictor(interfaces.PredictService):
         rolled = df.rolling(
             f'{roll_window_min}min', min_periods=int(roll_window_min / 4)
         ).mean().resample(f'{Settings.RESAMPLE_WINDOW_MINUTES}min').mean()
+        rolled = rolled.reset_index(drop=True)
 
         return rolled
 
