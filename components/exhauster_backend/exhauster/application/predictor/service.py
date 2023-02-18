@@ -9,26 +9,8 @@ from classic.components import component
 
 from exhauster.application import interfaces
 
+from .dto import ActualDataTable, Prediction
 from .settings import Settings
-
-
-class VibrationValue(DTO):
-    moment: datetime
-    value: float
-    bearing_id: int
-    vibration_type: str
-    field_name: str
-
-
-class ActualDataTable(DTO):
-    exhauster_id: int    # номер эксгаустера
-    data: List[VibrationValue]
-
-
-class Prediction(DTO):
-    exhauster_id: int    # номер эксгаустера
-    days_to_failure: int
-    message: str
 
 
 @component
@@ -131,7 +113,6 @@ class Predictor(interfaces.PredictService):
             failures_dict[col] = preds[preds >= warnings[col]].index.min() - 1
 
         return failures_dict
-
 
     @staticmethod
     def _rolling_data(df: pd.DataFrame):

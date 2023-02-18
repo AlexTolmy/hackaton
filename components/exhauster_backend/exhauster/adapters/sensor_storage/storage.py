@@ -1,10 +1,7 @@
 from classic.components import component
 
 from exhauster.application import sensors
-from exhauster.application.predictor.service import (
-    ActualDataTable,
-    VibrationValue,
-)
+from exhauster.application.predictor.dto import VibrationValue
 
 from .client import InfluxClient
 
@@ -13,9 +10,7 @@ from .client import InfluxClient
 class StorageDB:
     influxdb_client: InfluxClient
 
-    def get_vibrations(
-        self, exhauster_id: str, bearing_id: str, start
-    ):
+    def get_vibrations(self, exhauster_id: str, bearing_id: str, start):
         query_api, bucket = self.influxdb_client.create_reader()
 
         exhauster_field_name = sensors.ExhausterTag.exhauster_1.value[0]
