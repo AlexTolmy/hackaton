@@ -1,12 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { exhaustersSchemesMock } from '../../Mock/mock';
 import {
   ExhausterGeneralScheme,
   ExhausterMnemoSchemeReducerType,
 } from '../types/ExhausterMnemoSchemeReducerType';
 import RootStoreType from '../types/RootStoreType';
-
-import { exhaustersSchemesMock } from './mock';
 
 const initialState: ExhausterMnemoSchemeReducerType = {
   exhaustersSchemes: exhaustersSchemesMock,

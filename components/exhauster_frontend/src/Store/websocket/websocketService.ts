@@ -3,6 +3,8 @@
 import { Client } from '@stomp/stompjs';
 import { AnyAction, Dispatch, MiddlewareAPI } from 'redux';
 
+import { setLastUpdateDateAction } from '../reducers/exhaustersMonitorReducer';
+
 /* import mockNewViolationsCount from '../../Mock/mockNewViolationsCount';
  */
 interface WebsocketServiceInterface {
@@ -38,7 +40,7 @@ class WebsocketService implements WebsocketServiceInterface {
   public Connect(store: MiddlewareAPI<Dispatch<AnyAction>, any>) {
     this._store = store;
     this._client.onConnect = () => {
-      this.subscribeNewViolationsCount();
+      this.subscribe();
     };
     this._client.activate();
     // mockNewViolationsCount(this._client);
@@ -48,11 +50,14 @@ class WebsocketService implements WebsocketServiceInterface {
     this._client.deactivate();
   }
 
-  private subscribeNewViolationsCount() {
-    this._client.subscribe('/exchange/UI', (msg) => {
-      console.log(msg);
-      /*       this._store.dispatch(setNewViolationsCount(count));
-       */
+  private subscribe() {
+    type MessageBody = {
+      update_at: string;
+    };
+
+    this._client.subscribe('/exchange/ui_exchange', (msg) => {
+      const body: MessageBody = JSON.parse(msg.body);
+      this._store.dispatch(setLastUpdateDateAction(new Date(body.update_at)));
     });
   }
 }

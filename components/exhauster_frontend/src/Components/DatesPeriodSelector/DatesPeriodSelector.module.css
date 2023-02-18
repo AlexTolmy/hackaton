@@ -1,0 +1,12 @@
+.dates_period_selector {
+  display: flex;
+  align-items: center;
+}
+
+.left_date_picker {
+  margin-right: 0.625em;
+}
+
+.right_date_picker {
+  margin-left: 0.625em;
+}

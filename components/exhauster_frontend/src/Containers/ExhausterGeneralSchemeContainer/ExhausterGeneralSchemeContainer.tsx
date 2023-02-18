@@ -6,11 +6,13 @@ import Panel from '../../Components/Panel';
 
 import ExhausterGeneralScheme from './ExhausterGeneralScheme';
 
+import styles from './ExhausterGeneralScheme.module.css';
+
 function ExhausterGeneralSchemeContainer() {
   const { exhausterName } = useParams();
 
   return (
-    <Panel title={exhausterName}>
+    <Panel className={styles.general_scheme_container} title={exhausterName}>
       <ExhausterGeneralScheme exhausterName={exhausterName} />
     </Panel>
   );
