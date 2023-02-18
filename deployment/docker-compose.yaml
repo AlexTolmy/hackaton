@@ -134,7 +134,7 @@ services:
       - KAFKA_USER=9433_reader
       - KAFKA_SSL_PATH_CERTIFICATE=/tmp/ca.pem
       - INFLUXDB_TOKEN=${INFLUX_TOKEN_LOCAL}
-      - INFLUXDB_ORGANIZATION=dev
+      - INFLUXDB_ORGANIZATION=hackaton
       - INFLUXDB_URL=http://influxdb:8086
       - INFLUXDB_BUCKET=${INFLUXDB_BUCKET_NAME}_local
       - BROKER_HOST=rabbitmq
