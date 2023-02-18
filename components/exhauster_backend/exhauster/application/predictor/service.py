@@ -1,4 +1,5 @@
-from typing import Dict
+import datetime
+from typing import Dict, List, Tuple
 
 import numpy as np
 import pandas as pd
@@ -60,6 +61,47 @@ class Predictor(interfaces.PredictService):
             message=str(days_to_failure) if days_to_failure <= 30 else '>30'
         )
         self.predictions_repo.save(prediction)
+
+    def _fined_model(self, remains: List[int], model) -> Tuple[float, float]:
+        """
+        штраф модели (изменения угла линейной регрессии) в зависимости
+        от того, в какую сторону ошибались в последнее время,
+        реализовано через затухание важности
+        """
+        multiplier = model[0]
+        correct_coeff = np.mean(
+            np.array(remains) * np.array([i for i in range(len(remains))])
+        )
+        # уменьшаем угол наклона прямой прогноза, если ошибаемся вверх
+        # (прогноз всегда выше факта), в противном случае наоборот
+        new_multiplier = multiplier - (multiplier * correct_coeff) * 100
+        model[0] = new_multiplier
+        return model
+
+    def _calc_failure_errors(self, exhaust_id: str) -> List[int]:
+        """функция для получения ошибок по предсказаниям замен ротора"""
+        remains = []
+        fact_failures, pred_failures = self.rotor_repo.get_10_failures(
+            exhaust_id
+        )
+        fact_failures_dates = dict()
+        for val in pred_failures:
+            fact_failures_dates[val] = val.days_to_failure
+
+        pred_failures_ser = pd.Series(fact_failures_dates)
+        pred_failures_ser.sort_index(inplace=True)
+
+        for ff in fact_failures:
+            pred_time = pd.to_datetime(
+                ff.installed_at - datetime.timedelta(days=1)
+            )
+            pred_delta = pred_failures_ser.index.get_loc(
+                pred_time, tolerance='nearest'
+            )
+            remains.append(pred_delta)
+
+        return remains
+
 
     @staticmethod
     def _get_start_rotor(all_rotors_start_date, exhauster_id):
