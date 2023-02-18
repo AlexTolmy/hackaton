@@ -50,5 +50,7 @@ consumer = kafka.create_consumer(
     user=Settings.kafka.USER,
     password=Settings.kafka.PASSWORD,
 )
-
+# from exhauster.application import sensors
+#
+# Storage.storage.get_oil_system(exhauster_id='9', )
 consumer()
