@@ -52,6 +52,6 @@ class ETL:
 
         if result:
             self.influx_client.load_raws(result)
-            self.publisher.publish(Message('ui_exchange', 'new_data'))
+            self.publisher.publish(Message('ui_exchange', {'update_at': time_}))
             self._logger.info('send message to fronted for update')
         return None
