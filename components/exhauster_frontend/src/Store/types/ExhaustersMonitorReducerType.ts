@@ -3,6 +3,7 @@ import { SensorType } from '../../Containers/ExhausterContainer/ExhausterContain
 export type ExhausterType = {
   angloMachineName: string;
   exhausterName: string;
+  isActive: boolean;
   rotorName: string;
   rotorLastChangeDate: Date;
   rotorNextChangeDate: Date;
