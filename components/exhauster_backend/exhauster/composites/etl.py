@@ -50,4 +50,4 @@ consumer = kafka.create_consumer(
 )
 result = DB.storage.get_vibrations('1', '1', 'vibration', '-100m')
 
-# consumer()
+consumer()
