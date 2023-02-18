@@ -1,9 +1,19 @@
 from datetime import datetime
-from exhauster.application import entities
+
 from sqlalchemy import (
-    Boolean, Column, DateTime, Float, ForeignKey, Integer, MetaData, String,
-    Table, Enum
+    Boolean,
+    Column,
+    DateTime,
+    Enum,
+    Float,
+    ForeignKey,
+    Integer,
+    MetaData,
+    String,
+    Table,
 )
+
+from exhauster.application import entities
 
 naming_convention = {
     'ix': 'ix_%(column_0_label)s',

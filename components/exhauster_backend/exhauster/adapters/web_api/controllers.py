@@ -1,10 +1,11 @@
 from typing import List
+
 from classic.components import component
 from spectree import Response
 from spectree.models import Tag
 
-from exhauster.application.dashboard import services
 from exhauster.application import entities
+from exhauster.application.dashboard import services
 
 from .join_points import join_point
 from .models import TestRequest, TestResponse
