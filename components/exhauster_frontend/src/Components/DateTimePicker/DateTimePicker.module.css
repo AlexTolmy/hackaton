@@ -5,8 +5,10 @@
 .button.button {
   line-height: normal;
   transition: all 120ms ease-out;
-  min-width: 12em;
+  min-width: 11em;
   justify-content: space-between;
+  gap: 0.5em;
+  background-color: var(--color-gray-body);
 }
 
 .button_active {

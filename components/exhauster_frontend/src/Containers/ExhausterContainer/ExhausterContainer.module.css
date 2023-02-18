@@ -1,6 +1,7 @@
 .exhauster {
-  border: 1px solid gray;
+  border: 1px solid var(--color-gray-13-corporate);
   width: 100%;
+  border-radius: 5px 5px 0 0;
 }
 
 .exhauster_rotor_forecast {
@@ -13,32 +14,109 @@
 }
 
 .exhauster_rotor_forecast h4 {
+  margin: 0;
+  text-align: center;
+}
+
+.exhauster_rotor_data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: var(--color-gray-f);
   border-radius: 5px;
   padding: 0.4em;
-  margin: 1em;
+  gap: 0.2em;
+  width: -webkit-fill-available;
+  margin: 0 0.5em;
+  gap: 1em;
 }
 
-.exhauster_rotor_date {
+.exhauster_rotor_calendar_container {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1em;
+  gap: 0.5em;
 }
 
 .exhauster_rotor_calendar {
-  font-size: 0.8em;
-}
-
-.exhauster_rotor_days {
-  display: flex;
-  align-items: center;
+  font-size: 1em;
 }
 
 .exhauster_sensors {
   margin: 1em 0;
 }
 
+.rotor_name {
+  font-weight: 700;
+  font-size: 1.5em;
+}
+
 /*ExhausterGeneralSchemeButton*/
 .scheme_button {
   width: 6em;
+}
+
+/*ExhausterForecastMonitor*/
+
+.exhauster_rotor_days {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-top: 0.4em;
+  width: 95%;
+  justify-content: center;
+}
+
+/*ExhausterForecastMonitorDay*/
+.forecast_day {
+  width: 100%;
+  height: 4em;
+  background-color: var(--color-gray-f);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.forecast_day:global(.warning) {
+  background-color: var(--color-yellow-4);
+}
+
+.forecast_day:global(.critical) {
+  background-color: var(--color-red-3);
+  animation: blink-animation 1s steps(5, start) infinite;
+  -webkit-animation: blink-animation 1s steps(5, start) infinite;
+}
+
+.forecast_day h5,
+.forecast_day p {
+  margin: 0;
+  padding: 0;
+}
+
+.forecast_day h5 {
+  font-size: 1em;
+}
+
+.forecast_day p {
+  font-weight: 600;
+  padding: 0.2em;
+
+  width: 1.5em;
+  height: 1.5em;
+  text-align: center;
+}
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
 }

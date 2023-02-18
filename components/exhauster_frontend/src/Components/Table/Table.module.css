@@ -6,7 +6,7 @@
 }
 
 .table_section_title {
-  background-color: var(--color-gray-7);
+  background-color: var(--color-gray-6);
   text-align: left;
   display: table-row;
 }
@@ -44,6 +44,8 @@
 
 .indicator:global(.critical) {
   background-color: var(--color-red-2);
+  animation: blink-animation 1s steps(5, start) infinite;
+  -webkit-animation: blink-animation 1s steps(5, start) infinite;
 }
 
 .indicators {
@@ -55,4 +57,15 @@
 /*CheckboxText*/
 .checkbox_text {
   display: flex;
+}
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
 }
