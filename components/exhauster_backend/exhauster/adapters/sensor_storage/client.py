@@ -14,59 +14,32 @@ client = InfluxDBClient(url=url, token=token, org=org)
 write_api = client.write_api(write_options=SYNCHRONOUS)
 query_api = client.query_api()
 
-bucket = "test_alextolmy"
+bucket = "test"
 
-data = {
-    "point1": {
-        "location": "Klamath",
-        "species": "bees",
-        "count": 23,
-    },
-    "point2": {
-        "location": "Portland",
-        "species": "ants",
-        "count": 30,
-    },
-    "point3": {
-        "location": "Klamath",
-        "species": "bees",
-        "count": 28,
-    },
-    "point4": {
-        "location": "Portland",
-        "species": "ants",
-        "count": 32,
-    },
-    "point5": {
-        "location": "Klamath",
-        "species": "bees",
-        "count": 29,
-    },
-    "point6": {
-        "location": "Portland",
-        "species": "ants",
-        "count": 40,
-    },
-}
-
-for key in data:
-    point = (
-        Point("census").tag("location", data[key]["location"]
-                            ).field(data[key]["species"],
-                                    data[key]["count"]).field('sad', 1)
-    )
+points = (
+    Point("my_measurement_2").tag('location', 'moscow').field("temperature", 25.3),
+    Point("my_measurement_2").tag('location', 'moscow').field("temperature", 21.3),
+)
     # import ipdb;ipdb.set_trace()
-    write_api.write(bucket=bucket, org=org, record=point)
+write_api.write(bucket=bucket, org=org, record=points)
 
 print("Complete. Return to the InfluxDB UI.")
 
-tables = query_api.query(f'from(bucket:"{bucket}") |> range(start: -10m)')
-# import ipdb;ipdb.set_trace()
-for table in tables:
-    print(table)
-    for row in table.records:
-        # import ipdb;ipdb.set_trace()
-        print(row.get_value())
-        print(row.get_field())
-        print(row.values)
-        print('=' * 10)
+raws = query_api.query_stream(f'from(bucket:"{bucket}")'
+                         f' |> range(start: -10m)'
+                         f' |> filter(fn: (r) => r._measurement == "my_measurement_1")'
+                         f' |> filter(fn: (r) => r._field == "temperature")'
+                         # f' |> limit(n: 2)'
+
+
+                         )
+
+for raw in raws:
+    print(raw.get_time())
+    # import ipdb;ipdb.set_trace()
+    # for row in table.records:
+    #     # import ipdb;ipdb.set_trace()
+    #     print(row.get_value())
+    #     print(row.get_field())
+    #     # print(row.values)
+    #     print('=' * 10)
