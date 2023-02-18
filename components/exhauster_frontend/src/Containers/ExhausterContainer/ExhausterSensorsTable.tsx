@@ -12,12 +12,18 @@ import {
   SENSORS_TABLE_SECTIONS_INDICATORS,
   SensorsTableSections,
 } from './constants';
+import { SensorType } from './ExhausterContainer.interface';
 import ExhausterScheme from './ExhausterScheme';
-import { sensors } from './mock';
 
 import styles from './ExhausterContainer.module.css';
 
-function ExhausterSensors() {
+type ExhausterSensorsProps = {
+  sensors: SensorType[];
+};
+
+function ExhausterSensors(props: ExhausterSensorsProps) {
+  const { sensors } = props;
+
   const tableData = useMemo(() => {
     const columns = SENSORS_TABLE_COLUMNS.map((column) => ({
       key: column,
@@ -74,7 +80,7 @@ function ExhausterSensors() {
     });
 
     return { columns, data };
-  }, []);
+  }, [sensors]);
 
   return (
     <div className={styles.exhauster_sensors}>

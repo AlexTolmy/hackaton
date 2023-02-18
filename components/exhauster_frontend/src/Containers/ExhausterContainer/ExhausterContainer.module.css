@@ -36,3 +36,8 @@
 .exhauster_sensors {
   margin: 1em 0;
 }
+
+/*ExhausterGeneralSchemeButton*/
+.scheme_button {
+  width: 5em;
+}

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
+import ExhausterSchemePage from '../Pages/ExhausterSchemePage';
 import ExhaustersMonitorPage from '../Pages/ExhaustersMonitorPage';
 import {
   wsConnectAction,
@@ -31,6 +32,10 @@ function App() {
         <Route
           path={NavigationEndpoint.Home}
           element={<ExhaustersMonitorPage />}
+        />
+        <Route
+          path={NavigationEndpoint.ExhausterScheme}
+          element={<ExhausterSchemePage />}
         />
         <Route
           path={NavigationEndpoint.Any}

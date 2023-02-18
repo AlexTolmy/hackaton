@@ -1,10 +1,21 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import useBreadcrumbs from 'use-react-router-breadcrumbs';
 
-function AppNavigationBreadcrumbs() {
-  const breadcrumbs = useBreadcrumbs();
+import { breadcrumbsRoutes } from './constants';
 
-  return <>{breadcrumbs.map(({ breadcrumb }) => breadcrumb)}</>;
+function AppNavigationBreadcrumbs() {
+  const breadcrumbs = useBreadcrumbs(breadcrumbsRoutes);
+
+  return (
+    <>
+      {breadcrumbs.map(({ match, breadcrumb }) => (
+        <NavLink key={match.pathname} to={match.pathname}>
+          {breadcrumb}
+        </NavLink>
+      ))}
+    </>
+  );
 }
 
 export default AppNavigationBreadcrumbs;

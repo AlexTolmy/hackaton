@@ -1,5 +1,10 @@
+export enum NavigationParams {
+  ExhausterName = ':exhausterName',
+}
+
 export enum NavigationEndpoint {
   Home = '/',
+  ExhausterScheme = '/:exhausterName',
   Any = '*',
 }
 

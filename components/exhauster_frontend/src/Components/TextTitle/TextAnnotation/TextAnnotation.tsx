@@ -13,7 +13,10 @@ function TextAnnotation(props: TextAnnotationProps) {
     <div className={clsx(styles.container, className)}>
       <Text className={styles.value} textContent={value} />
       <span>&mdash;</span>
-      <Text className={styles.description} textContent={description} />
+      <Text
+        className={styles.description}
+        textContent={description.toString()}
+      />
     </div>
   );
 }

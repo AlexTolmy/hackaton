@@ -1,17 +1,39 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import Panel from '../../Components/Panel';
+import { getExhausterData } from '../../Store/reducers/exhaustersMonitorReducer';
 
 import ExhausterForecast from './ExhausterForecast';
+import ExhausterGeneralSchemeButton from './ExhausterGeneralSchemeButton';
 import ExhausterSensors from './ExhausterSensorsTable';
 
 import styles from './ExhausterContainer.module.css';
 
-function ExhausterContainer() {
+type ExhausterContainerProps = {
+  exhausterName: string;
+};
+
+function ExhausterContainer(props: ExhausterContainerProps) {
+  const { exhausterName } = props;
+  const exhausterData = useSelector(getExhausterData(exhausterName));
+  const { rotorName, rotorLastChangeDate, rotorNextChangeDate, sensors } =
+    exhausterData;
+
   return (
-    <Panel className={styles.exhauster} title="Эксгаустер У-171">
-      <ExhausterForecast />
-      <ExhausterSensors />
+    <Panel
+      className={styles.exhauster}
+      title={exhausterName}
+      titleRightPart={
+        <ExhausterGeneralSchemeButton exhausterName={exhausterName} />
+      }
+    >
+      <ExhausterForecast
+        rotorName={rotorName}
+        lastChangeDate={rotorLastChangeDate}
+        nextChangeDate={rotorNextChangeDate}
+      />
+      <ExhausterSensors sensors={sensors} />
     </Panel>
   );
 }
