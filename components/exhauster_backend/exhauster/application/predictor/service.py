@@ -64,7 +64,7 @@ class Predictor(interfaces.PredictService):
         failures_dict = dict()
         for col, expression in expressions.items():
             failures_dict[col] = self._predict_grid(expression, warnings[col])
-
+        return failures_dict
 
     def _predict_grid(self, model, warning):
         """проходим по сетке на 30 дней вперед, наработкой считаем тот день,
