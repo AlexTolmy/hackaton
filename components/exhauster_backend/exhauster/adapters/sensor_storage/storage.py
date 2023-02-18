@@ -190,3 +190,20 @@ class StorageDB:
             return entities.OilSystem(
                 level=result['oil_level'], pressure=result['oil_pressure']
             )
+
+    def get_exhauster_is_work(self, exhauster_id: str) -> float:
+        query_api, bucket = self.influxdb_client.create_reader()
+        exhauster_field_name = sensors.ExhausterTag.exhauster_1.value[0]
+        measurement_name = Measurement.work_exhauster.value[1]
+        rows = query_api.query_stream(
+            f'from(bucket:"{bucket}")'
+            f' |> range(start: {self.start})'
+            f' |> filter(fn: (r) => r._measurement == "{measurement_name}")'
+            f' |> filter(fn: (r) => r.{exhauster_field_name} == "{exhauster_id}")'
+            f' |> last()'
+        )
+
+        result = [row.get_value() for row in rows]
+        print(result)
+        if result:
+            return bool(result[0])
