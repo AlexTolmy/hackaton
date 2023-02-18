@@ -4,9 +4,9 @@ from typing import Dict
 from classic.aspects import PointCut
 from classic.components import component
 from classic.messaging import Message, Publisher
+from exhauster.application.signals import signal_mapper
 
 from .interfaces import InfluxClient
-from .signals import signal_mapper
 
 join_points = PointCut()
 join_point = join_points.join_point

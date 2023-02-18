@@ -1,11 +1,9 @@
 # from classic.messaging_kombu import KombuPublisher
 from classic.sql_storage import TransactionContext
-
-# from kombu import Connection
-from sqlalchemy import create_engine
-
 from exhauster.adapters import database, log, settings, web_api
 from exhauster.application.dashboard import services
+# from kombu import Connection
+from sqlalchemy import create_engine
 
 
 class Settings:

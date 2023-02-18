@@ -2,10 +2,9 @@ from typing import List, Optional
 
 from classic.components import component
 from classic.sql_storage import BaseRepository
-from sqlalchemy import select
-
 from exhauster.application.dashboard import interfaces
 from exhauster.application.dashboard.entities import Customer
+from sqlalchemy import select
 
 # @component
 # class CustomersRepo(BaseRepository, interfaces.CustomersRepo):

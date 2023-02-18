@@ -1,6 +1,5 @@
 import falcon
 from classic.http_api import App
-
 from exhauster.application.dashboard import services
 
 from . import controllers

@@ -4,7 +4,6 @@ from typing import List, Dict
 import pandas as pd
 import numpy as np
 from classic.app import DTO
-
 from exhauster.application import interfaces
 from .settings import Settings
 

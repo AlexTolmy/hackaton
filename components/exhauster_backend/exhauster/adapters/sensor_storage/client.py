@@ -1,15 +1,10 @@
-import datetime
 import logging
-import os
-import time
 from typing import Dict, List
 
-import influxdb_client
 from classic.components import component
-from influxdb_client import InfluxDBClient, Point, WritePrecision
-from influxdb_client.client.write_api import ASYNCHRONOUS, SYNCHRONOUS
-
 from exhauster.application.etl import interfaces
+from influxdb_client import InfluxDBClient
+from influxdb_client.client.write_api import SYNCHRONOUS
 
 
 @component

@@ -1,7 +1,6 @@
 import sys
 
 from alembic.config import CommandLine, Config
-
 from exhauster.adapters import database, log
 
 

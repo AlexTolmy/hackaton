@@ -1,9 +1,8 @@
 from functools import partial
 
 from alembic import context
-from sqlalchemy import engine_from_config, pool
-
 from exhauster.adapters.database import APP_SCHEMA, metadata
+from sqlalchemy import engine_from_config, pool
 
 config = context.config
 target_metadata = metadata

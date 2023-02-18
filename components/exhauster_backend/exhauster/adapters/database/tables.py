@@ -1,15 +1,8 @@
 from datetime import datetime
 
 from sqlalchemy import (
-    Boolean,
-    Column,
-    DateTime,
-    Float,
-    ForeignKey,
-    Integer,
-    MetaData,
-    String,
-    Table,
+    Boolean, Column, DateTime, Float, ForeignKey, Integer, MetaData, String,
+    Table
 )
 
 naming_convention = {
