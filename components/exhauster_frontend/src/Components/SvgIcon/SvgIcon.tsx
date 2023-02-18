@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import ArrowLeft from './components/ArrowLeft';
 import ArrowRight from './components/ArrowRight';
 import Calendar from './components/Calendar';
+import Cross from './components/Cross';
 import { IconName, IconProps } from './SvgIcon.interface';
 
 import styles from './SvgIcon.module.css';
@@ -19,6 +20,8 @@ function SvgIcon(props: IconProps) {
         return <ArrowRight />;
       case IconName.ArrowLeft:
         return <ArrowLeft />;
+      case IconName.Cross:
+        return <Cross />;
       default:
         return null;
     }

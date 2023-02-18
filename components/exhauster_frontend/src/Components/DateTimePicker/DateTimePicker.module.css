@@ -8,7 +8,7 @@
   min-width: 11em;
   justify-content: space-between;
   gap: 0.5em;
-  background-color: var(--color-gray-body);
+  background-color: var(--color-gray-f);
 }
 
 .button_active {

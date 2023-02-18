@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import Panel from '../../Components/Panel';
 import { getExhausterData } from '../../Store/reducers/exhaustersMonitorReducer';
 
+import ExhausterActivityIndicator from './ExhausterActivityIndicator';
 import ExhausterForecast from './ExhausterForecast';
 import ExhausterGeneralSchemeButton from './ExhausterGeneralSchemeButton';
 import ExhausterSensors from './ExhausterSensorsTable';
@@ -24,6 +25,9 @@ function ExhausterContainer(props: ExhausterContainerProps) {
     <Panel
       className={styles.exhauster}
       title={exhausterName}
+      titleLeftPart={
+        <ExhausterActivityIndicator isActive={exhausterData.isActive} />
+      }
       titleRightPart={
         <ExhausterGeneralSchemeButton exhausterName={exhausterName} />
       }

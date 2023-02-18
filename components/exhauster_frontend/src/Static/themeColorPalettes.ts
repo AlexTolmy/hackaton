@@ -85,6 +85,8 @@ const lightThemeColorPalette = {
   '--notification-error-bg-color': '#fef4f3',
   '--notification-success-bg-color': '#ecffea',
   '--panel-header-color': '#00000005',
+  '--color-always-white': '#ffffff',
+  '--color-always-black': '#000000',
 };
 
 const darkThemeColorPalette = {
@@ -95,7 +97,7 @@ const darkThemeColorPalette = {
   '--color-gray-3': '#30363d',
   '--color-gray-4': '#20242c',
   '--color-gray-5': '#30363d',
-  '--color-gray-6': '#bfbfbf',
+  '--color-gray-6': '#4b4b4b',
   '--color-gray-7': '#8c8c8c',
   '--color-gray-8': '#8b949e',
   '--color-gray-9': '#c9d1d9',
@@ -122,8 +124,8 @@ const darkThemeColorPalette = {
   '--color-yellow-1': '#fff8ec',
   '--color-yellow-2': '#966600',
   '--color-yellow-3': '#fee5ba',
-  '--color-yellow-4': '#fdd796',
-  '--color-yellow-5': '#fdca75',
+  '--color-yellow-4': '#f68f44',
+  '--color-yellow-5': '#f68f44',
   '--color-yellow-6': '#fcbf57',
   '--color-yellow-7-corporate': '#fab82e',
   '--color-yellow-8': '#a68230',
@@ -133,8 +135,8 @@ const darkThemeColorPalette = {
   '--color-yellow-12': '#784c02',
 
   '--color-red-1': '#fdf0ef',
-  '--color-red-2': '#f8b9b4',
-  '--color-red-3': '#f48981',
+  '--color-red-2': '#eb3333',
+  '--color-red-3': '#eb3333',
   '--color-red-4': '#eb5757',
   '--color-red-5': '#eb3333',
   '--color-red-6-corporate': '#e32213',
@@ -172,6 +174,8 @@ const darkThemeColorPalette = {
   '--notification-error-bg-color': '#5d1012',
   '--notification-success-bg-color': '#1b4721',
   '--panel-header-color': '#30363d',
+  '--color-always-white': '#ffffff',
+  '--color-always-black': '#000000',
 };
 
 export default {

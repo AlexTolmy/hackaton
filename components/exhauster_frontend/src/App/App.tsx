@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
+import NotificationsBarContainer from '../Containers/NotificationsBarContainer';
 import ExhaustersMonitorPage from '../Pages/ExhaustersMonitorPage';
 import ExhausterSchemePage from '../Pages/ExhausterStatusPage';
 import {
@@ -42,6 +43,7 @@ function App() {
           element={<Navigate to={NavigationEndpoint.Home} replace />}
         />
       </Routes>
+      <NotificationsBarContainer />
     </div>
   );
 }

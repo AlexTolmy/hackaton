@@ -4,12 +4,23 @@
   align-items: center;
   justify-content: center;
   font-size: 0.8em;
-  color: var(--color-gray-f);
+  color: var(--color-always-white);
+  fill: var(--color-always-white);
   text-align: center;
 }
 
 .text_contrast {
+  color: var(--color-always-black);
+  fill: var(--color-always-black);
+  width: 29px;
+  font-size: 0.9em;
+  height: 21px;
+  font-weight: 700;
+}
+
+.text_white_black {
   color: var(--color-gray-0);
+  fill: var(--color-gray-0);
   width: 29px;
   font-size: 0.9em;
   height: 21px;
@@ -26,6 +37,8 @@
 
 .fill:global(.critical) {
   fill: var(--color-red-2);
+  animation: blink-animation 1s steps(5, start) infinite;
+  -webkit-animation: blink-animation 1s steps(5, start) infinite;
 }
 
 .fill_contrast {
@@ -38,6 +51,8 @@
 
 .fill_contrast:global(.critical) {
   fill: var(--color-red-5);
+  animation: blink-animation 1s steps(5, start) infinite;
+  -webkit-animation: blink-animation 1s steps(5, start) infinite;
 }
 
 .stroke {
@@ -54,4 +69,17 @@
 
 .general_scheme_container {
   --body-padding: 0em;
+  width: 100%;
+  overflow: hidden;
+}
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
 }
