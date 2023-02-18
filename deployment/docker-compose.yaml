@@ -40,7 +40,7 @@ services:
       - INFLUXDB_TOKEN=${INFLUX_TOKEN}
       - INFLUXDB_ORGANIZATION=dev
       - INFLUXDB_URL=https://eu-central-1-1.aws.cloud2.influxdata.com
-      - INFLUXDB_BUCKET=test_load
+      - INFLUXDB_BUCKET=${INFLUXDB_BUCKET_NAME}
       - BROKER_HOST=rabbitmq
       - BROKER_PORT=5672
       - BROKER_USER=hackaton
