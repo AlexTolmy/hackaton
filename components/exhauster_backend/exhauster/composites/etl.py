@@ -1,16 +1,22 @@
-from classic.sql_storage import TransactionContext
+from kombu import Connection
 
-# from kombu import Connection
-from sqlalchemy import create_engine
-
-from exhauster.adapters import kafka, log, sensor_storage
+from exhauster.adapters import kafka, log, sensor_storage, message_bus
+from exhauster.adapters.message_bus import broker_scheme
 from exhauster.application.etl import services
+from classic.messaging_kombu import KombuPublisher
 
 
 class Settings:
     log = log.Settings()
     kafka = kafka.Settings()
     influx = sensor_storage.Settings()
+    bus = message_bus.Settings()
+
+
+class MessageBus:
+    connection = Connection(Settings.bus.BROKER_URL)
+    publisher = KombuPublisher(connection=connection, scheme=broker_scheme)
+    broker_scheme.declare(connection)
 
 
 class Logger:
@@ -27,7 +33,9 @@ class Storage:
 
 
 class Application:
-    etl = services.ETL(influx_client=Storage.influx)
+    etl = services.ETL(
+        influx_client=Storage.influx, publisher=MessageBus.publisher
+    )
 
 
 consumer = kafka.create_consumer(

@@ -2,10 +2,10 @@ from pydantic import BaseSettings
 
 
 class Settings(BaseSettings):
-    HOST: str = 'localhost'
-    PORT: str = '5672'
-    USER: str = 'rabbit'
-    PASS: str = 'rabbit'
+    HOST: str
+    PORT: str
+    USER: str
+    PASS: str
 
     class Config:
         env_file_encoding = 'utf-8'
