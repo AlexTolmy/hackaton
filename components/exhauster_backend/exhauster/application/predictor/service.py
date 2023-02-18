@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 import pmdarima as pm
 from classic.app import DTO
+from classic.components import component
 
 from exhauster.application import interfaces
 from .settings import Settings
@@ -14,7 +15,7 @@ class VibrationValue(DTO):
     moment: datetime
     value: float
     bearing_id: int
-    vibration_type: str  # horizontal | vertical
+    vibration_type: str  # horizontal | vertical | axis
     warning_max: float
 
 
@@ -29,14 +30,24 @@ class Prediction(DTO):
     message: str
 
 
+@component
 class Predictor(interfaces.PredictService):
     """
     Получает данные по 7, 8 подшипнику (горизонт. и вертикальная вибрация)
     одного из эксгаустеров с момента крайней замены,
     прогнозирует когда эксгаустер выйдет из строя
     """
+    rotor_repo: interfaces.RotorRepo
+    predictions_repo: interfaces.PredictionsRepo
+    vibration_sensors_repo: ...
 
-    def predict(self, actual_data: ActualDataTable, arima=False) -> Prediction:
+    def predict(self, exhauster_id: int, arima=False):
+        actual_data: ActualDataTable = self.vibration_sensors_repo.get_data(
+            exhauster_id=exhauster_id,
+            bearing_id=[7, 8],
+            vibration_type=['horizontal', 'vertical', 'axis']
+        )
+
         vibrations_data, warnings = self._dto_to_dataframe(actual_data)
         rolled_data = self._rolling_data(vibrations_data)
 
@@ -52,11 +63,11 @@ class Predictor(interfaces.PredictService):
 
         days_to_failure = min(failure_days_by_col.values())
         prediction = Prediction(
-            exhauster_id=actual_data.exhauster_id,
+            exhauster_id=exhauster_id,
             days_to_failure=days_to_failure,
             message=str(days_to_failure) if days_to_failure <= 30 else '>30'
         )
-        return prediction
+        self.predictions_repo.save(prediction)
 
     @staticmethod
     def _get_linear_expressions(data: pd.DataFrame):
@@ -132,5 +143,20 @@ class Predictor(interfaces.PredictService):
         moment - index, остальные значения в колонках dataframe
         также возвращает предупредительные уставки по вибрациям
         """
+        data_by_time = dict()
+        warnings = dict()
 
-        ...
+        for vibration_val in actual_data.data:
+            col_name = f'Подшипник_{vibration_val.bearing_id}. ' \
+                       f'Вибрация {vibration_val.vibration_type}'
+            if vibration_val.moment not in data_by_time:
+                data_by_time[vibration_val.moment] = dict()
+            data_by_time[vibration_val.moment][col_name] = vibration_val.value
+            if col_name not in warnings:
+                warnings[col_name] = vibration_val.warning_max
+
+        df = pd.DataFrame.from_dict(data_by_time, orient='index')
+        df.index = df.index.astype('datetime[64]')
+        df = df.sort_index(ascending=True)
+
+        return df, warnings
