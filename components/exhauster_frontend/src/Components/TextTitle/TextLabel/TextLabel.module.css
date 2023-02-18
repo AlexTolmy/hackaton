@@ -1,0 +1,25 @@
+.label {
+  --text-color: var(--color-gray-9);
+  --text-font-size: unset;
+  height: 1.563em;
+  line-height: 1.563em;
+  text-align: center;
+  border-radius: 0.308em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: var(--margin-label-value);
+  padding: 0 1.563em;
+}
+
+.label:hover {
+  user-select: none;
+}
+
+div.text {
+  color: var(--text-color);
+  font-weight: 500;
+  max-width: 14.286em;
+  margin: 0;
+  font-size: var(--text-font-size);
+}

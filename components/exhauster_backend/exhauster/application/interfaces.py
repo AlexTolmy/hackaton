@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from predictor.service import Prediction, ActualDataTable
+from predictor.service import ActualDataTable, Prediction
 
 
 class PredictService(ABC):

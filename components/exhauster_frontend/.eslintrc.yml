@@ -1,0 +1,91 @@
+root: true
+parser: '@typescript-eslint/parser'
+parserOptions:
+  project: './tsconfig.json'
+  sourceType: module
+  ecmaVersion: 13
+  allowImportExportEverywhere: true
+settings:
+  react:
+    version: 'detect'
+env:
+  browser: true
+  commonjs: true
+  es2022: true
+  jest: true
+  node: true
+extends:
+  - airbnb
+  - airbnb-typescript
+  - plugin:react/jsx-runtime
+  - prettier
+  - eslint:recommended
+  - plugin:react/recommended
+  - plugin:jsx-a11y/recommended
+  - plugin:prettier/recommended
+  - plugin:react-hooks/recommended
+ignorePatterns:
+  - 'src/Utils/reportWebVitals.js'
+  - 'src/index.js'
+plugins:
+  - simple-import-sort
+  - react-hooks
+  - '@typescript-eslint'
+  - prettier
+  - react
+globals:
+  NodeJS: true
+rules:
+  react/react-in-jsx-scope: 'off'
+  react/jsx-filename-extension:
+    - warn
+    - extensions:
+        - .js
+        - .jsx
+        - .tsx
+        - .ts
+  react/require-default-props:
+    - off
+  react-hooks/rules-of-hooks:
+    - error
+  react-hooks/exhaustive-deps:
+    - warn
+  class-methods-use-this: 0
+  no-param-reassign: 0
+  no-restricted-exports: 0
+  import/prefer-default-export: 0
+  max-len:
+    - warn
+    - code: 80
+      tabWidth: 2
+      comments: 80
+      ignoreComments: false
+      ignoreTrailingComments: true
+      ignoreUrls: true
+      ignoreStrings: true
+      ignoreTemplateLiterals: true
+      ignoreRegExpLiterals: true
+  simple-import-sort/imports:
+    - error
+    - groups:
+        - - '^react'
+          - "^@?\\w"
+        - - '^(@|components)(/.*|$)'
+        - - "^\\u0000"
+        - - "^\\.\\.(?!/?$)"
+          - "^\\.\\./?$"
+        - - "^\\./(?=.*/)(?!/?$)"
+          - "^\\.(?!/?$)"
+          - "^\\./?$"
+        - - "^.+\\.?(css)$"
+  simple-import-sort/exports: error
+  jsx-a11y/anchor-is-valid:
+    - error
+    - components:
+        - Link
+      specialLink:
+        - hrefLeft
+        - hrefRight
+      aspects:
+        - invalidHref
+        - preferButton

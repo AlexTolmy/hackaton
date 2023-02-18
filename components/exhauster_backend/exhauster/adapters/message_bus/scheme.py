@@ -1,6 +1,11 @@
 from classic.messaging_kombu import BrokerScheme
 from kombu import Exchange, Queue
 
+ui_exchange = Exchange('ui_exchange')
 broker_scheme = BrokerScheme(
-    Queue('Signal', Exchange('ETL'), )
+    Queue(
+        '',
+        ui_exchange,
+        no_declare=True,
+    ),
 )

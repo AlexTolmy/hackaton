@@ -1,0 +1,5 @@
+.icon {
+  --glyph-size: 1.231em;
+  height: var(--glyph-size);
+  width: var(--glyph-size);
+}

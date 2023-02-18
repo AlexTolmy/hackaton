@@ -9,8 +9,9 @@ from .spec import setup_spectree
 
 
 def create_app(
-    swagger_settings: SwaggerSettings, allow_origins,
-    app_information: services.AppInformation
+    swagger_settings: SwaggerSettings,
+    allow_origins,
+    app_information: services.AppInformation,
 ) -> App:
 
     cors_middleware = falcon.CORSMiddleware(

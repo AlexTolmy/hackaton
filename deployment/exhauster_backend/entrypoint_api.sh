@@ -8,7 +8,7 @@ if [ -z "$API_PORT" ]; then
 fi
 python -m exhauster.composites.alembic_runner upgrade head
 
-GUNICORN_CMD_ARGS="--bind=0.0.0.0:$API_PORT --workers=1 --log-level $API_LOG_LEVEL --log-file - --forwarded-allow-ip '*' --proxy-allow-from '*' --timeout 300 --preload"
+GUNICORN_CMD_ARGS="--bind=0.0.0.0:$API_PORT --workers=1 --log-level $API_LOG_LEVEL --log-file - --forwarded-allow-ip '*' --proxy-allow-from '*' --timeout 300"
 export GUNICORN_CMD_ARGS
 
 gunicorn exhauster.composites.web_api:app

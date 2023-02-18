@@ -15,28 +15,81 @@ services:
       - DATABASE_NAME=hackaton-dev
       - BROKER_HOST=rabbitmq
       - BROKER_PORT=5672
-      - BROKER_USER=admin
+      - BROKER_USER=hackaton
       - BROKER_PASS=
       - API_PORT=8000
       - API_LOG_LEVEL=debug
       - SWAGGER_ON=true
     ports:
       - 8000:8000
+  depends_on:
+    rabbitmq:
+      condition: service_healthy
+
+  frontend:
+    build:
+      context: ../
+      dockerfile: deployment/exhauster_frontend/Dockerfile
+    container_name: frontend
+    restart: always
+    environment:
+      - FRONT_PORT=8081
+    ports:
+      - 8081:8081
     depends_on:
       rabbitmq:
         condition: service_healthy
 
-  # frontend:
-
   rabbitmq:
-    image: pcloud/rabbitmq-stomp:3.9
+    image: bitnami/rabbitmq:3.9.28
+    container_name: rabbitmq
     restart: always
     healthcheck:
       test: rabbitmq-diagnostics -q ping
       interval: 30s
       timeout: 30s
       retries: 3
+    environment:
+      - RABBITMQ_USERNAME=hackaton
+      - RABBITMQ_PASSWORD=
+      - RABBITMQ_SECURE_PASSWORD=yes
+      - RABBITMQ_PLUGINS=rabbitmq_management,rabbitmq_web_stomp,rabbitmq_stomp
     ports:
       - 5672:5672
       - 15672:15672
       - 61613:61613
+      - 15674:15674
+
+  redpanda:
+    image: redpandadata/console:v2.1.1
+    container_name: redpanda
+    restart: always
+    environment:
+      - KAFKA_BROKERS=rc1a-b5e65f36lm3an1d5.mdb.yandexcloud.net:9091
+      - KAFKA_TLS_ENABLED=true
+      - KAFKA_SASL_ENABLED=true
+      - KAFKA_SASL_MECHANISM=SCRAM-SHA-512
+      - KAFKA_SASL_USERNAME=9433_reader
+      - KAFKA_SASL_PASSWORD=
+      - KAFKA_TLS_CAFILEPATH=/tmp/ca.pem
+    ports:
+      - 8080:8080
+    volumes:
+      - "/tmp/ca.pem:/tmp/ca.pem"
+
+  influxdb:
+    image: influxdb:latest
+    container_name: influxdb
+    restart: always
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=hackaton
+      - DOCKER_INFLUXDB_INIT_PASSWORD=
+      - DOCKER_INFLUXDB_INIT_ORG=hackaton
+      - DOCKER_INFLUXDB_INIT_BUCKET=hackaton
+    ports:
+      - '8086:8086'
+    volumes:
+      - influxdb_data:/var/lib/influxdb2
+volumes:
+  influxdb_data: {}

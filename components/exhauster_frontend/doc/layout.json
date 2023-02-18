@@ -1,0 +1,19 @@
+{
+  "layout": {
+    "navigation": [
+      {
+        "name": "String",
+        "display_name": "String",
+        "icon_name": "String",
+        "layout_name": "String",
+        "layout_options": [["String", " String | Number | Boolean"]]
+      },
+      {
+        "name": "String",
+        "display_name": "String",
+        "icon_name": "String",
+        "sub_navigation": []
+      }
+    ]
+  }
+}

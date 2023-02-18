@@ -1,4 +1,4 @@
-FROM python:3.7-buster as build
+FROM python:3.7-slim-buster as build
 
 ENV USERNAME=app
 ENV PIP_CONFIG_FILE=/app/pip.conf
@@ -10,7 +10,9 @@ WORKDIR /app
 RUN pip install --upgrade pip \
     && pip install --no-cache-dir .[dev] \
     && pip install python_libs/spectree-1.0.3.tar.gz \
+    && rm python_libs/spectree-1.0.3.tar.gz \
     && python setup.py bdist_wheel
+
 
 RUN groupadd -r $USERNAME &&\
     useradd -r -g $USERNAME -d /home/$USERNAME -s /sbin/nologin -c "Docker image user" app

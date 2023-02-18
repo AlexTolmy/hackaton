@@ -20,7 +20,6 @@ build backend:
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
-    - docker pull python:3.7
     - docker build -t ${BACKEND_IMAGE} -f deployment/${BACKEND_FOLDER}/Dockerfile .
     - docker push ${BACKEND_IMAGE}
   only:
@@ -36,7 +35,6 @@ build frontend:
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
-    - docker pull python:3.7
     - docker build -t ${FRONTEND_IMAGE} -f deployment/${FRONTEND_FOLDER}/Dockerfile .
     - docker push ${FRONTEND_IMAGE}
   only:
@@ -51,6 +49,8 @@ deploy dev:
   image: docker:latest
   variables:
     DB_NAME: hackaton-dev
+    KAFKA_GROUP_ID: best_team_et_dev
+    INFLUXDB_BUCKET_NAME: test_load
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
@@ -67,6 +67,8 @@ deploy prod:
   image: docker:latest
   variables:
     DB_NAME: hackaton-prod
+    KAFKA_GROUP_ID: best_team_et_prod
+    INFLUXDB_BUCKET_NAME: PROD
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:

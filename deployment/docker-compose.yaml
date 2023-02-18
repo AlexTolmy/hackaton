@@ -3,6 +3,7 @@ version: "3"
 services:
   backend:
     image: ${BACKEND_IMAGE}
+    container_name: backend
     restart: always
     entrypoint: entrypoint_api.sh
     environment:
@@ -24,17 +25,100 @@ services:
       rabbitmq:
         condition: service_healthy
 
-  # frontend:
-
+  etl:
+    image: ${BACKEND_IMAGE}
+    container_name: etl
+    restart: always
+    entrypoint: entrypoint_etl.sh
+    environment:
+      - KAFKA_SERVERS=rc1a-2ar1hqnl386tvq7k.mdb.yandexcloud.net:9091
+      - KAFKA_TOPIC=zsmk-9433-dev-01
+      - KAFKA_GROUP_ID=${KAFKA_GROUP_ID}_004
+      - KAFKA_PASSWORD=${KAFKA_PASS}
+      - KAFKA_USER=9433_reader
+      - KAFKA_SSL_PATH_CERTIFICATE=/tmp/ca.pem
+      - INFLUXDB_TOKEN=${INFLUX_TOKEN}
+      - INFLUXDB_ORGANIZATION=dev
+      - INFLUXDB_URL=https://eu-central-1-1.aws.cloud2.influxdata.com
+      - INFLUXDB_BUCKET=${INFLUXDB_BUCKET_NAME}
+      - BROKER_HOST=rabbitmq
+      - BROKER_PORT=5672
+      - BROKER_USER=hackaton
+      - BROKER_PASS=${RABBIT_PASS}
+    volumes:
+      - "/tmp/ca.pem:/tmp/ca.pem"
+    depends_on:
+      influxdb:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+  frontend:
+    image: ${FRONTEND_IMAGE}
+    container_name: frontend
+    restart: always
+    environment:
+      - FRONT_PORT=8081
+    ports:
+      - 80:8081
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
   rabbitmq:
-    image: pcloud/rabbitmq-stomp:3.9
+    image: bitnami/rabbitmq:3.9.28
+    container_name: rabbitmq
     restart: always
     healthcheck:
       test: rabbitmq-diagnostics -q ping
       interval: 30s
       timeout: 30s
       retries: 3
+    environment:
+      - RABBITMQ_USERNAME=hackaton
+      - RABBITMQ_PASSWORD=${RABBIT_PASS}
+      - RABBITMQ_SECURE_PASSWORD=yes
+      - RABBITMQ_PLUGINS=rabbitmq_management,rabbitmq_web_stomp,rabbitmq_stomp
     ports:
       - 5672:5672
       - 15672:15672
       - 61613:61613
+      - 15674:15674
+
+  redpanda:
+    image: redpandadata/console:v2.1.1
+    container_name: redpanda
+    restart: always
+    environment:
+      - KAFKA_BROKERS=rc1a-2ar1hqnl386tvq7k.mdb.yandexcloud.net:9091
+      - KAFKA_CLIENTID=${KAFKA_GROUP_ID}_panda
+      - KAFKA_TLS_ENABLED=true
+      - KAFKA_SASL_ENABLED=true
+      - KAFKA_SASL_MECHANISM=SCRAM-SHA-512
+      - KAFKA_SASL_USERNAME=9433_reader
+      - KAFKA_SASL_PASSWORD=${KAFKA_PASS}
+      - KAFKA_TLS_CAFILEPATH=/tmp/ca.pem
+    ports:
+      - 8080:8080
+    volumes:
+      - "/tmp/ca.pem:/tmp/ca.pem"
+
+  influxdb:
+    image: influxdb:latest
+    container_name: influxdb
+    restart: always
+    healthcheck:
+      test: "curl -f http://localhost:8086/ping"
+      interval: 5s
+      timeout: 10s
+      retries: 5
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=hackaton
+      - DOCKER_INFLUXDB_INIT_PASSWORD=${INFLUXDB_PASS}
+      - DOCKER_INFLUXDB_INIT_ORG=hackaton
+      - DOCKER_INFLUXDB_INIT_BUCKET=hackaton
+    ports:
+      - "8086:8086"
+    volumes:
+      - influxdb_data:/var/lib/influxdb2
+volumes:
+  influxdb_data: {}
