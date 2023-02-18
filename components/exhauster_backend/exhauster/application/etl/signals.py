@@ -1,4 +1,4 @@
-signals_mapper = {
+signal_mapper = {
     'SM_Exgauster\\[2:27]': {
         'measurement': 'heating_temperature',
         'tags': {
@@ -70,7 +70,7 @@ signals_mapper = {
             'comment': 'Осевая вибрация подшипника №1. Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_axial'
     },
     'SM_Exgauster\\[2:139]': {
         'measurement': 'vibration',
@@ -83,7 +83,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ОВ 1т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[2:151]': {
         'measurement': 'vibration',
@@ -96,7 +96,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ОВ 1т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[2:163]': {
         'measurement': 'vibration',
@@ -109,7 +109,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ОВ 1т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[2:175]': {
         'measurement': 'vibration',
@@ -122,7 +122,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ОВ 1т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[2:0]': {
         'measurement': 'vibration',
@@ -135,7 +135,7 @@ signals_mapper = {
             'comment': 'Горизонтал вибрация подшипника №1. Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_horizontal'
     },
     'SM_Exgauster\\[2:137]': {
         'measurement': 'vibration',
@@ -148,7 +148,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ГВ 1т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[2:149]': {
         'measurement': 'vibration',
@@ -161,7 +161,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ГВ 1т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[2:161]': {
         'measurement': 'vibration',
@@ -174,7 +174,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ГВ 1т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[2:173]': {
         'measurement': 'vibration',
@@ -187,7 +187,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ГВ 1т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[2:1]': {
         'measurement': 'vibration',
@@ -200,7 +200,7 @@ signals_mapper = {
             'comment': 'Вертикал вибрация подшипника №1. Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_vertical'
     },
     'SM_Exgauster\\[2:138]': {
         'measurement': 'vibration',
@@ -213,7 +213,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ВВ 1т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[2:150]': {
         'measurement': 'vibration',
@@ -226,7 +226,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ВВ 1т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[2:162]': {
         'measurement': 'vibration',
@@ -239,7 +239,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ВВ 1т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[2:174]': {
         'measurement': 'vibration',
@@ -252,7 +252,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ВВ 1т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[2:28]': {
         'measurement': 'heating_temperature',
@@ -325,7 +325,7 @@ signals_mapper = {
             'comment': 'Осевая вибрация подшипника №2. Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_axial'
     },
     'SM_Exgauster\\[2:142]': {
         'measurement': 'vibration',
@@ -338,7 +338,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ОВ 2т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[2:154]': {
         'measurement': 'vibration',
@@ -351,7 +351,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ОВ 2т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[2:166]': {
         'measurement': 'vibration',
@@ -364,7 +364,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ОВ 2т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[2:178]': {
         'measurement': 'vibration',
@@ -377,7 +377,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ОВ 2т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[2:3]': {
         'measurement': 'vibration',
@@ -390,7 +390,7 @@ signals_mapper = {
             'comment': 'Горизонтал вибрация подшипника №2. Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_horizontal'
     },
     'SM_Exgauster\\[2:140]': {
         'measurement': 'vibration',
@@ -403,7 +403,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ГВ 2т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[2:152]': {
         'measurement': 'vibration',
@@ -416,7 +416,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ГВ 2т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[2:164]': {
         'measurement': 'vibration',
@@ -429,7 +429,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ГВ 2т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[2:176]': {
         'measurement': 'vibration',
@@ -442,7 +442,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ГВ 2т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[2:4]': {
         'measurement': 'vibration',
@@ -455,7 +455,7 @@ signals_mapper = {
             'comment': 'Вертикал вибрация подшипника №2. Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_vertical'
     },
     'SM_Exgauster\\[2:141]': {
         'measurement': 'vibration',
@@ -468,7 +468,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ВВ 2т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[2:153]': {
         'measurement': 'vibration',
@@ -481,7 +481,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ВВ 2т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[2:165]': {
         'measurement': 'vibration',
@@ -494,7 +494,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ВВ 2т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[2:177]': {
         'measurement': 'vibration',
@@ -507,7 +507,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ВВ 2т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[2:29]': {
         'measurement': 'heating_temperature',
@@ -820,7 +820,7 @@ signals_mapper = {
             'comment': 'Осевая вибрация подшипника №7. Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_axial'
     },
     'SM_Exgauster\\[2:145]': {
         'measurement': 'vibration',
@@ -833,7 +833,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ОВ 7т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[2:157]': {
         'measurement': 'vibration',
@@ -846,7 +846,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ОВ 7т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[2:169]': {
         'measurement': 'vibration',
@@ -859,7 +859,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ОВ 7т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[2:181]': {
         'measurement': 'vibration',
@@ -872,7 +872,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ОВ 7т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[2:6]': {
         'measurement': 'vibration',
@@ -885,7 +885,7 @@ signals_mapper = {
             'comment': 'Горизонтал вибрация подшипника №7. Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_horizontal'
     },
     'SM_Exgauster\\[2:143]': {
         'measurement': 'vibration',
@@ -898,7 +898,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ГВ 7т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[2:155]': {
         'measurement': 'vibration',
@@ -911,7 +911,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ГВ 7т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[2:167]': {
         'measurement': 'vibration',
@@ -924,7 +924,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ГВ 7т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[2:179]': {
         'measurement': 'vibration',
@@ -937,7 +937,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ГВ 7т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[2:7]': {
         'measurement': 'vibration',
@@ -950,7 +950,7 @@ signals_mapper = {
             'comment': 'Вертикал вибрация подшипника №7. Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_vertical'
     },
     'SM_Exgauster\\[2:144]': {
         'measurement': 'vibration',
@@ -963,7 +963,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ВВ 7т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[2:156]': {
         'measurement': 'vibration',
@@ -976,7 +976,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ВВ 7т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[2:168]': {
         'measurement': 'vibration',
@@ -989,7 +989,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ВВ 7т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[2:180]': {
         'measurement': 'vibration',
@@ -1002,7 +1002,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ВВ 7т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[2:34]': {
         'measurement': 'heating_temperature',
@@ -1075,7 +1075,7 @@ signals_mapper = {
             'comment': 'Осевая вибрация подшипника №8. Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_axial'
     },
     'SM_Exgauster\\[2:148]': {
         'measurement': 'vibration',
@@ -1088,7 +1088,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ОВ 8т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[2:160]': {
         'measurement': 'vibration',
@@ -1101,7 +1101,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ОВ 8т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[2:172]': {
         'measurement': 'vibration',
@@ -1114,7 +1114,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ОВ 8т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[2:184]': {
         'measurement': 'vibration',
@@ -1127,7 +1127,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ОВ 8т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[2:9]': {
         'measurement': 'vibration',
@@ -1140,7 +1140,7 @@ signals_mapper = {
             'comment': 'Горизонтал вибрация подшипника №8. Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_horizontal'
     },
     'SM_Exgauster\\[2:146]': {
         'measurement': 'vibration',
@@ -1153,7 +1153,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ГВ 8т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[2:158]': {
         'measurement': 'vibration',
@@ -1166,7 +1166,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ГВ 8т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[2:170]': {
         'measurement': 'vibration',
@@ -1179,7 +1179,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ГВ 8т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[2:182]': {
         'measurement': 'vibration',
@@ -1192,7 +1192,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ГВ 8т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[2:10]': {
         'measurement': 'vibration',
@@ -1205,7 +1205,7 @@ signals_mapper = {
             'comment': 'Вертикал вибрация подшипника №8. Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_vertical'
     },
     'SM_Exgauster\\[2:147]': {
         'measurement': 'vibration',
@@ -1218,7 +1218,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ВВ 8т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[2:159]': {
         'measurement': 'vibration',
@@ -1231,7 +1231,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ВВ 8т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[2:171]': {
         'measurement': 'vibration',
@@ -1244,7 +1244,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ВВ 8т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[2:183]': {
         'measurement': 'vibration',
@@ -1257,7 +1257,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ВВ 8т Эксгаустер №1',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[2:35]': {
         'measurement': 'heating_temperature',
@@ -1378,7 +1378,7 @@ signals_mapper = {
             'comment': 'Осевая вибрация подшипника №1. Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_axial'
     },
     'SM_Exgauster\\[2:187]': {
         'measurement': 'vibration',
@@ -1391,7 +1391,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ОВ 1т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[2:199]': {
         'measurement': 'vibration',
@@ -1404,7 +1404,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ОВ 1т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[2:211]': {
         'measurement': 'vibration',
@@ -1417,7 +1417,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ОВ 1т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[2:223]': {
         'measurement': 'vibration',
@@ -1430,7 +1430,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ОВ 1т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[2:12]': {
         'measurement': 'vibration',
@@ -1443,7 +1443,7 @@ signals_mapper = {
             'comment': 'Горизонтал вибрация подшипника №1. Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_horizontal'
     },
     'SM_Exgauster\\[2:185]': {
         'measurement': 'vibration',
@@ -1456,7 +1456,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ГВ 1т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[2:197]': {
         'measurement': 'vibration',
@@ -1469,7 +1469,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ГВ 1т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[2:209]': {
         'measurement': 'vibration',
@@ -1482,7 +1482,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ГВ 1т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[2:221]': {
         'measurement': 'vibration',
@@ -1495,7 +1495,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ГВ 1т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[2:13]': {
         'measurement': 'vibration',
@@ -1508,7 +1508,7 @@ signals_mapper = {
             'comment': 'Вертикал вибрация подшипника №1. Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_vertical'
     },
     'SM_Exgauster\\[2:186]': {
         'measurement': 'vibration',
@@ -1521,7 +1521,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ВВ 1т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[2:198]': {
         'measurement': 'vibration',
@@ -1534,7 +1534,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ВВ 1т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[2:210]': {
         'measurement': 'vibration',
@@ -1547,7 +1547,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ВВ 1т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[2:222]': {
         'measurement': 'vibration',
@@ -1560,7 +1560,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ВВ 1т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[2:44]': {
         'measurement': 'heating_temperature',
@@ -1633,7 +1633,7 @@ signals_mapper = {
             'comment': 'Осевая вибрация подшипника №2. Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_axial'
     },
     'SM_Exgauster\\[2:190]': {
         'measurement': 'vibration',
@@ -1646,7 +1646,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ОВ 2т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[2:202]': {
         'measurement': 'vibration',
@@ -1659,7 +1659,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ОВ 2т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[2:214]': {
         'measurement': 'vibration',
@@ -1672,7 +1672,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ОВ 2т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[2:226]': {
         'measurement': 'vibration',
@@ -1685,7 +1685,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ОВ 2т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[2:15]': {
         'measurement': 'vibration',
@@ -1698,7 +1698,7 @@ signals_mapper = {
             'comment': 'Горизонтал вибрация подшипника №2. Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_horizontal'
     },
     'SM_Exgauster\\[2:188]': {
         'measurement': 'vibration',
@@ -1711,7 +1711,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ГВ 2т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[2:200]': {
         'measurement': 'vibration',
@@ -1724,7 +1724,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ГВ 2т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[2:212]': {
         'measurement': 'vibration',
@@ -1737,7 +1737,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ГВ 2т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[2:224]': {
         'measurement': 'vibration',
@@ -1750,7 +1750,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ГВ 2т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[2:16]': {
         'measurement': 'vibration',
@@ -1763,7 +1763,7 @@ signals_mapper = {
             'comment': 'Вертикал вибрация подшипника №2. Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_vertical'
     },
     'SM_Exgauster\\[2:189]': {
         'measurement': 'vibration',
@@ -1776,7 +1776,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ВВ 2т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[2:201]': {
         'measurement': 'vibration',
@@ -1789,7 +1789,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ВВ 2т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[2:213]': {
         'measurement': 'vibration',
@@ -1802,7 +1802,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ВВ 2т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[2:225]': {
         'measurement': 'vibration',
@@ -1815,7 +1815,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ВВ 2т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[2:45]': {
         'measurement': 'heating_temperature',
@@ -2128,7 +2128,7 @@ signals_mapper = {
             'comment': 'Осевая вибрация подшипника №7. Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_axial'
     },
     'SM_Exgauster\\[2:193]': {
         'measurement': 'vibration',
@@ -2141,7 +2141,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ОВ 7т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[2:205]': {
         'measurement': 'vibration',
@@ -2154,7 +2154,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ОВ 7т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[2:217]': {
         'measurement': 'vibration',
@@ -2167,7 +2167,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ОВ 7т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[2:229]': {
         'measurement': 'vibration',
@@ -2180,7 +2180,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ОВ 7т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[2:18]': {
         'measurement': 'vibration',
@@ -2193,7 +2193,7 @@ signals_mapper = {
             'comment': 'Горизонтал вибрация подшипника №7. Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_horizontal'
     },
     'SM_Exgauster\\[2:191]': {
         'measurement': 'vibration',
@@ -2206,7 +2206,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ГВ 7т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[2:203]': {
         'measurement': 'vibration',
@@ -2219,7 +2219,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ГВ 7т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[2:215]': {
         'measurement': 'vibration',
@@ -2232,7 +2232,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ГВ 7т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[2:227]': {
         'measurement': 'vibration',
@@ -2245,7 +2245,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ГВ 7т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[2:19]': {
         'measurement': 'vibration',
@@ -2258,7 +2258,7 @@ signals_mapper = {
             'comment': 'Вертикал вибрация подшипника №7. Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_vertical'
     },
     'SM_Exgauster\\[2:192]': {
         'measurement': 'vibration',
@@ -2271,7 +2271,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ВВ 7т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[2:204]': {
         'measurement': 'vibration',
@@ -2284,7 +2284,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ВВ 7т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[2:216]': {
         'measurement': 'vibration',
@@ -2297,7 +2297,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ВВ 7т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[2:228]': {
         'measurement': 'vibration',
@@ -2310,7 +2310,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ВВ 7т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[2:51]': {
         'measurement': 'heating_temperature',
@@ -2383,7 +2383,7 @@ signals_mapper = {
             'comment': 'Осевая вибрация подшипника №8. Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_axial'
     },
     'SM_Exgauster\\[2:196]': {
         'measurement': 'vibration',
@@ -2396,7 +2396,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ОВ 8т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[2:208]': {
         'measurement': 'vibration',
@@ -2409,7 +2409,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ОВ 8т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[2:220]': {
         'measurement': 'vibration',
@@ -2422,7 +2422,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ОВ 8т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[2:232]': {
         'measurement': 'vibration',
@@ -2435,7 +2435,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ОВ 8т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[2:21]': {
         'measurement': 'vibration',
@@ -2448,7 +2448,7 @@ signals_mapper = {
             'comment': 'Горизонтал вибрация подшипника №8. Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_horizontal'
     },
     'SM_Exgauster\\[2:194]': {
         'measurement': 'vibration',
@@ -2461,7 +2461,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ГВ 8т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[2:206]': {
         'measurement': 'vibration',
@@ -2474,7 +2474,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ГВ 8т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[2:218]': {
         'measurement': 'vibration',
@@ -2487,7 +2487,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ГВ 8т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[2:230]': {
         'measurement': 'vibration',
@@ -2500,7 +2500,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ГВ 8т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[2:22]': {
         'measurement': 'vibration',
@@ -2513,7 +2513,7 @@ signals_mapper = {
             'comment': 'Вертикал вибрация подшипника №8. Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_vertical'
     },
     'SM_Exgauster\\[2:195]': {
         'measurement': 'vibration',
@@ -2526,7 +2526,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ВВ 8т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[2:207]': {
         'measurement': 'vibration',
@@ -2539,7 +2539,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ВВ 8т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[2:219]': {
         'measurement': 'vibration',
@@ -2552,7 +2552,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ВВ 8т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[2:231]': {
         'measurement': 'vibration',
@@ -2565,7 +2565,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ВВ 8т Эксгаустер №2',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[2:52]': {
         'measurement': 'heating_temperature',
@@ -2686,7 +2686,7 @@ signals_mapper = {
             'comment': 'Осевая вибрация подшипника №1. Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_axial'
     },
     'SM_Exgauster\\[0:137]': {
         'measurement': 'vibration',
@@ -2699,7 +2699,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ОВ 1т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[0:149]': {
         'measurement': 'vibration',
@@ -2712,7 +2712,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ОВ 1т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[0:161]': {
         'measurement': 'vibration',
@@ -2725,7 +2725,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ОВ 1т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[0:173]': {
         'measurement': 'vibration',
@@ -2738,7 +2738,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ОВ 1т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[0:0]': {
         'measurement': 'vibration',
@@ -2751,7 +2751,7 @@ signals_mapper = {
             'comment': 'Горизонтал вибрация подшипника №1. Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_horizontal'
     },
     'SM_Exgauster\\[0:135]': {
         'measurement': 'vibration',
@@ -2764,7 +2764,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ГВ 1т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[0:147]': {
         'measurement': 'vibration',
@@ -2777,7 +2777,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ГВ 1т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[0:159]': {
         'measurement': 'vibration',
@@ -2790,7 +2790,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ГВ 1т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[0:171]': {
         'measurement': 'vibration',
@@ -2803,7 +2803,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ГВ 1т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[0:1]': {
         'measurement': 'vibration',
@@ -2816,7 +2816,7 @@ signals_mapper = {
             'comment': 'Вертикал вибрация подшипника №1. Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_vertical'
     },
     'SM_Exgauster\\[0:136]': {
         'measurement': 'vibration',
@@ -2829,7 +2829,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ВВ 1т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[0:148]': {
         'measurement': 'vibration',
@@ -2842,7 +2842,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ВВ 1т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[0:160]': {
         'measurement': 'vibration',
@@ -2855,7 +2855,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ВВ 1т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[0:172]': {
         'measurement': 'vibration',
@@ -2868,7 +2868,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ВВ 1т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[0:28]': {
         'measurement': 'heating_temperature',
@@ -2941,7 +2941,7 @@ signals_mapper = {
             'comment': 'Осевая вибрация подшипника №2. Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_axial'
     },
     'SM_Exgauster\\[0:140]': {
         'measurement': 'vibration',
@@ -2954,7 +2954,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ОВ 2т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[0:152]': {
         'measurement': 'vibration',
@@ -2967,7 +2967,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ОВ 2т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[0:164]': {
         'measurement': 'vibration',
@@ -2980,7 +2980,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ОВ 2т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[0:176]': {
         'measurement': 'vibration',
@@ -2993,7 +2993,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ОВ 2т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[0:3]': {
         'measurement': 'vibration',
@@ -3006,7 +3006,7 @@ signals_mapper = {
             'comment': 'Горизонтал вибрация подшипника №2. Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_horizontal'
     },
     'SM_Exgauster\\[0:138]': {
         'measurement': 'vibration',
@@ -3019,7 +3019,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ГВ 2т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[0:150]': {
         'measurement': 'vibration',
@@ -3032,7 +3032,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ГВ 2т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[0:162]': {
         'measurement': 'vibration',
@@ -3045,7 +3045,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ГВ 2т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[0:174]': {
         'measurement': 'vibration',
@@ -3058,7 +3058,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ГВ 2т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[0:4]': {
         'measurement': 'vibration',
@@ -3071,7 +3071,7 @@ signals_mapper = {
             'comment': 'Вертикал вибрация подшипника №2. Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_vertical'
     },
     'SM_Exgauster\\[0:139]': {
         'measurement': 'vibration',
@@ -3084,7 +3084,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ВВ 2т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[0:151]': {
         'measurement': 'vibration',
@@ -3097,7 +3097,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ВВ 2т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[0:163]': {
         'measurement': 'vibration',
@@ -3110,7 +3110,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ВВ 2т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[0:175]': {
         'measurement': 'vibration',
@@ -3123,7 +3123,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ВВ 2т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[0:29]': {
         'measurement': 'heating_temperature',
@@ -3436,7 +3436,7 @@ signals_mapper = {
             'comment': 'Осевая вибрация подшипника №7. Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_axial'
     },
     'SM_Exgauster\\[0:143]': {
         'measurement': 'vibration',
@@ -3449,7 +3449,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ОВ 7т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[0:155]': {
         'measurement': 'vibration',
@@ -3462,7 +3462,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ОВ 7т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[0:167]': {
         'measurement': 'vibration',
@@ -3475,7 +3475,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ОВ 7т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[0:179]': {
         'measurement': 'vibration',
@@ -3488,7 +3488,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ОВ 7т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[0:6]': {
         'measurement': 'vibration',
@@ -3501,7 +3501,7 @@ signals_mapper = {
             'comment': 'Горизонтал вибрация подшипника №7. Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_horizontal'
     },
     'SM_Exgauster\\[0:141]': {
         'measurement': 'vibration',
@@ -3514,7 +3514,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ГВ 7т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[0:153]': {
         'measurement': 'vibration',
@@ -3527,7 +3527,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ГВ 7т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[0:165]': {
         'measurement': 'vibration',
@@ -3540,7 +3540,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ГВ 7т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[0:177]': {
         'measurement': 'vibration',
@@ -3553,7 +3553,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ГВ 7т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[0:7]': {
         'measurement': 'vibration',
@@ -3566,7 +3566,7 @@ signals_mapper = {
             'comment': 'Вертикал вибрация подшипника №7. Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_vertical'
     },
     'SM_Exgauster\\[0:142]': {
         'measurement': 'vibration',
@@ -3579,7 +3579,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ВВ 7т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[0:154]': {
         'measurement': 'vibration',
@@ -3592,7 +3592,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ВВ 7т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[0:166]': {
         'measurement': 'vibration',
@@ -3605,7 +3605,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ВВ 7т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[0:178]': {
         'measurement': 'vibration',
@@ -3618,7 +3618,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ВВ 7т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[0:34]': {
         'measurement': 'heating_temperature',
@@ -3691,7 +3691,7 @@ signals_mapper = {
             'comment': 'Осевая вибрация подшипника №8. Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_axial'
     },
     'SM_Exgauster\\[0:146]': {
         'measurement': 'vibration',
@@ -3704,7 +3704,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ОВ 8т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[0:158]': {
         'measurement': 'vibration',
@@ -3717,7 +3717,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ОВ 8т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[0:170]': {
         'measurement': 'vibration',
@@ -3730,7 +3730,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ОВ 8т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[0:182]': {
         'measurement': 'vibration',
@@ -3743,7 +3743,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ОВ 8т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[0:9]': {
         'measurement': 'vibration',
@@ -3756,7 +3756,7 @@ signals_mapper = {
             'comment': 'Горизонтал вибрация подшипника №8. Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_horizontal'
     },
     'SM_Exgauster\\[0:144]': {
         'measurement': 'vibration',
@@ -3769,7 +3769,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ГВ 8т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[0:156]': {
         'measurement': 'vibration',
@@ -3782,7 +3782,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ГВ 8т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[0:168]': {
         'measurement': 'vibration',
@@ -3795,7 +3795,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ГВ 8т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[0:180]': {
         'measurement': 'vibration',
@@ -3808,7 +3808,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ГВ 8т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[0:10]': {
         'measurement': 'vibration',
@@ -3821,7 +3821,7 @@ signals_mapper = {
             'comment': 'Вертикал вибрация подшипника №8. Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_vertical'
     },
     'SM_Exgauster\\[0:145]': {
         'measurement': 'vibration',
@@ -3834,7 +3834,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ВВ 8т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[0:157]': {
         'measurement': 'vibration',
@@ -3847,7 +3847,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ВВ 8т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[0:169]': {
         'measurement': 'vibration',
@@ -3860,7 +3860,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ВВ 8т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[0:181]': {
         'measurement': 'vibration',
@@ -3873,7 +3873,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ВВ 8т Эксгаустер №3',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[0:35]': {
         'measurement': 'heating_temperature',
@@ -3994,7 +3994,7 @@ signals_mapper = {
             'comment': 'Осевая вибрация подшипника №1. Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_axial'
     },
     'SM_Exgauster\\[0:185]': {
         'measurement': 'vibration',
@@ -4007,7 +4007,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ОВ 1т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[0:197]': {
         'measurement': 'vibration',
@@ -4020,7 +4020,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ОВ 1т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[0:209]': {
         'measurement': 'vibration',
@@ -4033,7 +4033,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ОВ 1т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[0:221]': {
         'measurement': 'vibration',
@@ -4046,7 +4046,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ОВ 1т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[0:12]': {
         'measurement': 'vibration',
@@ -4059,7 +4059,7 @@ signals_mapper = {
             'comment': 'Горизонтал вибрация подшипника №1. Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_horizontal'
     },
     'SM_Exgauster\\[0:183]': {
         'measurement': 'vibration',
@@ -4072,7 +4072,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ГВ 1т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[0:195]': {
         'measurement': 'vibration',
@@ -4085,7 +4085,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ГВ 1т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[0:207]': {
         'measurement': 'vibration',
@@ -4098,7 +4098,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ГВ 1т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[0:219]': {
         'measurement': 'vibration',
@@ -4111,7 +4111,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ГВ 1т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[0:13]': {
         'measurement': 'vibration',
@@ -4124,7 +4124,7 @@ signals_mapper = {
             'comment': 'Вертикал вибрация подшипника №1. Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_vertical'
     },
     'SM_Exgauster\\[0:184]': {
         'measurement': 'vibration',
@@ -4137,7 +4137,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ВВ 1т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[0:196]': {
         'measurement': 'vibration',
@@ -4150,7 +4150,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ВВ 1т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[0:208]': {
         'measurement': 'vibration',
@@ -4163,7 +4163,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ВВ 1т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[0:220]': {
         'measurement': 'vibration',
@@ -4176,7 +4176,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ВВ 1т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[0:44]': {
         'measurement': 'heating_temperature',
@@ -4249,7 +4249,7 @@ signals_mapper = {
             'comment': 'Осевая вибрация подшипника №2. Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_axial'
     },
     'SM_Exgauster\\[0:188]': {
         'measurement': 'vibration',
@@ -4262,7 +4262,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ОВ 2т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[0:200]': {
         'measurement': 'vibration',
@@ -4275,7 +4275,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ОВ 2т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[0:212]': {
         'measurement': 'vibration',
@@ -4288,7 +4288,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ОВ 2т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[0:224]': {
         'measurement': 'vibration',
@@ -4301,7 +4301,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ОВ 2т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[0:15]': {
         'measurement': 'vibration',
@@ -4314,7 +4314,7 @@ signals_mapper = {
             'comment': 'Горизонтал вибрация подшипника №2. Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_horizontal'
     },
     'SM_Exgauster\\[0:186]': {
         'measurement': 'vibration',
@@ -4327,7 +4327,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ГВ 2т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[0:198]': {
         'measurement': 'vibration',
@@ -4340,7 +4340,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ГВ 2т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[0:210]': {
         'measurement': 'vibration',
@@ -4353,7 +4353,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ГВ 2т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[0:222]': {
         'measurement': 'vibration',
@@ -4366,7 +4366,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ГВ 2т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[0:16]': {
         'measurement': 'vibration',
@@ -4379,7 +4379,7 @@ signals_mapper = {
             'comment': 'Вертикал вибрация подшипника №2. Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_vertical'
     },
     'SM_Exgauster\\[0:187]': {
         'measurement': 'vibration',
@@ -4392,7 +4392,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ВВ 2т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[0:199]': {
         'measurement': 'vibration',
@@ -4405,7 +4405,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ВВ 2т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[0:211]': {
         'measurement': 'vibration',
@@ -4418,7 +4418,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ВВ 2т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[0:223]': {
         'measurement': 'vibration',
@@ -4431,7 +4431,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ВВ 2т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[0:45]': {
         'measurement': 'heating_temperature',
@@ -4744,7 +4744,7 @@ signals_mapper = {
             'comment': 'Осевая вибрация подшипника №7. Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_axial'
     },
     'SM_Exgauster\\[0:191]': {
         'measurement': 'vibration',
@@ -4757,7 +4757,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ОВ 7т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[0:203]': {
         'measurement': 'vibration',
@@ -4770,7 +4770,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ОВ 7т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[0:215]': {
         'measurement': 'vibration',
@@ -4783,7 +4783,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ОВ 7т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[0:227]': {
         'measurement': 'vibration',
@@ -4796,7 +4796,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ОВ 7т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[0:18]': {
         'measurement': 'vibration',
@@ -4809,7 +4809,7 @@ signals_mapper = {
             'comment': 'Горизонтал вибрация подшипника №7. Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_horizontal'
     },
     'SM_Exgauster\\[0:189]': {
         'measurement': 'vibration',
@@ -4822,7 +4822,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ГВ 7т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[0:201]': {
         'measurement': 'vibration',
@@ -4835,7 +4835,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ГВ 7т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[0:213]': {
         'measurement': 'vibration',
@@ -4848,7 +4848,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ГВ 7т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[0:225]': {
         'measurement': 'vibration',
@@ -4861,7 +4861,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ГВ 7т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[0:19]': {
         'measurement': 'vibration',
@@ -4874,7 +4874,7 @@ signals_mapper = {
             'comment': 'Вертикал вибрация подшипника №7. Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_vertical'
     },
     'SM_Exgauster\\[0:190]': {
         'measurement': 'vibration',
@@ -4887,7 +4887,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ВВ 7т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[0:202]': {
         'measurement': 'vibration',
@@ -4900,7 +4900,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ВВ 7т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[0:214]': {
         'measurement': 'vibration',
@@ -4913,7 +4913,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ВВ 7т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[0:226]': {
         'measurement': 'vibration',
@@ -4926,7 +4926,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ВВ 7т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[0:51]': {
         'measurement': 'heating_temperature',
@@ -4999,7 +4999,7 @@ signals_mapper = {
             'comment': 'Осевая вибрация подшипника №8. Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_axial'
     },
     'SM_Exgauster\\[0:194]': {
         'measurement': 'vibration',
@@ -5012,7 +5012,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ОВ 8т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[0:206]': {
         'measurement': 'vibration',
@@ -5025,7 +5025,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ОВ 8т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[0:218]': {
         'measurement': 'vibration',
@@ -5038,7 +5038,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ОВ 8т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[0:230]': {
         'measurement': 'vibration',
@@ -5051,7 +5051,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ОВ 8т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[0:21]': {
         'measurement': 'vibration',
@@ -5064,7 +5064,7 @@ signals_mapper = {
             'comment': 'Горизонтал вибрация подшипника №8. Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_horizontal'
     },
     'SM_Exgauster\\[0:192]': {
         'measurement': 'vibration',
@@ -5077,7 +5077,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ГВ 8т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[0:204]': {
         'measurement': 'vibration',
@@ -5090,7 +5090,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ГВ 8т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[0:216]': {
         'measurement': 'vibration',
@@ -5103,7 +5103,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ГВ 8т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[0:228]': {
         'measurement': 'vibration',
@@ -5116,7 +5116,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ГВ 8т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[0:22]': {
         'measurement': 'vibration',
@@ -5129,7 +5129,7 @@ signals_mapper = {
             'comment': 'Вертикал вибрация подшипника №8. Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_vertical'
     },
     'SM_Exgauster\\[0:193]': {
         'measurement': 'vibration',
@@ -5142,7 +5142,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ВВ 8т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[0:205]': {
         'measurement': 'vibration',
@@ -5155,7 +5155,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ВВ 8т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[0:217]': {
         'measurement': 'vibration',
@@ -5168,7 +5168,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ВВ 8т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[0:229]': {
         'measurement': 'vibration',
@@ -5181,7 +5181,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ВВ 8т Эксгаустер №4',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[0:52]': {
         'measurement': 'heating_temperature',
@@ -5302,7 +5302,7 @@ signals_mapper = {
             'comment': 'Осевая вибрация подшипника №1. Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_axial'
     },
     'SM_Exgauster\\[3:137]': {
         'measurement': 'vibration',
@@ -5315,7 +5315,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ОВ 1т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[3:149]': {
         'measurement': 'vibration',
@@ -5328,7 +5328,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ОВ 1т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[3:161]': {
         'measurement': 'vibration',
@@ -5341,7 +5341,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ОВ 1т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[3:173]': {
         'measurement': 'vibration',
@@ -5354,7 +5354,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ОВ 1т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[3:0]': {
         'measurement': 'vibration',
@@ -5367,7 +5367,7 @@ signals_mapper = {
             'comment': 'Горизонтал вибрация подшипника №1. Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_horizontal'
     },
     'SM_Exgauster\\[3:135]': {
         'measurement': 'vibration',
@@ -5380,7 +5380,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ГВ 1т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[3:147]': {
         'measurement': 'vibration',
@@ -5393,7 +5393,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ГВ 1т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[3:159]': {
         'measurement': 'vibration',
@@ -5406,7 +5406,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ГВ 1т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[3:171]': {
         'measurement': 'vibration',
@@ -5419,7 +5419,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ГВ 1т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[3:1]': {
         'measurement': 'vibration',
@@ -5432,7 +5432,7 @@ signals_mapper = {
             'comment': 'Вертикал вибрация подшипника №1. Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_vertical'
     },
     'SM_Exgauster\\[3:136]': {
         'measurement': 'vibration',
@@ -5445,7 +5445,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ВВ 1т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[3:148]': {
         'measurement': 'vibration',
@@ -5458,7 +5458,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ВВ 1т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[3:160]': {
         'measurement': 'vibration',
@@ -5471,7 +5471,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ВВ 1т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[3:172]': {
         'measurement': 'vibration',
@@ -5484,7 +5484,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ВВ 1т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[3:28]': {
         'measurement': 'heating_temperature',
@@ -5557,7 +5557,7 @@ signals_mapper = {
             'comment': 'Осевая вибрация подшипника №2. Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_axial'
     },
     'SM_Exgauster\\[3:140]': {
         'measurement': 'vibration',
@@ -5570,7 +5570,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ОВ 2т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[3:152]': {
         'measurement': 'vibration',
@@ -5583,7 +5583,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ОВ 2т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[3:164]': {
         'measurement': 'vibration',
@@ -5596,7 +5596,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ОВ 2т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[3:176]': {
         'measurement': 'vibration',
@@ -5609,7 +5609,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ОВ 2т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[3:3]': {
         'measurement': 'vibration',
@@ -5622,7 +5622,7 @@ signals_mapper = {
             'comment': 'Горизонтал вибрация подшипника №2. Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_horizontal'
     },
     'SM_Exgauster\\[3:138]': {
         'measurement': 'vibration',
@@ -5635,7 +5635,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ГВ 2т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[3:150]': {
         'measurement': 'vibration',
@@ -5648,7 +5648,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ГВ 2т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[3:162]': {
         'measurement': 'vibration',
@@ -5661,7 +5661,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ГВ 2т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[3:174]': {
         'measurement': 'vibration',
@@ -5674,7 +5674,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ГВ 2т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[3:4]': {
         'measurement': 'vibration',
@@ -5687,7 +5687,7 @@ signals_mapper = {
             'comment': 'Вертикал вибрация подшипника №2. Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_vertical'
     },
     'SM_Exgauster\\[3:139]': {
         'measurement': 'vibration',
@@ -5700,7 +5700,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ВВ 2т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[3:151]': {
         'measurement': 'vibration',
@@ -5713,7 +5713,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ВВ 2т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[3:163]': {
         'measurement': 'vibration',
@@ -5726,7 +5726,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ВВ 2т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[3:175]': {
         'measurement': 'vibration',
@@ -5739,7 +5739,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ВВ 2т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[3:29]': {
         'measurement': 'heating_temperature',
@@ -6052,7 +6052,7 @@ signals_mapper = {
             'comment': 'Осевая вибрация подшипника №7. Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_axial'
     },
     'SM_Exgauster\\[3:143]': {
         'measurement': 'vibration',
@@ -6065,7 +6065,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ОВ 7т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[3:155]': {
         'measurement': 'vibration',
@@ -6078,7 +6078,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ОВ 7т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[3:167]': {
         'measurement': 'vibration',
@@ -6091,7 +6091,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ОВ 7т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[3:179]': {
         'measurement': 'vibration',
@@ -6104,7 +6104,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ОВ 7т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[3:6]': {
         'measurement': 'vibration',
@@ -6117,7 +6117,7 @@ signals_mapper = {
             'comment': 'Горизонтал вибрация подшипника №7. Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_horizontal'
     },
     'SM_Exgauster\\[3:141]': {
         'measurement': 'vibration',
@@ -6130,7 +6130,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ГВ 7т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[3:153]': {
         'measurement': 'vibration',
@@ -6143,7 +6143,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ГВ 7т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[3:165]': {
         'measurement': 'vibration',
@@ -6156,7 +6156,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ГВ 7т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[3:177]': {
         'measurement': 'vibration',
@@ -6169,7 +6169,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ГВ 7т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[3:7]': {
         'measurement': 'vibration',
@@ -6182,7 +6182,7 @@ signals_mapper = {
             'comment': 'Вертикал вибрация подшипника №7. Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_vertical'
     },
     'SM_Exgauster\\[3:142]': {
         'measurement': 'vibration',
@@ -6195,7 +6195,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ВВ 7т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[3:154]': {
         'measurement': 'vibration',
@@ -6208,7 +6208,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ВВ 7т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[3:166]': {
         'measurement': 'vibration',
@@ -6221,7 +6221,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ВВ 7т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[3:178]': {
         'measurement': 'vibration',
@@ -6234,7 +6234,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ВВ 7т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[3:34]': {
         'measurement': 'heating_temperature',
@@ -6307,7 +6307,7 @@ signals_mapper = {
             'comment': 'Осевая вибрация подшипника №8. Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_axial'
     },
     'SM_Exgauster\\[3:146]': {
         'measurement': 'vibration',
@@ -6320,7 +6320,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ОВ 8т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[3:158]': {
         'measurement': 'vibration',
@@ -6333,7 +6333,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ОВ 8т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[3:170]': {
         'measurement': 'vibration',
@@ -6346,7 +6346,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ОВ 8т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[3:182]': {
         'measurement': 'vibration',
@@ -6359,7 +6359,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ОВ 8т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[3:9]': {
         'measurement': 'vibration',
@@ -6372,7 +6372,7 @@ signals_mapper = {
             'comment': 'Горизонтал вибрация подшипника №8. Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_horizontal'
     },
     'SM_Exgauster\\[3:144]': {
         'measurement': 'vibration',
@@ -6385,7 +6385,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ГВ 8т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[3:156]': {
         'measurement': 'vibration',
@@ -6398,7 +6398,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ГВ 8т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[3:168]': {
         'measurement': 'vibration',
@@ -6411,7 +6411,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ГВ 8т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[3:180]': {
         'measurement': 'vibration',
@@ -6424,7 +6424,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ГВ 8т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[3:10]': {
         'measurement': 'vibration',
@@ -6437,7 +6437,7 @@ signals_mapper = {
             'comment': 'Вертикал вибрация подшипника №8. Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_vertical'
     },
     'SM_Exgauster\\[3:145]': {
         'measurement': 'vibration',
@@ -6450,7 +6450,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ВВ 8т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[3:157]': {
         'measurement': 'vibration',
@@ -6463,7 +6463,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ВВ 8т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[3:169]': {
         'measurement': 'vibration',
@@ -6476,7 +6476,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ВВ 8т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[3:181]': {
         'measurement': 'vibration',
@@ -6489,7 +6489,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ВВ 8т Эксгаустер №5',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[3:35]': {
         'measurement': 'heating_temperature',
@@ -6610,7 +6610,7 @@ signals_mapper = {
             'comment': 'Осевая вибрация подшипника №1. Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_axial'
     },
     'SM_Exgauster\\[3:185]': {
         'measurement': 'vibration',
@@ -6623,7 +6623,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ОВ 1т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[3:197]': {
         'measurement': 'vibration',
@@ -6636,7 +6636,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ОВ 1т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[3:209]': {
         'measurement': 'vibration',
@@ -6649,7 +6649,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ОВ 1т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[3:221]': {
         'measurement': 'vibration',
@@ -6662,7 +6662,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ОВ 1т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[3:12]': {
         'measurement': 'vibration',
@@ -6675,7 +6675,7 @@ signals_mapper = {
             'comment': 'Горизонтал вибрация подшипника №1. Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_horizontal'
     },
     'SM_Exgauster\\[3:183]': {
         'measurement': 'vibration',
@@ -6688,7 +6688,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ГВ 1т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[3:195]': {
         'measurement': 'vibration',
@@ -6701,7 +6701,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ГВ 1т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[3:207]': {
         'measurement': 'vibration',
@@ -6714,7 +6714,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ГВ 1т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[3:219]': {
         'measurement': 'vibration',
@@ -6727,7 +6727,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ГВ 1т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[3:13]': {
         'measurement': 'vibration',
@@ -6740,7 +6740,7 @@ signals_mapper = {
             'comment': 'Вертикал вибрация подшипника №1. Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_vertical'
     },
     'SM_Exgauster\\[3:184]': {
         'measurement': 'vibration',
@@ -6753,7 +6753,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ВВ 1т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[3:196]': {
         'measurement': 'vibration',
@@ -6766,7 +6766,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ВВ 1т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[3:208]': {
         'measurement': 'vibration',
@@ -6779,7 +6779,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ВВ 1т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[3:220]': {
         'measurement': 'vibration',
@@ -6792,7 +6792,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ВВ 1т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[3:44]': {
         'measurement': 'heating_temperature',
@@ -6865,7 +6865,7 @@ signals_mapper = {
             'comment': 'Осевая вибрация подшипника №2. Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_axial'
     },
     'SM_Exgauster\\[3:188]': {
         'measurement': 'vibration',
@@ -6878,7 +6878,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ОВ 2т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[3:200]': {
         'measurement': 'vibration',
@@ -6891,7 +6891,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ОВ 2т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[3:212]': {
         'measurement': 'vibration',
@@ -6904,7 +6904,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ОВ 2т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[3:224]': {
         'measurement': 'vibration',
@@ -6917,7 +6917,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ОВ 2т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[3:15]': {
         'measurement': 'vibration',
@@ -6930,7 +6930,7 @@ signals_mapper = {
             'comment': 'Горизонтал вибрация подшипника №2. Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_horizontal'
     },
     'SM_Exgauster\\[3:186]': {
         'measurement': 'vibration',
@@ -6943,7 +6943,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ГВ 2т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[3:198]': {
         'measurement': 'vibration',
@@ -6956,7 +6956,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ГВ 2т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[3:210]': {
         'measurement': 'vibration',
@@ -6969,7 +6969,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ГВ 2т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[3:222]': {
         'measurement': 'vibration',
@@ -6982,7 +6982,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ГВ 2т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[3:16]': {
         'measurement': 'vibration',
@@ -6995,7 +6995,7 @@ signals_mapper = {
             'comment': 'Вертикал вибрация подшипника №2. Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_vertical'
     },
     'SM_Exgauster\\[3:187]': {
         'measurement': 'vibration',
@@ -7008,7 +7008,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ВВ 2т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[3:199]': {
         'measurement': 'vibration',
@@ -7021,7 +7021,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ВВ 2т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[3:211]': {
         'measurement': 'vibration',
@@ -7034,7 +7034,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ВВ 2т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[3:223]': {
         'measurement': 'vibration',
@@ -7047,7 +7047,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ВВ 2т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[3:45]': {
         'measurement': 'heating_temperature',
@@ -7360,7 +7360,7 @@ signals_mapper = {
             'comment': 'Осевая вибрация подшипника №7. Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_axial'
     },
     'SM_Exgauster\\[3:191]': {
         'measurement': 'vibration',
@@ -7373,7 +7373,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ОВ 7т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[3:203]': {
         'measurement': 'vibration',
@@ -7386,7 +7386,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ОВ 7т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[3:215]': {
         'measurement': 'vibration',
@@ -7399,7 +7399,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ОВ 7т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[3:227]': {
         'measurement': 'vibration',
@@ -7412,7 +7412,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ОВ 7т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[3:18]': {
         'measurement': 'vibration',
@@ -7425,7 +7425,7 @@ signals_mapper = {
             'comment': 'Горизонтал вибрация подшипника №7. Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_horizontal'
     },
     'SM_Exgauster\\[3:189]': {
         'measurement': 'vibration',
@@ -7438,7 +7438,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ГВ 7т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[3:201]': {
         'measurement': 'vibration',
@@ -7451,7 +7451,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ГВ 7т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[3:213]': {
         'measurement': 'vibration',
@@ -7464,7 +7464,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ГВ 7т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[3:225]': {
         'measurement': 'vibration',
@@ -7477,7 +7477,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ГВ 7т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[3:19]': {
         'measurement': 'vibration',
@@ -7490,7 +7490,7 @@ signals_mapper = {
             'comment': 'Вертикал вибрация подшипника №7. Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_vertical'
     },
     'SM_Exgauster\\[3:190]': {
         'measurement': 'vibration',
@@ -7503,7 +7503,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ВВ 7т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[3:202]': {
         'measurement': 'vibration',
@@ -7516,7 +7516,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ВВ 7т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[3:214]': {
         'measurement': 'vibration',
@@ -7529,7 +7529,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ВВ 7т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[3:226]': {
         'measurement': 'vibration',
@@ -7542,7 +7542,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ВВ 7т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[3:51]': {
         'measurement': 'heating_temperature',
@@ -7615,7 +7615,7 @@ signals_mapper = {
             'comment': 'Осевая вибрация подшипника №8. Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_axial'
     },
     'SM_Exgauster\\[3:194]': {
         'measurement': 'vibration',
@@ -7628,7 +7628,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ОВ 8т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[3:206]': {
         'measurement': 'vibration',
@@ -7641,7 +7641,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ОВ 8т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[3:218]': {
         'measurement': 'vibration',
@@ -7654,7 +7654,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ОВ 8т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[3:230]': {
         'measurement': 'vibration',
@@ -7667,7 +7667,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ОВ 8т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[3:21]': {
         'measurement': 'vibration',
@@ -7680,7 +7680,7 @@ signals_mapper = {
             'comment': 'Горизонтал вибрация подшипника №8. Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_horizontal'
     },
     'SM_Exgauster\\[3:192]': {
         'measurement': 'vibration',
@@ -7693,7 +7693,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ГВ 8т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[3:204]': {
         'measurement': 'vibration',
@@ -7706,7 +7706,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ГВ 8т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[3:216]': {
         'measurement': 'vibration',
@@ -7719,7 +7719,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ГВ 8т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[3:228]': {
         'measurement': 'vibration',
@@ -7732,7 +7732,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ГВ 8т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[3:22]': {
         'measurement': 'vibration',
@@ -7745,7 +7745,7 @@ signals_mapper = {
             'comment': 'Вертикал вибрация подшипника №8. Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'vibration_vertical'
     },
     'SM_Exgauster\\[3:193]': {
         'measurement': 'vibration',
@@ -7758,7 +7758,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная max ВВ 8т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_max'
     },
     'SM_Exgauster\\[3:205]': {
         'measurement': 'vibration',
@@ -7771,7 +7771,7 @@ signals_mapper = {
             'comment': 'Уставка аварийная min ВВ 8т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'alarm_min'
     },
     'SM_Exgauster\\[3:217]': {
         'measurement': 'vibration',
@@ -7784,7 +7784,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная max ВВ 8т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_max'
     },
     'SM_Exgauster\\[3:229]': {
         'measurement': 'vibration',
@@ -7797,7 +7797,7 @@ signals_mapper = {
             'comment': 'Уставка предупредительная min ВВ 8т Эксгаустер №6',
             'active': True
         },
-        'field_name': 'vibration'
+        'field_name': 'warning_min'
     },
     'SM_Exgauster\\[3:52]': {
         'measurement': 'heating_temperature',
