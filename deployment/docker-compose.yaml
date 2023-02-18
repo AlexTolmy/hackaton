@@ -31,7 +31,7 @@ services:
     restart: always
     entrypoint: entrypoint_etl.sh
     environment:
-      - KAFKA_SERVERS=rc1a-b5e65f36lm3an1d5.mdb.yandexcloud.net:9091
+      - KAFKA_SERVERS=rc1a-2ar1hqnl386tvq7k.mdb.yandexcloud.net:9091
       - KAFKA_TOPIC=zsmk-9433-dev-01
       - KAFKA_GROUP_ID=${KAFKA_GROUP_ID}_001
       - KAFKA_PASSWORD=${KAFKA_PASS}
