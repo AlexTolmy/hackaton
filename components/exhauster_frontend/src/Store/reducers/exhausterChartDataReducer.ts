@@ -1,12 +1,11 @@
 import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { exhaustersChartsMock } from '../../Mock/mock';
 import {
   ExhausterChart,
   ExhausterChartDataReducerType,
 } from '../types/ExhausterChartDataReducerType';
 import RootStoreType from '../types/RootStoreType';
-
-import { exhaustersChartsMock } from '../../Mock/mock';
 
 const initialState: ExhausterChartDataReducerType = {
   exhaustersCharts: exhaustersChartsMock,
