@@ -1,12 +1,16 @@
-import getTranslation from '../Utils/getTranslation';
-
 import { NavigationEndpoint } from './App.interface';
+import AppCustomBreadcrumb from './AppCustomBreadcrumb';
 
-export const APP_NAVIGATION_ITEMS = [
+export const breadcrumbsRoutes = [
   {
-    key: NavigationEndpoint.Home,
-    displayName: getTranslation('home'),
-    href: NavigationEndpoint.Home,
+    path: NavigationEndpoint.Home,
+    breadcrumb: AppCustomBreadcrumb,
+    props: { displayName: 'Главный экран' },
+  },
+  {
+    path: NavigationEndpoint.ExhausterScheme,
+    breadcrumb: AppCustomBreadcrumb,
+    props: { displayName: '/Состояние экгаустера' },
   },
 ];
 

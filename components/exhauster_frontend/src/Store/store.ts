@@ -10,6 +10,8 @@ import createSagaMiddleware from 'redux-saga';
 import { all } from 'redux-saga/effects';
 
 import appThemeReducer from './reducers/appThemeReducer';
+import exhausterMnemoSchemeReducer from './reducers/exhausterMnemoSchemeReducer';
+import exhaustersMonitorReducer from './reducers/exhaustersMonitorReducer';
 import getApiAccessDriver from './utils/axios';
 import getWebsocketMiddleware from './websocket/getWebsocketMiddleware';
 
@@ -25,6 +27,8 @@ function getStoreInstance(): Store {
   const reducers = combineReducers({
     requests: requestsReducer,
     appTheme: appThemeReducer,
+    exhaustersMonitor: exhaustersMonitorReducer,
+    exhausterMnemoScheme: exhausterMnemoSchemeReducer,
   });
 
   const websocketMiddleware = getWebsocketMiddleware();

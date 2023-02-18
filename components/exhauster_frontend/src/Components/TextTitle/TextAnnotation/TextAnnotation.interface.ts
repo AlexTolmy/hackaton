@@ -1,5 +1,5 @@
 export type TextAnnotationProps = {
   value: string;
-  description: string;
+  description: string | number;
   className?: string;
 };

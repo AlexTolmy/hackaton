@@ -1,0 +1,53 @@
+.text {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8em;
+  color: var(--color-gray-f);
+  text-align: center;
+}
+
+.text_contrast {
+  color: var(--color-gray-0);
+  width: 29px;
+  font-size: 0.9em;
+  height: 21px;
+  font-weight: 700;
+}
+
+.fill {
+  fill: var(--color-gray-5);
+}
+
+.fill:global(.warning) {
+  fill: var(--color-yellow-4);
+}
+
+.fill:global(.critical) {
+  fill: var(--color-red-2);
+}
+
+.fill_contrast {
+  fill: var(--color-gray-6);
+}
+
+.fill_contrast:global(.warning) {
+  fill: var(--color-yellow-8);
+}
+
+.fill_contrast:global(.critical) {
+  fill: var(--color-red-5);
+}
+
+.stroke {
+  stroke: var(--color-gray-8);
+}
+
+.stroke:global(.warning) {
+  stroke: var(--color-yellow-8);
+}
+
+.stroke:global(.critical) {
+  stroke: var(--color-red-5);
+}

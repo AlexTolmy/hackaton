@@ -16,9 +16,9 @@
   width: auto;
   max-width: 80%;
   box-sizing: border-box;
-  flex-direction: column;
   flex-grow: 1;
   min-height: 0;
+  font-weight: 600;
 }
 
 .app_top_bar {
@@ -39,4 +39,14 @@
   text-decoration: none;
   color: var(--color-gray-2);
   font-size: 16px;
+}
+
+/*AppCustomBreadcrumb*/
+.breadcrumb_item {
+  padding: 0.2em;
+}
+
+.breadcrumb_item:hover {
+  background-color: var(--color-yellow-8);
+  border-radius: 5px;
 }
