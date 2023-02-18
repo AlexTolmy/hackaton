@@ -3,7 +3,7 @@ import { IndicatorState } from '../../Containers/ExhausterContainer/ExhausterCon
 export type ExhausterGeneralSchemeSensors = {
   psSensors: PSSensorType[];
   oreInput: {
-    gasTemp: number;
+    gasTemp: ValueStateType;
     discharge: string;
     dustLevel: string;
   };

@@ -82,6 +82,7 @@ export const exhaustersMock = {
   'Эксгаустер Ф-172': {
     angloMachineName: 'Агломашина №1',
     exhausterName: 'Эксгаустер Ф-172',
+    isActive: true,
     rotorName: 'Ротор № 24',
     rotorLastChangeDate: new Date('2023-02-13T10:00:00.00'),
     rotorNextChangeDate: new Date('2023-02-18T10:00:00.00'),
@@ -90,6 +91,7 @@ export const exhaustersMock = {
   'Эксгаустер Ф-173': {
     angloMachineName: 'Агломашина №1',
     exhausterName: 'Эксгаустер Ф-173',
+    isActive: false,
     rotorName: 'Ротор № 25',
     rotorLastChangeDate: new Date('2023-02-13T10:00:00.00'),
     rotorNextChangeDate: new Date('2023-02-20T10:00:00.00'),
@@ -98,6 +100,8 @@ export const exhaustersMock = {
   'Эксгаустер Ф-174': {
     angloMachineName: 'Агломашина №2',
     exhausterName: 'Эксгаустер Ф-174',
+    isActive: false,
+
     rotorName: 'Ротор № 26',
     rotorLastChangeDate: new Date('2023-02-13T10:00:00.00'),
     rotorNextChangeDate: new Date('2023-02-23T10:00:00.00'),
@@ -106,6 +110,8 @@ export const exhaustersMock = {
   'Эксгаустер Ф-175': {
     angloMachineName: 'Агломашина №2',
     exhausterName: 'Эксгаустер Ф-175',
+    isActive: false,
+
     rotorName: 'Ротор № 27',
     rotorLastChangeDate: new Date('2023-02-13T10:00:00.00'),
     rotorNextChangeDate: new Date('2023-02-23T10:00:00.00'),
@@ -114,6 +120,8 @@ export const exhaustersMock = {
   'Эксгаустер Ф-176': {
     angloMachineName: 'Агломашина №3',
     exhausterName: 'Эксгаустер Ф-176',
+    isActive: false,
+
     rotorName: 'Ротор № 28',
     rotorLastChangeDate: new Date('2023-02-13T10:00:00.00'),
     rotorNextChangeDate: new Date('2023-02-23T10:00:00.00'),
@@ -122,6 +130,8 @@ export const exhaustersMock = {
   'Эксгаустер Ф-177': {
     angloMachineName: 'Агломашина №3',
     exhausterName: 'Эксгаустер Ф-177',
+    isActive: false,
+
     rotorName: 'Ротор № 29',
     rotorLastChangeDate: new Date('2023-02-13T10:00:00.00'),
     rotorNextChangeDate: new Date('2023-02-23T10:00:00.00'),
@@ -196,7 +206,7 @@ const schemeMock = {
     },
   ],
   oreInput: {
-    gasTemp: 46,
+    gasTemp: { value: 67, state: IndicatorState.Default },
     discharge: '74.3',
     dustLevel: '15',
   },

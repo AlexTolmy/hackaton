@@ -120,3 +120,15 @@
     visibility: hidden;
   }
 }
+
+/*ExhausterActivityIndicator*/
+.activity_indicator {
+  width: 1em;
+  height: 1em;
+  background-color: var(--color-brand-green);
+  border-radius: 50%;
+}
+
+.activity_indicator:global(.isActive) {
+  background-color: var(--color-red-6-corporate);
+}

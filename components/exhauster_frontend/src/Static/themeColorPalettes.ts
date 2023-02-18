@@ -85,6 +85,8 @@ const lightThemeColorPalette = {
   '--notification-error-bg-color': '#fef4f3',
   '--notification-success-bg-color': '#ecffea',
   '--panel-header-color': '#00000005',
+  '--color-always-white': '#ffffff',
+  '--color-always-black': '#000000',
 };
 
 const darkThemeColorPalette = {
@@ -95,7 +97,7 @@ const darkThemeColorPalette = {
   '--color-gray-3': '#30363d',
   '--color-gray-4': '#20242c',
   '--color-gray-5': '#30363d',
-  '--color-gray-6': '#bfbfbf',
+  '--color-gray-6': '#4b4b4b',
   '--color-gray-7': '#8c8c8c',
   '--color-gray-8': '#8b949e',
   '--color-gray-9': '#c9d1d9',
@@ -172,6 +174,8 @@ const darkThemeColorPalette = {
   '--notification-error-bg-color': '#5d1012',
   '--notification-success-bg-color': '#1b4721',
   '--panel-header-color': '#30363d',
+  '--color-always-white': '#ffffff',
+  '--color-always-black': '#000000',
 };
 
 export default {
