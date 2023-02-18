@@ -1,15 +1,13 @@
-from datetime import datetime
-from typing import Dict, List
+import datetime
+from typing import Dict, List, Tuple
 
 import numpy as np
 import pandas as pd
 import pmdarima as pm
-from classic.app import DTO
 from classic.components import component
 
 from exhauster.application import interfaces
-
-from .dto import ActualDataTable, Prediction
+from .dto import ActualDataTable, Prediction, Rotor
 from .settings import Settings
 
 
@@ -24,16 +22,26 @@ class Predictor(interfaces.PredictService):
     predictions_repo: interfaces.PredictionsRepo
     vibration_repo: interfaces.VibrationsRepo
 
-    def predict(self, exhauster_id: int, arima=False):
+    def predict(self, exhauster_id: str, arima=False):
         all_rotors_start_date = self.rotor_repo.all()
+        fact_failures, pred_failures = self.rotor_repo.\
+            get_10_failures(exhauster_id)
+
         rotor_start_date = self._get_start_rotor(
             all_rotors_start_date, exhauster_id
         )
 
         actual_data: ActualDataTable = self.vibration_repo.get_vibrations(
-            exhauster_id=exhauster_id,
-            bearing_id=[7, 8],
+            exhauster_id=str(exhauster_id),
+            bearing_id=str(7),
             start=rotor_start_date,
+        )
+        actual_data.data.append(
+            self.vibration_repo.get_vibrations(
+                exhauster_id=str(exhauster_id),
+                bearing_id=str(8),
+                start=rotor_start_date,
+            )
         )
 
         vibrations_data, warnings = self._dto_to_dataframe(actual_data)
@@ -45,6 +53,11 @@ class Predictor(interfaces.PredictService):
             )
         else:
             expressions_dict = self._get_linear_expressions(rolled_data)
+
+            if len(fact_failures) >= 10:
+                remains = self._calc_failure_errors(fact_failures, pred_failures)
+                expressions_dict = self._fined_model(remains, expressions_dict)
+
             failure_days_by_col = self._calc_failure_days(
                 expressions_dict, warnings
             )
@@ -56,6 +69,47 @@ class Predictor(interfaces.PredictService):
             message=str(days_to_failure) if days_to_failure <= 30 else '>30'
         )
         self.predictions_repo.save(prediction)
+
+    def _fined_model(self, remains: List[int], expressions) -> Tuple[float, float]:
+        """
+        штраф модели (изменения угла линейной регрессии) в зависимости
+        от того, в какую сторону ошибались в последнее время,
+        реализовано через затухание важности
+        """
+        for col in expressions:
+            multiplier = expressions[col][0]
+            correct_coeff = np.mean(
+                np.array(remains) * np.array([i for i in range(len(remains))])
+            )
+            # уменьшаем угол наклона прямой прогноза, если ошибаемся вверх
+            # (прогноз всегда выше факта), в противном случае наоборот
+            new_multiplier = multiplier - (multiplier * correct_coeff) * 100
+            expressions[col][0] = new_multiplier
+
+        return expressions
+
+    def _calc_failure_errors(
+        self, fact_failures: List[Rotor], pred_failures: List[Prediction]
+    ) -> List[int]:
+        """функция для получения ошибок по предсказаниям замен ротора"""
+        remains = []
+        fact_failures_dates = dict()
+        for val in pred_failures:
+            fact_failures_dates[val] = val.days_to_failure
+
+        pred_failures_ser = pd.Series(fact_failures_dates)
+        pred_failures_ser.sort_index(inplace=True)
+
+        for ff in fact_failures:
+            pred_time = pd.to_datetime(
+                ff.installed_at - datetime.timedelta(days=1)
+            )
+            pred_delta = pred_failures_ser.index.get_loc(
+                pred_time, tolerance='nearest'
+            )
+            remains.append(pred_delta)
+
+        return remains
 
     @staticmethod
     def _get_start_rotor(all_rotors_start_date, exhauster_id):
@@ -142,11 +196,13 @@ class Predictor(interfaces.PredictService):
         for vibration_val in actual_data.data:
             col_name = f'Подшипник_{vibration_val.bearing_id}. ' \
                        f'Вибрация {vibration_val.vibration_type}'
-            if vibration_val.moment not in data_by_time:
-                data_by_time[vibration_val.moment] = dict()
-            data_by_time[vibration_val.moment][col_name] = vibration_val.value
-            if col_name not in warnings:
-                warnings[col_name] = vibration_val.warning_max
+            if 'vibration' in vibration_val.field_name:
+                if vibration_val.moment not in data_by_time:
+                    data_by_time[vibration_val.moment] = dict()
+                data_by_time[vibration_val.moment][col_name] = vibration_val.value
+            elif 'warning' in vibration_val.field_name:
+                if col_name not in warnings:
+                    warnings[col_name] = vibration_val.value
 
         df = pd.DataFrame.from_dict(data_by_time, orient='index')
         df.index = df.index.astype('datetime[64]')

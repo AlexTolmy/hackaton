@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import List
+from typing import List, Optional
 
 import attr
 from classic.app import DTO
@@ -22,7 +22,7 @@ class Prediction(DTO):
     exhauster_id: int    # номер эксгаустера
     days_to_failure: int
     message: str
-
+    created_at: Optional[datetime]
 
 @attr.dataclass
 class Rotor:

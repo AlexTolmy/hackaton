@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import List
+from typing import List, Tuple
 
 from exhauster.application.dashboard import dto as dashboard_dto
 from exhauster.application.predictor import dto
@@ -16,6 +16,13 @@ class RotorRepo(ABC):
 
     @abstractmethod
     def all(self) -> List[dto.Rotor]:
+        ...
+
+    @abstractmethod
+    def get_10_failures(self, exhauster_id: str) -> \
+        Tuple[List[dto.Rotor], List[dto.Prediction]]:
+        # Возвращает даты последних 10 факт замен и всех предсказаний
+        # с момента самой ранней факт. замены
         ...
 
 
