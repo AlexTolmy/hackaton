@@ -14,7 +14,7 @@ client = InfluxDBClient(url=url, token=token, org=org)
 write_api = client.write_api(write_options=SYNCHRONOUS)
 query_api = client.query_api()
 
-bucket = "test_load"
+bucket = "test_load_1"
 
 points = (
     # Point("my_measurement_2").tag('location', 'moscow').field("temperature", 26.6),
