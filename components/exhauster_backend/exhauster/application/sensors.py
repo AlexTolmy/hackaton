@@ -11,6 +11,7 @@ class Measurement(Enum):
     oil_system = (measurement, 'oil_system')
     vibration = (measurement, 'vibration')
     work_exhauster = (measurement, 'work_exhauster')
+    cooler_temperature = (measurement, 'cooler_temperature')
 
     @property
     def param(self):

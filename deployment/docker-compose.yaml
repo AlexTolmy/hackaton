@@ -19,6 +19,10 @@ services:
       - API_PORT=8000
       - API_LOG_LEVEL=debug
       - SWAGGER_ON=true
+      - INFLUXDB_TOKEN=${INFLUX_TOKEN}
+      - INFLUXDB_ORGANIZATION=dev
+      - INFLUXDB_URL=https://eu-central-1-1.aws.cloud2.influxdata.com
+      - INFLUXDB_BUCKET=${INFLUXDB_BUCKET_NAME}
     ports:
       - 8000:8000
     depends_on:

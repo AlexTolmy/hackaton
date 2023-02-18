@@ -1,7 +1,10 @@
+from typing import List
+
 from classic.components import component
 from spectree import Response
 from spectree.models import Tag
 
+from exhauster.application import entities
 from exhauster.application.dashboard import services
 
 from .join_points import join_point
@@ -12,18 +15,41 @@ tags = (Tag(name='заголовок'), )
 
 
 @component
-class Information:
-    information: services.AppInformation
+class Dashboard:
+
+    service: services.ExhausterService
 
     @join_point
-    @spectree.validate(
-        query=TestRequest, resp=Response(HTTP_200=TestResponse), tags=tags
-    )
-    def on_get_information(self, request, response):
-        query: TestRequest = request.context.query
+    @spectree.validate(tags=tags)
+    def on_get_exshausters(self, request, response):
 
-        info = self.information.get_version(text=query.text)
-        response.media = {'text': info.text, 'id': info.id}
+        exhausters: List[entities.Exhauster] = self.service.get_all()
+
+        response.media = [
+            {
+                'number': exhauster.number,
+                'aglomachine': exhauster.aglomachine.value,
+                'name': exhauster.name,
+                'is_active': exhauster.is_active,
+                'rotor_name': 'Ротор № 24',
+                'rotor_last_change': '2023-02-13T10:00:00.00',
+                'rotor_next_change': '2023-02-23T10:00:00.00',
+                'sensors': list(self._sensors(exhauster))
+            } for exhauster in exhausters
+        ]
+
+    def _sensors(self, exhauster: entities.Exhauster):
+
+        for sensor in exhauster.sensors:
+            yield {
+                'name': sensor.name,
+                'indicators': [
+                    {
+                        'variant': indicator.variant.value,
+                        'state': indicator.state.value
+                    } for indicator in sensor.indicators
+                ]
+            }
 
     @join_point
     @spectree.validate(
@@ -31,30 +57,3 @@ class Information:
     )
     def on_post_error(self, request, response):
         self.information.get_error(**request.media)
-        # json_body: AllowedEmailAddRequest = request.context.json
-        # self.allowed_emails.add(**json_body.dict(exclude_none=False))
-
-
-# @component
-# class Customers:
-#     customers: services.Customer
-#
-#     @join_point
-#     @spectree.validate(
-#         query=CustomerID, resp=Response(HTTP_200=Customer), tags=tags
-#     )
-#     def on_get_customer(self, request, response):
-#         query:  CustomerID = request.context.query
-#         customer = self.customers.get_costumer(query.id)
-#
-#         response.media = {
-#             'id': customer.id,
-#             'email': customer.email
-#         }
-
-# @join_point
-# def on_post_remove_product_from_cart(self, request, response):
-#     self.checkout.remove_product_from_cart(
-#         customer_id=request.context.client_id,
-#         **request.media,
-#     )
