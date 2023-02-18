@@ -8,7 +8,7 @@ function useCalendarButton(
   isPopupVisible: boolean,
   setIsPopupVisible: (value: boolean) => void,
 ) {
-  const buttonTitle = format(selectedDate, 'dd.MM.yyyy, HH:mm:ss');
+  const buttonTitle = format(selectedDate, 'dd.MM.yyyy, HH:mm');
 
   const updateCalloutVisibility = () => setIsPopupVisible(!isPopupVisible);
 

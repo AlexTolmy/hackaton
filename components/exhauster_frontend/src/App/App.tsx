@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import ExhausterSchemePage from '../Pages/ExhausterSchemePage';
 import ExhaustersMonitorPage from '../Pages/ExhaustersMonitorPage';
+import ExhausterSchemePage from '../Pages/ExhausterStatusPage';
 import {
   wsConnectAction,
   wsDisconnectAction,

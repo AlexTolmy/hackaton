@@ -1,0 +1,20 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  overflow: auto;
+  align-items: center;
+}
+
+.control_panel {
+  display: flex;
+  justify-content: space-between;
+  width: stretch;
+  width: -webkit-fill-available;
+  width: -moz-available;
+  padding: 0 1em;
+}
+
+.dates_selector_hidden {
+  visibility: hidden;
+}

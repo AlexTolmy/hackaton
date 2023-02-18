@@ -51,3 +51,7 @@
 .stroke:global(.critical) {
   stroke: var(--color-red-5);
 }
+
+.general_scheme_container {
+  --body-padding: 0em;
+}

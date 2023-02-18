@@ -20,6 +20,7 @@
 
 div.popup {
   z-index: 2;
+  font-size: 1.2em;
 }
 
 /*PopupTable.tsx*/
@@ -34,7 +35,7 @@ div.popup {
 .cell {
   --color: var(--color-gray-0);
   font-size: 0.688em;
-  font-weight: 300;
+  font-weight: 600;
   line-height: 1.182em;
   display: flex;
   justify-content: center;

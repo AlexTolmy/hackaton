@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 
 import styles from './Table.module.css';
 
@@ -8,13 +9,14 @@ type TableProps = {
     section: { key: string; name: string };
     rows: Record<string, () => React.ReactNode>[];
   }[];
+  className?: string;
 };
 
 function Table(props: TableProps) {
-  const { columns, data } = props;
+  const { columns, data, className } = props;
 
   return (
-    <table className={styles.table}>
+    <table className={clsx(styles.table, className)}>
       <thead>
         <tr>
           {columns.map((column) => (

@@ -23,19 +23,18 @@ class Logger:
     log.configure(Settings.log.LOGGING_CONFIG, Settings.kafka.LOGGING_CONFIG)
 
 
-class Storage:
+class DB:
     influx = sensor_storage.InfluxClient(
         token=Settings.influx.TOKEN,
         url=Settings.influx.URL,
         org=Settings.influx.ORGANIZATION,
         buket=Settings.influx.BUCKET,
     )
+    storage = sensor_storage.StorageDB(influxdb_client=influx)
 
 
 class Application:
-    etl = services.ETL(
-        influx_client=Storage.influx, publisher=MessageBus.publisher
-    )
+    etl = services.ETL(influx_client=DB.influx, publisher=MessageBus.publisher)
 
 
 consumer = kafka.create_consumer(
