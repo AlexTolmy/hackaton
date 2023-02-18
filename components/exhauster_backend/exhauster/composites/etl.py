@@ -1,8 +1,9 @@
 from classic.messaging_kombu import KombuPublisher
+from kombu import Connection
+
 from exhauster.adapters import kafka, log, message_bus, sensor_storage
 from exhauster.adapters.message_bus import broker_scheme
 from exhauster.application.etl import services
-from kombu import Connection
 
 
 class Settings:
@@ -22,19 +23,18 @@ class Logger:
     log.configure(Settings.log.LOGGING_CONFIG, Settings.kafka.LOGGING_CONFIG)
 
 
-class Storage:
+class DB:
     influx = sensor_storage.InfluxClient(
         token=Settings.influx.TOKEN,
         url=Settings.influx.URL,
         org=Settings.influx.ORGANIZATION,
         buket=Settings.influx.BUCKET,
     )
+    storage = sensor_storage.StorageDB(influxdb_client=influx)
 
 
 class Application:
-    etl = services.ETL(
-        influx_client=Storage.influx, publisher=MessageBus.publisher
-    )
+    etl = services.ETL(influx_client=DB.influx, publisher=MessageBus.publisher)
 
 
 consumer = kafka.create_consumer(
@@ -48,5 +48,6 @@ consumer = kafka.create_consumer(
     user=Settings.kafka.USER,
     password=Settings.kafka.PASSWORD,
 )
+result = DB.storage.get_vibrations('1', '1', 'vibration', '-100m')
 
-consumer()
+# consumer()

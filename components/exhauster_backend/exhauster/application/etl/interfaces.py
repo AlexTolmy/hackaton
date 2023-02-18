@@ -7,3 +7,7 @@ class InfluxClient(ABC):
     @abstractmethod
     def load_raws(self, data: List[Dict]):
         ...
+
+    @abstractmethod
+    def create_reader(self):
+        ...

@@ -13,6 +13,10 @@ class Measurement(Enum):
     work_exhauster = (measurement, 'work_exhauster')
 
     @property
+    def param(self):
+        return self.value[1]
+
+    @property
     def avible_fields(self):
         if self.name == 'heating_temperature':
             pass
@@ -29,8 +33,6 @@ class Measurement(Enum):
 
         return None
 
-a,b = Measurement.heating_temperature.value
-print(a, b)
 
 class ExhausterTag(Enum):
     exhauster_1 = ('exhauster', '1')
@@ -39,6 +41,10 @@ class ExhausterTag(Enum):
     exhauster_4 = ('exhauster', '4')
     exhauster_5 = ('exhauster', '5')
     exhauster_6 = ('exhauster', '6')
+
+    @property
+    def param(self):
+        return self.value[1]
 
 
 # TODO: breading -> bearing
@@ -54,6 +60,10 @@ class BearingTag(Enum):
     BEARING_9 = ('breading', '9')
 
     @property
+    def param(self):
+        return self.value[1]
+
+    @property
     def with_vibration(self) -> bool:
         return self in [
             BearingTag.BEARING_1.value[1],
@@ -67,22 +77,34 @@ cooler_type = 'cooler_type'
 
 
 class CoolerTypeTag(Enum):
-    oil= (cooler_type,'oil')
-    water= (cooler_type, 'water')
+    oil = (cooler_type, 'oil')
+    water = (cooler_type, 'water')
+
+    @property
+    def param(self):
+        return self.value[1]
 
 
 type_main_drive = 'type_main_drive'
 
 
 class TypeMainDriveTag(Enum):
-    rotor= (type_main_drive, 'rotor')
-    stator= (type_main_drive, 'stator')
+    rotor = (type_main_drive, 'rotor')
+    stator = (type_main_drive, 'stator')
+
+    @property
+    def param(self):
+        return self.value[1]
 
 
 vibration_type = 'vibration_type'
 
 
 class VibrationTypeTag(Enum):
-    axis= (vibration_type, 'axis')
-    horizontal= (vibration_type, 'horizontal')
-    vertical= (vibration_type, 'vertical')
+    axis = (vibration_type, 'axis')
+    horizontal = (vibration_type, 'horizontal')
+    vertical = (vibration_type, 'vertical')
+
+    @property
+    def param(self):
+        return self.value[1]

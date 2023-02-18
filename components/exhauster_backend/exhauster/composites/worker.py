@@ -1,10 +1,11 @@
 import logging
 
 from classic.sql_storage import TransactionContext
-from exhauster.adapters import database, message_bus
-from exhauster.application.dashboard import services
 from kombu import Connection
 from sqlalchemy import create_engine
+
+from exhauster.adapters import database, message_bus
+from exhauster.application.dashboard import services
 
 logging.basicConfig(level=logging.INFO)
 
