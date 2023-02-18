@@ -41,6 +41,10 @@ services:
       - INFLUXDB_ORGANIZATION=dev
       - INFLUXDB_URL=https://eu-central-1-1.aws.cloud2.influxdata.com
       - INFLUXDB_BUCKET=test_load
+      - BROKER_HOST=rabbitmq
+      - BROKER_PORT=5672
+      - BROKER_USER=hackaton
+      - BROKER_PASS=${RABBIT_PASS}
     volumes:
       - "/tmp/ca.pem:/tmp/ca.pem"
     depends_on:
