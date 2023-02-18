@@ -2,9 +2,10 @@ from pydantic import BaseSettings
 
 
 class Settings(BaseSettings):
-    TOKEN: str = 'localhost'
-    ORGANIZATION: str = '5672'
-    URL: str = 'rabbit'
+    TOKEN: str
+    ORGANIZATION: str
+    URL: str
+    BUCKET: str
 
     class Config:
-        env_prefix = 'INFLUXDB'
+        env_prefix = 'INFLUXDB_'

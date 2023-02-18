@@ -1,71 +1,50 @@
 import datetime
+import logging
 import os
 import time
+from typing import Dict, List
 
 import influxdb_client
+from classic.components import component
 from influxdb_client import InfluxDBClient, Point, WritePrecision
-from influxdb_client.client.write_api import SYNCHRONOUS
+from influxdb_client.client.write_api import ASYNCHRONOUS, SYNCHRONOUS
 
-token = os.environ.get("INFLUXDB_TOKEN")
-org = "dev"
-url = "https://eu-central-1-1.aws.cloud2.influxdata.com"
+from exhauster.application.etl import interfaces
 
-client = InfluxDBClient(url=url, token=token, org=org)
-write_api = client.write_api(write_options=SYNCHRONOUS)
-query_api = client.query_api()
 
-bucket = "test_alextolmy"
+@component
+class InfluxClient(interfaces.InfluxClient):
+    token: str
+    url: str
+    org: str
+    buket: str
 
-data = {
-    "point1": {
-        "location": "Klamath",
-        "species": "bees",
-        "count": 23,
-    },
-    "point2": {
-        "location": "Portland",
-        "species": "ants",
-        "count": 30,
-    },
-    "point3": {
-        "location": "Klamath",
-        "species": "bees",
-        "count": 28,
-    },
-    "point4": {
-        "location": "Portland",
-        "species": "ants",
-        "count": 32,
-    },
-    "point5": {
-        "location": "Klamath",
-        "species": "bees",
-        "count": 29,
-    },
-    "point6": {
-        "location": "Portland",
-        "species": "ants",
-        "count": 40,
-    },
-}
+    def __attrs_post_init__(self):
+        self._logger = logging.getLogger(__name__)
 
-for key in data:
-    point = (
-        Point("census").tag("location", data[key]["location"]
-                            ).field(data[key]["species"], data[key]["count"]).field('sad', 1)
-    )
-    # import ipdb;ipdb.set_trace()
-    write_api.write(bucket=bucket, org=org, record=point)
+    def _create_writer(self):
+        client = InfluxDBClient(url=self.url, token=self.token, org=self.org)
+        return client.write_api(write_options=SYNCHRONOUS)
 
-print("Complete. Return to the InfluxDB UI.")
+    def _create_reader(self):
+        client = InfluxDBClient(url=self.url, token=self.token, org=self.org)
+        query_api = client.query_api()
 
-tables = query_api.query(f'from(bucket:"{bucket}") |> range(start: -10m)')
-# import ipdb;ipdb.set_trace()
-for table in tables:
-    print(table)
-    for row in table.records:
-        # import ipdb;ipdb.set_trace()
-        print(row.get_value())
-        print(row.get_field())
-        print(row.values)
-        print('='*10)
+        # query_api.query - табличный вид
+        # query_api.query_stream - поток
+
+    def load_raws(self, data: List[Dict]):
+        """
+        data_element = {
+            "measurement": signal_['measurement'],
+            "tags": signal_['tags'],
+            "fields": {
+                signal_['field_name']: current_value
+            },
+            "time": time_stemp,
+        }
+        """
+        self._logger.info('start loading data')
+        writer = self._create_writer()
+        writer.write(self.buket, self.org, data)
+        self._logger.info('end loading data')
