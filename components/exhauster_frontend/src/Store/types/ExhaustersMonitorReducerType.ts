@@ -11,4 +11,5 @@ export type ExhausterType = {
 
 export type ExhaustersMonitorReducerType = {
   exhausters: Record<string, ExhausterType>;
+  lastUpdateDate: Date;
 };

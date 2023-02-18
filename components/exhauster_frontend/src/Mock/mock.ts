@@ -2,8 +2,13 @@ import {
   IndicatorState,
   IndicatorVariant,
   SensorType,
-} from '../../Containers/ExhausterContainer/ExhausterContainer.interface';
-import { ExhausterGeneralScheme } from '../types/ExhausterMnemoSchemeReducerType';
+} from '../Containers/ExhausterContainer/ExhausterContainer.interface';
+import {
+  ChartDataType,
+  ChartSensorType,
+  ExhausterChart,
+} from '../Store/types/ExhausterChartDataReducerType';
+import { ExhausterGeneralScheme } from '../Store/types/ExhausterMnemoSchemeReducerType';
 
 export const sensors: SensorType[] = [
   {
@@ -236,5 +241,272 @@ export const exhaustersSchemesMock: Record<string, ExhausterGeneralScheme> = {
   'Эксгаустер Ф-177': {
     exhausterName: 'Эксгаустер Ф-172',
     schemeData: schemeMock,
+  },
+};
+
+const chartSensorsData: ChartDataType = {
+  '1 ПС: T, °С': [
+    ['2023-02-13T10:00:00.00', 232],
+    ['2023-02-13T11:00:00.00', 123],
+    ['2023-02-13T12:00:00.00', 334],
+    ['2023-02-13T13:00:00.00', 41],
+    ['2023-02-13T14:00:00.00', 123],
+    ['2023-02-13T15:00:00.00', 433],
+    ['2023-02-13T16:00:00.00', 111],
+    ['2023-02-13T17:00:00.00', 233],
+    ['2023-02-13T18:00:00.00', 531],
+  ],
+  '1 ПС: Верт, мм/с': [
+    ['2023-02-13T10:00:00.00', 23],
+    ['2023-02-13T11:00:00.00', 3],
+    ['2023-02-13T12:00:00.00', 5],
+    ['2023-02-13T13:00:00.00', 12],
+    ['2023-02-13T14:00:00.00', 12],
+    ['2023-02-13T15:00:00.00', 33],
+    ['2023-02-13T16:00:00.00', 342],
+    ['2023-02-13T17:00:00.00', 44],
+    ['2023-02-13T18:00:00.00', 5],
+  ],
+  'Редуктор: T, °С': [
+    ['2023-02-13T10:00:00.00', 324],
+    ['2023-02-13T11:00:00.00', 123],
+    ['2023-02-13T12:00:00.00', 556],
+    ['2023-02-13T13:00:00.00', 245],
+    ['2023-02-13T14:00:00.00', 132],
+    ['2023-02-13T15:00:00.00', 653],
+    ['2023-02-13T16:00:00.00', 342],
+    ['2023-02-13T17:00:00.00', 233],
+    ['2023-02-13T18:00:00.00', 122],
+  ],
+};
+
+const chartSensors: ChartSensorType[] = [
+  {
+    sensorName: '1 ПС',
+    indicators: [
+      {
+        name: 'T, °С',
+        value: '0',
+        state: IndicatorState.Default,
+        isVisible: true,
+      },
+      {
+        name: 'Верт, мм/с',
+        value: '0',
+        state: IndicatorState.Critical,
+        isVisible: true,
+      },
+      {
+        name: 'Гориз, мм/с',
+        value: '0',
+        state: IndicatorState.Warning,
+        isVisible: true,
+      },
+      {
+        name: 'Ось, мм/с',
+        value: '0',
+        state: IndicatorState.Default,
+        isVisible: true,
+      },
+    ],
+  },
+  {
+    sensorName: '2 ПС',
+    indicators: [
+      {
+        name: 'T, °С',
+        value: '0',
+        state: IndicatorState.Default,
+        isVisible: true,
+      },
+      {
+        name: 'Верт, мм/с',
+        value: '0',
+        state: IndicatorState.Default,
+        isVisible: true,
+      },
+      {
+        name: 'Гориз, мм/с',
+        value: '0',
+        state: IndicatorState.Default,
+        isVisible: true,
+      },
+      {
+        name: 'Ось, мм/с',
+        value: '0',
+        state: IndicatorState.Default,
+        isVisible: true,
+      },
+    ],
+  },
+  {
+    sensorName: '3 ПС',
+    indicators: [
+      {
+        name: 'T, °С',
+        value: '0',
+        state: IndicatorState.Default,
+        isVisible: true,
+      },
+    ],
+  },
+  {
+    sensorName: '4 ПС',
+    indicators: [
+      {
+        name: 'T, °С',
+        value: '0',
+        state: IndicatorState.Default,
+        isVisible: true,
+      },
+      {
+        name: 'Верт, мм/с',
+        value: '0',
+        state: IndicatorState.Default,
+        isVisible: true,
+      },
+      {
+        name: 'Гориз, мм/с',
+        value: '0',
+        state: IndicatorState.Default,
+        isVisible: true,
+      },
+      {
+        name: 'Ось, мм/с',
+        value: '0',
+        state: IndicatorState.Default,
+        isVisible: true,
+      },
+    ],
+  },
+  {
+    sensorName: 'Редуктор',
+    indicators: [
+      {
+        name: 'T, °С',
+        value: '0',
+        state: IndicatorState.Default,
+        isVisible: true,
+      },
+      {
+        name: 'Верт, мм/с',
+        value: '0',
+        state: IndicatorState.Default,
+        isVisible: true,
+      },
+      {
+        name: 'Гориз, мм/с',
+        value: '0',
+        state: IndicatorState.Default,
+        isVisible: true,
+      },
+      {
+        name: 'Ось, мм/с',
+        value: '0',
+        state: IndicatorState.Default,
+        isVisible: true,
+      },
+    ],
+  },
+  {
+    sensorName: 'Маслобак',
+    indicators: [
+      {
+        name: 'Уровень масла, %',
+        value: '0',
+        state: IndicatorState.Default,
+        isVisible: true,
+      },
+      {
+        name: 'Давление масла, кг/см2',
+        value: '0',
+        state: IndicatorState.Default,
+        isVisible: true,
+      },
+    ],
+  },
+  {
+    sensorName: 'Газовый коллектор',
+    indicators: [
+      {
+        name: 'T газа, °С',
+        value: '0',
+        state: IndicatorState.Default,
+        isVisible: true,
+      },
+      {
+        name: 'Разряжение, мм.в.ст',
+        value: '0',
+        state: IndicatorState.Default,
+        isVisible: true,
+      },
+    ],
+  },
+  {
+    sensorName: 'Главный привод',
+    indicators: [
+      {
+        name: 'Ток, А',
+        value: '0',
+        state: IndicatorState.Default,
+        isVisible: true,
+      },
+      {
+        name: 'Ток двигателя, А',
+        value: '0',
+        state: IndicatorState.Default,
+        isVisible: true,
+      },
+    ],
+  },
+  {
+    sensorName: 'Охладитель',
+    indicators: [
+      {
+        name: 'T воды до, °С',
+        value: '0',
+        state: IndicatorState.Default,
+        isVisible: true,
+      },
+      {
+        name: 'T воды после, °С',
+        value: '0',
+        state: IndicatorState.Default,
+        isVisible: true,
+      },
+    ],
+  },
+];
+
+export const exhaustersChartsMock: Record<string, ExhausterChart> = {
+  'Эксгаустер Ф-172': {
+    exhausterName: 'Эксгаустер Ф-172',
+    chartSensors,
+    chartSensorsData,
+  },
+  'Эксгаустер Ф-173': {
+    exhausterName: 'Эксгаустер Ф-172',
+    chartSensors,
+    chartSensorsData,
+  },
+  'Эксгаустер Ф-174': {
+    exhausterName: 'Эксгаустер Ф-172',
+    chartSensors,
+    chartSensorsData,
+  },
+  'Эксгаустер Ф-175': {
+    exhausterName: 'Эксгаустер Ф-172',
+    chartSensors,
+    chartSensorsData,
+  },
+  'Эксгаустер Ф-176': {
+    exhausterName: 'Эксгаустер Ф-172',
+    chartSensors,
+    chartSensorsData,
+  },
+  'Эксгаустер Ф-177': {
+    exhausterName: 'Эксгаустер Ф-172',
+    chartSensors,
+    chartSensorsData,
   },
 };

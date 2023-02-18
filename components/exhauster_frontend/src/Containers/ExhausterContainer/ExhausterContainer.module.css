@@ -1,5 +1,6 @@
 .exhauster {
   border: 1px solid gray;
+  width: 100%;
 }
 
 .exhauster_rotor_forecast {
@@ -39,5 +40,5 @@
 
 /*ExhausterGeneralSchemeButton*/
 .scheme_button {
-  width: 5em;
+  width: 6em;
 }

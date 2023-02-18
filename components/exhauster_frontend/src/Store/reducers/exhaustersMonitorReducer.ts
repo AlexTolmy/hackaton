@@ -1,15 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { exhaustersMock } from '../../Mock/mock';
 import {
   ExhaustersMonitorReducerType,
   ExhausterType,
 } from '../types/ExhaustersMonitorReducerType';
 import RootStoreType from '../types/RootStoreType';
 
-import { exhaustersMock } from './mock';
-
 const initialState: ExhaustersMonitorReducerType = {
   exhausters: exhaustersMock,
+  lastUpdateDate: new Date(),
 };
 
 const slice = createSlice({
@@ -21,6 +21,9 @@ const slice = createSlice({
       action: PayloadAction<Record<string, ExhausterType>>,
     ) => {
       state.exhausters = action.payload;
+    },
+    setLastUpdateDateAction: (state, action: PayloadAction<Date>) => {
+      state.lastUpdateDate = action.payload;
     },
   },
 });
@@ -51,7 +54,10 @@ export const getExhausterData =
   (store: RootStoreType): ExhausterType =>
     store.exhaustersMonitor.exhausters[name];
 
+export const getLastUpdateDate = (store: RootStoreType) =>
+  store.exhaustersMonitor.lastUpdateDate;
+
 // Actions
-export const { setExhaustersAction: setExhausters } = slice.actions;
+export const { setExhaustersAction, setLastUpdateDateAction } = slice.actions;
 
 export default slice.reducer;

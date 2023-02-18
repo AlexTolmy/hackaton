@@ -50,3 +50,13 @@
   background-color: var(--color-yellow-8);
   border-radius: 5px;
 }
+
+.app_top_bar_date {
+  font-weight: 600;
+  background-color: var(--color-gray-3);
+  color: var(--color-gray-0);
+  font-size: 1.2em;
+  margin: 0em 1em;
+  padding: 0.5em;
+  border-radius: 5px;
+}

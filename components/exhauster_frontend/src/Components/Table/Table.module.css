@@ -1,6 +1,8 @@
 /*Table*/
 .table {
   width: 100%;
+  font-weight: 700;
+  color: var(--color-gray-0);
 }
 
 .table_section_title {
@@ -48,4 +50,9 @@
   display: flex;
   gap: 0.2em;
   justify-content: flex-end;
+}
+
+/*CheckboxText*/
+.checkbox_text {
+  display: flex;
 }

@@ -27,7 +27,7 @@ function ExhausterGeneralSchemeButton(
 
   return (
     <Button className={styles.scheme_button} onClick={handleOpenScheme}>
-      Схема
+      Состояние
     </Button>
   );
 }

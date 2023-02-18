@@ -9,6 +9,7 @@ import {
   IndicatorType,
   IndicatorVariant,
 } from '../../../Containers/ExhausterContainer/ExhausterContainer.interface';
+import { ChartIndicatorType } from '../../../Store/types/ExhausterChartDataReducerType';
 
 import styles from '../Table.module.css';
 
@@ -57,6 +58,16 @@ export function renderIndicators(
             variant={indicator.variant}
           />
         ))}
+      </div>
+    );
+  };
+}
+
+export function renderChartIndicator(indicator: ChartIndicatorType) {
+  return function Component() {
+    return (
+      <div className={clsx(styles.indicator, indicator.state)}>
+        {indicator.value}
       </div>
     );
   };
