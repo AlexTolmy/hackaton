@@ -1,8 +1,10 @@
 import json
 import logging
-from typing import Any, Callable, List, Dict
+from typing import Any, Callable, Dict, List
 
+from classic.components import component
 from kafka import KafkaConsumer
+
 
 def deserializer(value: bytes) -> Dict[str, Any]:
     return json.loads(value.decode('utf-8'))
@@ -48,10 +50,10 @@ def create_consumer(
                 if record.value:
                     service.run(record.value)
                     consumer.commit()
-        except Exception:
+        except Exception as e:
             logger.exception('Unexpected error occurred')
+            raise e
         finally:
             consumer.close()
 
     return consume
-

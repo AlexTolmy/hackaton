@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     GROUP_ID: str
     PASSWORD: str
     SSL_PATH_CERTIFICATE: str
+    USER: str
 
     LOGGING_LEVEL: str = 'INFO'
 
@@ -24,8 +25,3 @@ class Settings(BaseSettings):
 
     class Config:
         env_prefix = 'KAFKA_'
-
-host = 'rc1a-b5e65f36lm3an1d5.mdb.yandexcloud.net:9091'
-topic = 'zsmk-9433-dev-01'
-user = '9433_reader'
-password = 'eUIpgWu0PWTJaTrjhjQD3.hoyhntiK'
