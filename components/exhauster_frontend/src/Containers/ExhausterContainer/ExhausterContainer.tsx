@@ -37,7 +37,7 @@ function ExhausterContainer(props: ExhausterContainerProps) {
         lastChangeDate={rotorLastChangeDate}
         nextChangeDate={rotorNextChangeDate}
       />
-      <ExhausterSensors sensors={sensors} />
+      <ExhausterSensors exhausterName={exhausterName} sensors={sensors} />
     </Panel>
   );
 }

@@ -3,6 +3,10 @@
   height: 80vh;
 }
 
+.chart {
+  height: 80vh;
+}
+
 .exhauster_chart {
   display: flex;
   gap: 1em;
@@ -23,7 +27,7 @@
 }
 
 .table_container {
-  height: 83.2vh;
+  height: 84vh;
   overflow: auto;
   width: 25em;
 }

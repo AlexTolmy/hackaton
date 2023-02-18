@@ -1,18 +1,8 @@
 import React from 'react';
 
-import styles from './ExhausterContainer.module.css';
-
 function ExhausterScheme() {
   return (
     <svg viewBox="0 0 260 139" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect
-        x="1.00024"
-        y="1.5249"
-        width="258"
-        height="136"
-        rx="5"
-        className={styles.scheme_bg}
-      />
       <rect
         x="170"
         y="18.5248"
@@ -370,15 +360,6 @@ function ExhausterScheme() {
       <path
         d="M70.0003 118.654L53.0003 97.5248L28.9477 97.5248L12.0003 118.654L12.0003 128.525L70.0003 128.525L70.0003 118.654Z"
         fill="#677272"
-      />
-      <rect
-        x="1.00024"
-        y="1.5249"
-        width="258"
-        height="136"
-        rx="5"
-        stroke="#CED7E7"
-        strokeWidth="2"
       />
     </svg>
   );

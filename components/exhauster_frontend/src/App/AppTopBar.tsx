@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
+import DateTickTimer from '../Components/DateTickTimer';
 import ThemeSwitcherContainer from '../Containers/ThemeSwitcherContainer';
 import { getLastUpdateDate } from '../Store/reducers/exhaustersMonitorReducer';
-import { formatDateToString } from '../Store/utils/dateUtils';
 
 import AppNavigation from './AppNavigation';
 
@@ -16,7 +16,9 @@ function AppTopBar() {
     <div className={styles.app_top_bar}>
       <AppNavigation />
       <div className={styles.app_top_bar_date}>
-        {`Последняя дата обновления: ${formatDateToString(date)}`}
+        Данные обновлены
+        <DateTickTimer timeDates={{ start: date, current: date, end: date }} />
+        сек. назад
       </div>
       <ThemeSwitcherContainer />
     </div>

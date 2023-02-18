@@ -4,9 +4,8 @@ import { Client } from '@stomp/stompjs';
 import { AnyAction, Dispatch, MiddlewareAPI } from 'redux';
 
 import { setLastUpdateDateAction } from '../reducers/exhaustersMonitorReducer';
+import { fetchExhaustersAction } from '../requests/fetchExhausters';
 
-/* import mockNewViolationsCount from '../../Mock/mockNewViolationsCount';
- */
 interface WebsocketServiceInterface {
   Connect: (store: MiddlewareAPI<Dispatch<AnyAction>, any>) => void;
   Disconnect: () => void;
@@ -57,7 +56,9 @@ class WebsocketService implements WebsocketServiceInterface {
 
     this._client.subscribe('/exchange/ui_exchange', (msg) => {
       const body: MessageBody = JSON.parse(msg.body);
-      this._store.dispatch(setLastUpdateDateAction(new Date(body.update_at)));
+      const backendUpdateDate = new Date(body.update_at);
+      this._store.dispatch(setLastUpdateDateAction(backendUpdateDate));
+      this._store.dispatch(fetchExhaustersAction());
     });
   }
 }

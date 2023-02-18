@@ -18,13 +18,15 @@ function MachineContainer(props: MachineContainerProps) {
   );
 
   return (
-    <Panel className={styles.machine} title={machineName}>
-      <div className={styles.machine_body}>
-        {exhaustersNames.map((name) => (
-          <ExhausterContainer key={name} exhausterName={name} />
-        ))}
-      </div>
-    </Panel>
+    <div className={styles.machine}>
+      <Panel className={styles.machine_panel} title={machineName}>
+        <div className={styles.machine_body}>
+          {exhaustersNames.map((name) => (
+            <ExhausterContainer key={name} exhausterName={name} />
+          ))}
+        </div>
+      </Panel>
+    </div>
   );
 }
 
