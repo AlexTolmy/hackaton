@@ -1,5 +1,7 @@
 import React from 'react';
 
+import styles from './ExhausterContainer.module.css';
+
 function ExhausterScheme() {
   return (
     <svg viewBox="0 0 260 139" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -9,7 +11,7 @@ function ExhausterScheme() {
         width="258"
         height="136"
         rx="5"
-        fill="#EFF2F6"
+        className={styles.scheme_bg}
       />
       <rect
         x="170"

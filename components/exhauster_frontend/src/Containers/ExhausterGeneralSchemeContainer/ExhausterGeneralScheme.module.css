@@ -37,6 +37,8 @@
 
 .fill:global(.critical) {
   fill: var(--color-red-2);
+  animation: blink-animation 1s steps(5, start) infinite;
+  -webkit-animation: blink-animation 1s steps(5, start) infinite;
 }
 
 .fill_contrast {
@@ -49,6 +51,8 @@
 
 .fill_contrast:global(.critical) {
   fill: var(--color-red-5);
+  animation: blink-animation 1s steps(5, start) infinite;
+  -webkit-animation: blink-animation 1s steps(5, start) infinite;
 }
 
 .stroke {
@@ -67,4 +71,15 @@
   --body-padding: 0em;
   width: 100%;
   overflow: hidden;
+}
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
 }
