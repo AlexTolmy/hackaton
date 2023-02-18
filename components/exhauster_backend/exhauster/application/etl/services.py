@@ -8,7 +8,7 @@ from classic.messaging import Message, Publisher
 from pydantic import validate_arguments
 
 from .interfaces import InfluxClient
-from .signals import signals_mapper
+from .signals import signal_mapper
 
 join_points = PointCut()
 join_point = join_points.join_point
@@ -36,7 +36,7 @@ class ETL:
         time_ = message.pop('moment')
         result = []
         for key, value in message.items():
-            wrap = signals_mapper.get(key)
+            wrap = signal_mapper.get(key)
             if wrap:
                 result.append(
                     {
