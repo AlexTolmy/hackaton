@@ -1,5 +1,5 @@
 .panel_title {
-  background-color: var(--color-gray-7);
+  background-color: var(--color-gray-3);
   color: var(--color-gray-1);
   font-size: 1.2em;
   font-weight: 600;
@@ -10,6 +10,7 @@
   align-items: center;
   padding: 0.8em;
   --body-padding: 1em;
+  border-radius: 5px 5px 0 0;
 }
 
 .panel_title h5 {

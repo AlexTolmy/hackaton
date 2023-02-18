@@ -84,7 +84,7 @@ export const exhaustersMock = {
     exhausterName: 'Эксгаустер Ф-172',
     rotorName: 'Ротор № 24',
     rotorLastChangeDate: new Date('2023-02-13T10:00:00.00'),
-    rotorNextChangeDate: new Date('2023-02-23T10:00:00.00'),
+    rotorNextChangeDate: new Date('2023-02-18T10:00:00.00'),
     sensors,
   },
   'Эксгаустер Ф-173': {
@@ -92,7 +92,7 @@ export const exhaustersMock = {
     exhausterName: 'Эксгаустер Ф-173',
     rotorName: 'Ротор № 25',
     rotorLastChangeDate: new Date('2023-02-13T10:00:00.00'),
-    rotorNextChangeDate: new Date('2023-02-23T10:00:00.00'),
+    rotorNextChangeDate: new Date('2023-02-20T10:00:00.00'),
     sensors,
   },
   'Эксгаустер Ф-174': {
