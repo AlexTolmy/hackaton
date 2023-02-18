@@ -61,31 +61,35 @@ for table in tabels:
 
 import csv
 import signals
+
+
 def create_point(signal, value_, time_):
     # import ipdb;ipdb.set_trace()
-    point = Point(signal['measurement_name']).field(signal['field_name'], value_).time(time_)
+    point = Point(signal['measurement_name']
+                  ).field(signal['field_name'], value_).time(time_)
     return point
+
+
 points_prepare = []
 with open('data.csv', newline='') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
         time_stemp = row['moment']
 
-        for kafka_key in  [i for i in row.keys()][1:]:
-             current_value = row[kafka_key]
-             signal_ = signals.signals.get(kafka_key)
+        for kafka_key in [i for i in row.keys()][1:]:
+            current_value = row[kafka_key]
+            signal_ = signals.signals.get(kafka_key)
 
-             if signal_:
-                 save = {
+            if signal_:
+                save = {
                     "measurement": signal_['measurement'],
                     "tags": signal_['tags'],
-                    "fields": {signal_['field_name']: current_value},
+                    "fields": {
+                        signal_['field_name']: current_value
+                    },
                     "time": time_stemp,
-                 }
-                 points_prepare.append(save)
-
-
+                }
+                points_prepare.append(save)
 
 print('asdasd')
 write_api.write(bucket, org, points_prepare)
-
