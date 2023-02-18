@@ -42,10 +42,16 @@ class Predictor(interfaces.PredictService):
     vibration_sensors_repo: ...
 
     def predict(self, exhauster_id: int, arima=False):
+        all_rotors_start_date = self.rotor_repo.all()
+        rotor_start_date = self._get_start_rotor(
+            all_rotors_start_date, exhauster_id
+        )
+
         actual_data: ActualDataTable = self.vibration_sensors_repo.get_data(
             exhauster_id=exhauster_id,
             bearing_id=[7, 8],
-            vibration_type=['horizontal', 'vertical', 'axis']
+            vibration_type=['horizontal', 'vertical', 'axis'],
+            start=rotor_start_date,
         )
 
         vibrations_data, warnings = self._dto_to_dataframe(actual_data)
@@ -68,6 +74,14 @@ class Predictor(interfaces.PredictService):
             message=str(days_to_failure) if days_to_failure <= 30 else '>30'
         )
         self.predictions_repo.save(prediction)
+
+    @staticmethod
+    def _get_start_rotor(all_rotors_start_date, exhauster_id):
+        for s in all_rotors_start_date:
+            if s.exhauster_number == exhauster_id:
+                return s.exhauster_number
+
+        return None
 
     @staticmethod
     def _get_linear_expressions(data: pd.DataFrame):
