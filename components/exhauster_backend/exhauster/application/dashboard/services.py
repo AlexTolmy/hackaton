@@ -67,14 +67,6 @@ class ExhausterService:
             vibration_horizontal=self._create_random_setpoint(),
             vibration_vertical=self._create_random_setpoint(),
         )
-        yield entities.Bearing(
-            id=2,
-            name=2,
-            temperature_sensor=self._create_random_setpoint(),
-            vibration_axis=self._create_random_setpoint(),
-            vibration_horizontal=self._create_random_setpoint(),
-            vibration_vertical=self._create_random_setpoint(),
-        )
 
         for i in range(3, 7):
             yield entities.Bearing(
