@@ -53,5 +53,4 @@ class ETL:
 
         if result:
             self.influx_client.load_raws(result)
-        # self._logger.info(result)
         return None
