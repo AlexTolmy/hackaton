@@ -40,7 +40,7 @@ class Predictor(interfaces.PredictService):
     """
     rotor_repo: interfaces.RotorRepo
     predictions_repo: interfaces.PredictionsRepo
-    vibration_sensors_repo: ...
+    vibration_repo: interfaces.VibrationsRepo
 
     def predict(self, exhauster_id: int, arima=False):
         all_rotors_start_date = self.rotor_repo.all()
@@ -48,10 +48,9 @@ class Predictor(interfaces.PredictService):
             all_rotors_start_date, exhauster_id
         )
 
-        actual_data: ActualDataTable = self.vibration_sensors_repo.get_data(
+        actual_data: ActualDataTable = self.vibration_repo.get_vibrations(
             exhauster_id=exhauster_id,
             bearing_id=[7, 8],
-            vibration_type=['horizontal', 'vertical', 'axis'],
             start=rotor_start_date,
         )
 
