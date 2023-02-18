@@ -48,6 +48,5 @@ consumer = kafka.create_consumer(
     user=Settings.kafka.USER,
     password=Settings.kafka.PASSWORD,
 )
-result = DB.storage.get_vibrations('1', '1', 'vibration', '-100m')
 
 consumer()
