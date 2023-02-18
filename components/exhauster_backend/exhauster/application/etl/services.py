@@ -1,11 +1,9 @@
 import logging
-from typing import Dict, List, Optional, Tuple
+from typing import Dict
 
-from classic.app import DTO, validate_with_dto
 from classic.aspects import PointCut
 from classic.components import component
 from classic.messaging import Message, Publisher
-from pydantic import validate_arguments
 
 from .interfaces import InfluxClient
 from .signals import signal_mapper
@@ -54,6 +52,6 @@ class ETL:
 
         if result:
             self.influx_client.load_raws(result)
-            self.publisher.publish(Message('ui_exchange', 'new_data'))
+            self.publisher.publish(Message('ui_exchange', {'update_at': time_}))
             self._logger.info('send message to fronted for update')
         return None

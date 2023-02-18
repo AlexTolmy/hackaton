@@ -1,9 +1,9 @@
+from classic.messaging_kombu import KombuPublisher
 from kombu import Connection
 
-from exhauster.adapters import kafka, log, sensor_storage, message_bus
+from exhauster.adapters import kafka, log, message_bus, sensor_storage
 from exhauster.adapters.message_bus import broker_scheme
 from exhauster.application.etl import services
-from classic.messaging_kombu import KombuPublisher
 
 
 class Settings:
