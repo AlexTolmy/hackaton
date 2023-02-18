@@ -4,11 +4,13 @@ from typing import List
 from predictor.service import Prediction, ActualDataTable
 from exhauster.application.predictor import dto
 
+
 class PredictService(ABC):
 
     @abstractmethod
     def predict(self, actual_data: ActualDataTable) -> Prediction:
         ...
+
 
 class RotorRepo(ABC):
 
@@ -16,9 +18,9 @@ class RotorRepo(ABC):
     def all(self) -> List[dto.Rotor]:
         ...
 
+
 class PredictionsRepo(ABC):
 
-
     @abstractmethod
-    def save(self, prediction: dto.Prediction): #как вариант можно переделать на List[dto.Prediction] чтоб сохранять сразу все предсказания
+    def save(self, prediction: dto.Prediction):  # как вариант можно переделать на List[dto.Prediction] чтоб сохранять сразу все предсказания
         ...

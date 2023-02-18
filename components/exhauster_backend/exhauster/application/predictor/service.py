@@ -1,8 +1,9 @@
 from datetime import datetime
 from typing import List, Dict
 
-import pandas as pd
 import numpy as np
+import pandas as pd
+import pmdarima as pm
 from classic.app import DTO
 
 from exhauster.application import interfaces
@@ -35,17 +36,25 @@ class Predictor(interfaces.PredictService):
     прогнозирует когда эксгаустер выйдет из строя
     """
 
-    def predict(self, actual_data: ActualDataTable) -> Prediction:
+    def predict(self, actual_data: ActualDataTable, arima=False) -> Prediction:
         vibrations_data, warnings = self._dto_to_dataframe(actual_data)
         rolled_data = self._rolling_data(vibrations_data)
 
-        expressions_dict = self._get_linear_expressions(rolled_data)
-        failure_days_by_col = self._calc_failure_days(expressions_dict, warnings)
+        if arima:
+            failure_days_by_col = self._calc_failure_days_arima(
+                rolled_data, warnings
+            )
+        else:
+            expressions_dict = self._get_linear_expressions(rolled_data)
+            failure_days_by_col = self._calc_failure_days(
+                expressions_dict, warnings
+            )
+
         days_to_failure = min(failure_days_by_col.values())
         prediction = Prediction(
             exhauster_id=actual_data.exhauster_id,
             days_to_failure=days_to_failure,
-            message=str(days_to_failure) if days_to_failure <= 25 else '>25'
+            message=str(days_to_failure) if days_to_failure <= 30 else '>30'
         )
         return prediction
 
@@ -83,6 +92,23 @@ class Predictor(interfaces.PredictService):
                 days_wo_failure = i
 
         return int(days_wo_failure / day_step)
+
+    def _calc_failure_days_arima(self, df, warnings):
+        # 1440 - день в минутах
+        day_step = int(1440 / Settings.RESAMPLE_WINDOW_MINUTES)
+        # глубина прогноза - 30 дней
+        depth_prediction = 30 * day_step
+
+        failures_dict = dict()
+        for col in df.columns:
+            model = pm.auto_arima(df[col], seasonal=False)
+            preds = model.predict(depth_prediction)
+            # берем крайний день, когда только выпали по предупреждению и
+            # берем -1 день как наработку
+            failures_dict[col] = preds[preds >= warnings[col]].index.min() - 1
+
+        return failures_dict
+
 
     @staticmethod
     def _rolling_data(df: pd.DataFrame):
