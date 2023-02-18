@@ -1,10 +1,11 @@
 from typing import List
+
 from classic.components import component
 from spectree import Response
 from spectree.models import Tag
 
-from exhauster.application.dashboard import services
 from exhauster.application import entities
+from exhauster.application.dashboard import services
 
 from .join_points import join_point
 from .models import TestRequest, TestResponse
@@ -28,7 +29,8 @@ class Dashboard:
             {
                 'number': exhauster.number,
                 'aglomachine': exhauster.aglomachine.value,
-                'name': 'Эксгаустер Ф-172',
+                'name': exhauster.name,
+                'is_active': exhauster.is_active,
                 'rotor_name': 'Ротор № 24',
                 'rotor_last_change': '2023-02-13T10:00:00.00',
                 'rotor_next_change': '2023-02-23T10:00:00.00',

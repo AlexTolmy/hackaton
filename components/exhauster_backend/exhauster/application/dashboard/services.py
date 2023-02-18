@@ -8,6 +8,7 @@ from classic.messaging import Message, Publisher
 from pydantic import validate_arguments
 
 from exhauster.application import entities, interfaces
+
 from . import dto
 
 join_points = PointCut()

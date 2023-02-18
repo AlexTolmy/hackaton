@@ -3,8 +3,10 @@ from typing import List, Optional
 from classic.components import component
 from classic.sql_storage import BaseRepository
 from sqlalchemy import select
+
 from exhauster.application import interfaces
 from exhauster.application.dashboard import dto
+
 from . import tables
 
 
@@ -24,7 +26,7 @@ class ExhausterRepo(BaseRepository, interfaces.ExhausterRepo):
                 dto.Exhauster(
                     id=row.id,
                     number=row.number,
-                    name=row.number,
+                    name=row.name,
                     aglomachine=row.aglomachine
                 )
             )

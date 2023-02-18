@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import List
 
-from exhauster.application.predictor import dto
 from exhauster.application.dashboard import dto as dashboard_dto
+from exhauster.application.predictor import dto
 
 
 class PredictService(ABC):
