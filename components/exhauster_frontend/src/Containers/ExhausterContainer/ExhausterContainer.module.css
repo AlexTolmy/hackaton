@@ -135,3 +135,49 @@
 .activity_indicator:global(.isActive) {
   background-color: var(--color-red-6-corporate);
 }
+
+/*ExhausterScheme*/
+.fill {
+  fill: var(--color-gray-5);
+}
+
+.fill:global(.warning) {
+  fill: var(--color-yellow-4);
+}
+
+.fill:global(.critical) {
+  fill: var(--color-red-2);
+  animation: blink-animation 1s steps(5, start) infinite;
+  -webkit-animation: blink-animation 1s steps(5, start) infinite;
+}
+
+.hover {
+  fill: var(--color-yellow-7-corporate);
+  stroke: var(--color-yellow-7-corporate);
+}
+
+.fill_contrast {
+  fill: var(--color-gray-6);
+}
+
+.fill_contrast:global(.warning) {
+  fill: var(--color-yellow-8);
+}
+
+.fill_contrast:global(.critical) {
+  fill: var(--color-red-5);
+  animation: blink-animation 1s steps(5, start) infinite;
+  -webkit-animation: blink-animation 1s steps(5, start) infinite;
+}
+
+.stroke {
+  stroke: var(--color-gray-8);
+}
+
+.stroke:global(.warning) {
+  stroke: var(--color-yellow-8);
+}
+
+.stroke:global(.critical) {
+  stroke: var(--color-red-5);
+}

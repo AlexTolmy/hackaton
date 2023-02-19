@@ -1,6 +1,34 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import clsx from 'clsx';
 
-function ExhausterScheme() {
+import {
+  getExhausterHoveredSensors,
+  getExhausterSensorsData,
+} from '../../Store/reducers/exhaustersMonitorReducer';
+
+import styles from './ExhausterContainer.module.css';
+
+type ExhausterSchemeProps = {
+  exhausterName: string;
+};
+
+function ExhausterScheme(props: ExhausterSchemeProps) {
+  const { exhausterName } = props;
+  const [
+    sensor1,
+    sensor2,
+    sensor3,
+    sensor4,
+    sensor5,
+    sensor6,
+    sensor7,
+    sensor8,
+    sensor9,
+  ] = useSelector(getExhausterSensorsData(exhausterName));
+
+  const hovered = useSelector(getExhausterHoveredSensors(exhausterName));
+
   return (
     <svg viewBox="0 0 260 139" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect
@@ -65,8 +93,9 @@ function ExhausterScheme() {
         width="21"
         height="16"
         rx="0.757583"
-        fill="#414F4F"
-        stroke="#8D9595"
+        className={clsx(styles.fill, styles.stroke, {
+          [styles.hover]: hovered[sensor4.sensorName],
+        })}
         strokeWidth="2"
         mask="url(#path-14-inside-1_392_14199)"
       />
@@ -79,8 +108,9 @@ function ExhausterScheme() {
         width="21"
         height="16"
         rx="0.757583"
-        fill="#414F4F"
-        stroke="#8D9595"
+        className={clsx(styles.fill, styles.stroke, {
+          [styles.hover]: hovered[sensor6.sensorName],
+        })}
         strokeWidth="2"
         mask="url(#path-15-inside-2_392_14199)"
       />
@@ -93,8 +123,9 @@ function ExhausterScheme() {
         width="21"
         height="16"
         rx="0.757583"
-        fill="#414F4F"
-        stroke="#8D9595"
+        className={clsx(styles.fill, styles.stroke, {
+          [styles.hover]: hovered[sensor3.sensorName],
+        })}
         strokeWidth="2"
         mask="url(#path-16-inside-3_392_14199)"
       />
@@ -107,8 +138,9 @@ function ExhausterScheme() {
         width="21"
         height="16"
         rx="0.757583"
-        fill="#414F4F"
-        stroke="#8D9595"
+        className={clsx(styles.fill, styles.stroke, {
+          [styles.hover]: hovered[sensor5.sensorName],
+        })}
         strokeWidth="2"
         mask="url(#path-17-inside-4_392_14199)"
       />
@@ -149,8 +181,10 @@ function ExhausterScheme() {
         width="10"
         height="18"
         rx="0.757583"
-        fill="#414F4F"
-        stroke="#8D9595"
+        className={clsx(styles.fill, styles.stroke, {
+          [styles.hover]:
+            hovered[sensor8.sensorName] || hovered[sensor9.sensorName],
+        })}
         strokeWidth="2"
         mask="url(#path-24-inside-5_392_14199)"
       />
@@ -191,8 +225,9 @@ function ExhausterScheme() {
         width="10"
         height="18"
         rx="0.757583"
-        fill="#414F4F"
-        stroke="#8D9595"
+        className={clsx(styles.fill, styles.stroke, {
+          [styles.hover]: hovered[sensor7.sensorName],
+        })}
         strokeWidth="2"
         mask="url(#path-31-inside-6_392_14199)"
       />
@@ -230,8 +265,9 @@ function ExhausterScheme() {
         width="10"
         height="18"
         rx="0.757583"
-        fill="#414F4F"
-        stroke="#8D9595"
+        className={clsx(styles.fill, styles.stroke, {
+          [styles.hover]: hovered[sensor2.sensorName],
+        })}
         strokeWidth="2"
         mask="url(#path-38-inside-7_392_14199)"
       />
@@ -269,8 +305,9 @@ function ExhausterScheme() {
         width="10"
         height="18"
         rx="0.757583"
-        fill="#414F4F"
-        stroke="#8D9595"
+        className={clsx(styles.fill, styles.stroke, {
+          [styles.hover]: hovered[sensor1.sensorName],
+        })}
         strokeWidth="2"
         mask="url(#path-45-inside-8_392_14199)"
       />
