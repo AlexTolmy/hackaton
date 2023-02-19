@@ -10,7 +10,7 @@ from .client import InfluxClient
 @component
 class StorageDB:
     influxdb_client: InfluxClient
-    start: str = '-10d'
+    start: str = '-10m'
 
     def get_vibrations(self, exhauster_id: str, bearing_id: str, start):
         query_api, bucket = self.influxdb_client.create_reader()
