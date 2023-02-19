@@ -1,10 +1,12 @@
 /* eslint-disable react/display-name */
 /* eslint-disable func-names */
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
+import { useDispatch } from 'react-redux';
 
 import Table from '../../Components/Table';
 import renderDefaultText from '../../Components/Table/components/DefaultText';
 import { renderIndicators } from '../../Components/Table/components/Indicator';
+import { setSensorHoverState } from '../../Store/reducers/exhaustersMonitorReducer';
 import getTranslation from '../../Utils/getTranslation';
 
 import {
@@ -24,6 +26,13 @@ type ExhausterSensorsProps = {
 
 function ExhausterSensors(props: ExhausterSensorsProps) {
   const { exhausterName, sensors } = props;
+  const dispatch = useDispatch();
+
+  const handleHover = useCallback(
+    (sensorName, isHovered) => () =>
+      dispatch(setSensorHoverState({ exhausterName, sensorName, isHovered })),
+    [dispatch, exhausterName],
+  );
 
   const tableData = useMemo(() => {
     const columns = SENSORS_TABLE_COLUMNS.map((column) => ({
@@ -50,7 +59,11 @@ function ExhausterSensors(props: ExhausterSensorsProps) {
             )
           ) {
             sectionResult.rows.push({
-              sensorName: renderDefaultText(sensorName),
+              sensorName: renderDefaultText(
+                sensorName,
+                handleHover(sensorName, true),
+                handleHover(sensorName, false),
+              ),
               indicators: renderIndicators(sensorName, sensor.indicators),
             });
           }
@@ -70,7 +83,11 @@ function ExhausterSensors(props: ExhausterSensorsProps) {
             )
           ) {
             sectionResult.rows.push({
-              sensorName: renderDefaultText(sensorName),
+              sensorName: renderDefaultText(
+                sensorName,
+                handleHover(sensorName, true),
+                handleHover(sensorName, false),
+              ),
               indicators: renderIndicators(sensorName, sensor.indicators),
             });
           }
@@ -81,16 +98,12 @@ function ExhausterSensors(props: ExhausterSensorsProps) {
     });
 
     return { columns, data };
-  }, [sensors]);
+  }, [handleHover, sensors]);
 
   return (
     <div className={styles.exhauster_sensors}>
-      <ExhausterScheme />
-      <Table
-        columns={tableData.columns}
-        data={tableData.data}
-        primaryKey={exhausterName}
-      />
+      <ExhausterScheme exhausterName={exhausterName} />
+      <Table columns={tableData.columns} data={tableData.data} />
     </div>
   );
 }

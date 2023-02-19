@@ -37,10 +37,9 @@ class ExhausterRepo(BaseRepository, interfaces.ExhausterRepo):
 
     def get(self, number: str) -> dto.Exhauster:
         stmt = select(tables.exhausters
-                      ).where(tables.exhausters.c.number == number
-                              ).one_or_none()
+                      ).where(tables.exhausters.c.number == number).limit(1)
 
-        result = self.session.execute(stmt)
+        result = self.session.execute(stmt).one_or_none()
         if result:
             return dto.Exhauster(
                 id=result.id,

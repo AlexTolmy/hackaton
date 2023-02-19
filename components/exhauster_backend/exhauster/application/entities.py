@@ -1,6 +1,7 @@
 from dataclasses import dataclass
+from datetime import datetime
 from enum import Enum
-from typing import List, Optional, Sequence
+from typing import Dict, List, Optional, Sequence
 
 
 class IndicatorState(Enum):
@@ -115,9 +116,17 @@ class OilSystem:
 
     @property
     def indicators(self) -> Sequence['Indicator']:
-        yield Indicator(
-            variant=IndicatorVariant.OIL, state=IndicatorState.DEFAULT
-        )
+        yield Indicator(variant=IndicatorVariant.OIL, state=self.state)
+
+    @property
+    def state(self) -> IndicatorState:
+        if self.level is None:
+            return IndicatorState.NODATA
+
+        if self.level >= 30:
+            return IndicatorState.CRITICAL
+
+        return IndicatorState.DEFAULT
 
 
 @dataclass
@@ -150,6 +159,13 @@ class Sensor:
 
 
 @dataclass
+class Rotor:
+    name: str
+    installed_at: datetime
+    stop_at: datetime
+
+
+@dataclass
 class Exhauster:
     id: int
     name: str
@@ -162,6 +178,7 @@ class Exhauster:
     gate_position: bool
     main_drive: MainDrive
     oil_system: OilSystem
+    rotor: Rotor
 
     @property
     def sensors(self) -> Sequence[Sensor]:

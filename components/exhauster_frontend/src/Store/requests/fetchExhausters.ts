@@ -4,11 +4,16 @@ import { putResolve } from 'redux-saga/effects';
 import { createAction } from 'redux-smart-actions';
 
 import fetchExhaustersRequestAdapter from '../../Adapters/fetchExhaustersRequestAdapter';
+import { IndicatorState } from '../../Containers/ExhausterContainer/ExhausterContainer.interface';
+import addBreakLines from '../../Utils/addBreakLines';
 import {
   setExhaustersAction,
   setLastUpdateDateAction,
   setSensorsDataUpdateDate,
 } from '../reducers/exhaustersMonitorReducer';
+import { addNotification } from '../reducers/notificationReducer';
+import { ExhausterType } from '../types/ExhaustersMonitorReducerType';
+import { NotificationType } from '../types/NotificationReducerType';
 
 import { createErrorNotification } from './utils';
 
@@ -21,7 +26,11 @@ function fetchExhaustersRequest(sensorDate?: Date): RequestAction {
     },
     meta: {
       getData: fetchExhaustersRequestAdapter,
-      onSuccess: (response, action, store) => {
+      onSuccess: (
+        response: { data: Record<string, ExhausterType> },
+        action,
+        store,
+      ) => {
         store.dispatch(setExhaustersAction(response.data));
 
         store.dispatch(
@@ -34,12 +43,34 @@ function fetchExhaustersRequest(sensorDate?: Date): RequestAction {
           store.dispatch(setLastUpdateDateAction(sensorDate));
         }
 
+        let message = '';
+
+        Object.values(response.data).forEach((item) => {
+          item.sensors.forEach((sensor) => {
+            sensor.indicators.forEach((indicator) => {
+              if (indicator.state === IndicatorState.Critical) {
+                message += `${item.exhausterName}: ${sensor.sensorName}: ${indicator.variant}: ${indicator.state}\n\n`;
+              }
+            });
+          });
+        });
+
+        if (message) {
+          store.dispatch(
+            addNotification({
+              message: addBreakLines(message),
+              type: NotificationType.Error,
+            }),
+          );
+        }
+
         return response;
       },
       onError: (error, requestAction, store) => {
         createErrorNotification(store.dispatch, error);
         throw error;
       },
+      takeLatest: true,
     },
   };
 }

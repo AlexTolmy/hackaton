@@ -3,14 +3,14 @@ from classic.components import component
 from exhauster.application import entities, sensors
 from exhauster.application.predictor.dto import VibrationValue
 
-from ...application.sensors import CoolerTypeTag, Measurement
+from exhauster.application.sensors import CoolerTypeTag, Measurement
 from .client import InfluxClient
 
 
 @component
 class StorageDB:
     influxdb_client: InfluxClient
-    start: str = '-10m'
+    start: str = '-2m'
 
     def get_vibrations(self, exhauster_id: str, bearing_id: str, start):
         query_api, bucket = self.influxdb_client.create_reader()
@@ -123,8 +123,8 @@ class StorageDB:
             result[row.values['_field']] = row.get_value()
         if result:
             return entities.Temperature(
-                after=result.pop('temperature_after'),
-                before=result.pop('temperature_before')
+                after=result.pop('temperature_after', None),
+                before=result.pop('temperature_before', None)
             )
 
     def get_gas_collector_temperature(self, exhauster_id: str) -> float:
@@ -203,6 +203,6 @@ class StorageDB:
         )
 
         result = [row.get_value() for row in rows]
-        print(result)
         if result:
             return bool(result[0])
+        return False

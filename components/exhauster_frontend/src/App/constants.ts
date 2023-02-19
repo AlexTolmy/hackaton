@@ -10,7 +10,7 @@ export const breadcrumbsRoutes = [
   {
     path: NavigationEndpoint.ExhausterScheme,
     breadcrumb: AppCustomBreadcrumb,
-    props: { displayName: '/Состояние экгаустера' },
+    props: { displayName: '' },
   },
 ];
 

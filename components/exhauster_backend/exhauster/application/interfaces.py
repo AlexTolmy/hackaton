@@ -3,7 +3,6 @@ from typing import List, Tuple
 
 from exhauster.application.dashboard import dto as dashboard_dto
 from exhauster.application.predictor import dto
-from exhauster.application.dashboard import dto as dash_dto
 
 
 class PredictService(ABC):
@@ -51,5 +50,5 @@ class ExhausterRepo(ABC):
         ...
 
     @abstractmethod
-    def get(self, number: str) -> dash_dto.Exhauster:
+    def get(self, number: str) -> dashboard_dto.Exhauster:
         ...
