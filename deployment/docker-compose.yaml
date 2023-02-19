@@ -19,10 +19,14 @@ services:
       - API_PORT=8000
       - API_LOG_LEVEL=debug
       - SWAGGER_ON=true
-      - INFLUXDB_TOKEN=${INFLUX_TOKEN}
-      - INFLUXDB_ORGANIZATION=dev
-      - INFLUXDB_URL=https://eu-central-1-1.aws.cloud2.influxdata.com
-      - INFLUXDB_BUCKET=${INFLUXDB_BUCKET_NAME}
+      # - INFLUXDB_TOKEN=${INFLUX_TOKEN}
+      # - INFLUXDB_ORGANIZATION=dev
+      # - INFLUXDB_URL=https://eu-central-1-1.aws.cloud2.influxdata.com
+      # - INFLUXDB_BUCKET=${INFLUXDB_BUCKET_NAME}
+      - INFLUXDB_TOKEN=${INFLUX_LOCAL_TOKEN}
+      - INFLUXDB_ORGANIZATION=hackaton
+      - INFLUXDB_URL=http://influxdb:8086
+      - INFLUXDB_BUCKET=${INFLUXDB_BUCKET_NAME}_local
     ports:
       - 8000:8000
     depends_on:
@@ -63,10 +67,14 @@ services:
     restart: always
     entrypoint: entrypoint_prediction.sh
     environment:
-      - INFLUXDB_TOKEN=${INFLUX_TOKEN}
-      - INFLUXDB_ORGANIZATION=dev
-      - INFLUXDB_URL=https://eu-central-1-1.aws.cloud2.influxdata.com
-      - INFLUXDB_BUCKET=${INFLUXDB_BUCKET_NAME}
+      # - INFLUXDB_TOKEN=${INFLUX_TOKEN}
+      # - INFLUXDB_ORGANIZATION=dev
+      # - INFLUXDB_URL=https://eu-central-1-1.aws.cloud2.influxdata.com
+      # - INFLUXDB_BUCKET=${INFLUXDB_BUCKET_NAME}
+      - INFLUXDB_TOKEN=${INFLUX_LOCAL_TOKEN}
+      - INFLUXDB_ORGANIZATION=hackaton
+      - INFLUXDB_URL=http://influxdb:8086
+      - INFLUXDB_BUCKET=${INFLUXDB_BUCKET_NAME}_local
       - DATABASE_USER=hackaton_backend
       - DATABASE_PASSWORD=${DB_PASS}
       - DATABASE_HOST=hackaton-postgres-do-user-13570410-0.b.db.ondigitalocean.com
