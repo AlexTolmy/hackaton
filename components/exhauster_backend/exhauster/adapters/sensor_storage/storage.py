@@ -204,6 +204,6 @@ class StorageDB:
         )
 
         result = [row.get_value() for row in rows]
-        print(result)
         if result:
             return bool(result[0])
+        return False

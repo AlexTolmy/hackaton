@@ -9,6 +9,7 @@ class Exhauster:
     name: str
     aglomachine: str
 
+
 @attr.dataclass
 class Rotor:
     installed_at: datetime

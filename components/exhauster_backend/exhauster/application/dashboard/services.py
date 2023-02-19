@@ -18,8 +18,6 @@ join_points = PointCut()
 join_point = join_points.join_point
 
 
-
-
 @component
 class ExhausterService:
 
@@ -33,7 +31,7 @@ class ExhausterService:
 
     @join_point
     def get_rotor(self, exhauster: dto.Exhauster) -> dto.Rotor:
-        rotor_dto =  self.rotor_repo.get(exhauster_id=exhauster.id)
+        rotor_dto = self.rotor_repo.get(exhauster_id=exhauster.id)
         prediction = self.rotor_repo.get_prediction(exhauster_id=exhauster.id)
 
         return entities.Rotor(
@@ -62,9 +60,11 @@ class ExhausterService:
             number=int(exhauster_dto.number),
             aglomachine=entities.Aglomachine(exhauster_dto.aglomachine),
             bearing=list(self._create_bearing(exhauster_dto.number)),
-            cooler=None,
+            cooler=cooler,
             gas_collector=None,
-            is_active=True,
+            is_active=self.storage.get_exhauster_is_work(
+                exhauster_id=exhauster_dto.number
+            ),
             gate_position=True,
             main_drive=None,
             oil_system=entities.OilSystem(
@@ -240,8 +240,11 @@ class ExhausterService:
 
     def _get_cooler(self, exhauster_id: str) -> entities.Cooler:
 
-        oil = self.storage.get_cooler_temperature(exhauster_id=exhauster_id, cooler_type=sensors.CoolerTypeTag.oil)
-        water = self.storage.get_cooler_temperature(exhauster_id=exhauster_id, cooler_type=sensors.CoolerTypeTag.water)
+        oil = self.storage.get_cooler_temperature(
+            exhauster_id=exhauster_id, cooler_type=sensors.CoolerTypeTag.oil
+        )
+        water = self.storage.get_cooler_temperature(
+            exhauster_id=exhauster_id, cooler_type=sensors.CoolerTypeTag.water
+        )
 
         return entities.Cooler(oil=oil, water=water)
-

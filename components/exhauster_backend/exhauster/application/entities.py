@@ -3,6 +3,7 @@ from datetime import datetime
 from enum import Enum
 from typing import List, Optional, Sequence
 
+
 class IndicatorState(Enum):
     DEFAULT = 'default'
     WARNING = 'warning'
@@ -147,11 +148,14 @@ class Indicator:
 class Sensor:
     name: str
     indicators: Sequence[Indicator]
+
+
 @dataclass
 class Rotor:
     name: str
     installed_at: datetime
     stop_at: datetime
+
 
 @dataclass
 class Exhauster:

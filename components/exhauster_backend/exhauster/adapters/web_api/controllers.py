@@ -33,7 +33,8 @@ class Dashboard:
                 'is_active': exhauster.is_active,
                 'rotor_name': exhauster.rotor.name,
                 'rotor_last_change': exhauster.rotor.installed_at.isoformat(),
-                'rotor_next_change': exhauster.rotor.stop_at.isoformat() if exhauster.rotor.stop_at else None,
+                'rotor_next_change': exhauster.rotor.stop_at.isoformat()
+                if exhauster.rotor.stop_at else None,
                 'sensors': list(self._sensors(exhauster))
             } for exhauster in exhausters
         ]
