@@ -50,9 +50,18 @@ class ExhausterService:
 
     def get(self, number: str) -> entities.Exhauster:
 
-        exhauster = self.exhausters_repo.get(number)
-
-        return self._create_exhauster(exhauster)
+        exhauster_dto = self.exhausters_repo.get(number)
+        exhauster = self._create_exhauster(exhauster_dto)
+        exhauster.oil_system = self.storage.get_oil_system(exhauster.number)
+        exhauster.gas_collector = entities.GasCollector(
+            temperature_before=self.storage.get_gas_collector_temperature(
+                exhauster_dto.number
+            ),
+            under_pressure_before=self.storage.get_gas_collector_under_pressure(
+                exhauster_dto.number
+            )
+        )
+        return exhauster
 
     def _create_exhauster(
         self, exhauster_dto: dto.Exhauster

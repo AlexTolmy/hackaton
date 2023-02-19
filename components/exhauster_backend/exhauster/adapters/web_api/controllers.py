@@ -45,6 +45,7 @@ class Dashboard:
         exhauster = self.service.get(number=query.number)
 
         response.media = {
+            'name': exhauster.name,
             'psSensors': [
                 self._one_sensor(bearing)
                 for bearing in exhauster.bearing
@@ -52,22 +53,22 @@ class Dashboard:
             ],
             'oreInput': {
                 'gasTemp': {
-                    'value': 67,
+                    'value': exhauster.gas_collector.temperature_before,
                     'state': 'default'
                 },
-                'discharge': '74.3',
+                'discharge': exhauster.gas_collector.under_pressure_before,
                 'dustLevel': '15',
             },
             'smokePipeState': 45,
             'oilTank': {
-                'value': 67,
+                'value': exhauster.oil_system.level,
                 'state': 'default'
             },
             'cooler': {
-                'oilTankTemp': '233',
-                'inputTemp': '234',
-                'outputTemp': '235',
-                'mainDriveTemp': '236',
+                'oilTankTemp': exhauster.cooler.oil.after,
+                'inputTemp': exhauster.cooler.oil.before,
+                'outputTemp': exhauster.cooler.water.after,
+                'mainDriveTemp': exhauster.cooler.water.before,
             },
             'mainDrive': {
                 'oilPressure': {

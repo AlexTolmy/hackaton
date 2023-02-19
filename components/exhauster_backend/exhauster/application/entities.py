@@ -116,9 +116,17 @@ class OilSystem:
 
     @property
     def indicators(self) -> Sequence['Indicator']:
-        yield Indicator(
-            variant=IndicatorVariant.OIL, state=IndicatorState.DEFAULT
-        )
+        yield Indicator(variant=IndicatorVariant.OIL, state=self.state)
+
+    @property
+    def state(self) -> IndicatorState:
+        if self.level is None:
+            return IndicatorState.NODATA
+
+        if self.level >= 30:
+            return IndicatorState.CRITICAL
+
+        return IndicatorState.DEFAULT
 
 
 @dataclass
