@@ -56,6 +56,26 @@ services:
         condition: service_healthy
       rabbitmq:
         condition: service_healthy
+
+  prediction:
+    image: ${BACKEND_IMAGE}
+    container_name: prediction
+    restart: always
+    entrypoint: entrypoint_prediction.sh
+    environment:
+      - INFLUXDB_TOKEN=${INFLUX_TOKEN}
+      - INFLUXDB_ORGANIZATION=dev
+      - INFLUXDB_URL=https://eu-central-1-1.aws.cloud2.influxdata.com
+      - INFLUXDB_BUCKET=${INFLUXDB_BUCKET_NAME}
+      - DATABASE_USER=hackaton_backend
+      - DATABASE_PASSWORD=${DB_PASS}
+      - DATABASE_HOST=hackaton-postgres-do-user-13570410-0.b.db.ondigitalocean.com
+      - DATABASE_PORT=25060
+      - DATABASE_NAME=${DB_NAME}
+    depends_on:
+      influxdb:
+        condition: service_healthy
+
   frontend:
     image: ${FRONTEND_IMAGE}
     container_name: frontend
