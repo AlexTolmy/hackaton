@@ -11,6 +11,7 @@ rectangle prod{
     [kafka consumer] as kafka_c
 }
 [kafka producer] as kafka_p
+(kafka) as kafka
 
 cloud "cloud"{
     database postgresql as psql
@@ -21,7 +22,9 @@ api <--> ui
 api <--> psql
 api <-- influx
 psql <--> predictor
+predictor <-- influx
 kafka_c --> influx
-kafka_p --> kafka_c
+kafka_p --> kafka
+kafka --> kafka_c
 
 @enduml
