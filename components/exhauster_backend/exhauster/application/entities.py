@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 from enum import Enum
-from typing import List, Optional, Sequence
+from typing import Dict, List, Optional, Sequence
 
 
 class IndicatorState(Enum):
