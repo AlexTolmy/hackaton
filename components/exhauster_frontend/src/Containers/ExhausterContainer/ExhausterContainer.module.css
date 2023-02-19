@@ -130,10 +130,11 @@
   height: 1em;
   background-color: var(--color-brand-green);
   border-radius: 50%;
+  background-color: var(--color-red-6-corporate);
 }
 
 .activity_indicator:global(.isActive) {
-  background-color: var(--color-red-6-corporate);
+  background-color: var(--color-brand-green);
 }
 
 /*ExhausterScheme*/
