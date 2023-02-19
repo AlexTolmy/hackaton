@@ -10,7 +10,8 @@ from .spec import setup_spectree
 
 def create_app(
     swagger_settings: SwaggerSettings, allow_origins,
-    exhauster_service: services.ExhausterService
+    exhauster_service: services.ExhausterService,
+    graphic_service: services.GraphicService,
 ) -> App:
 
     cors_middleware = falcon.CORSMiddleware(
@@ -21,6 +22,7 @@ def create_app(
     app = App(middleware=middleware, prefix='/api')
 
     app.register(controllers.Dashboard(service=exhauster_service))
+    app.register(controllers.Graphics(service=graphic_service))
 
     if swagger_settings.ON:
         setup_spectree(

@@ -21,7 +21,6 @@ class Logger:
 
 
 class DB:
-
     engine = create_engine(Settings.db.DATABASE_URL)
     context = TransactionContext(bind=engine, expire_on_commit=False)
     exhausters_repo = database.repositories.ExhausterRepo(context=context)
@@ -44,6 +43,9 @@ class Application:
         storage=Storage.storage_db,
         rotor_repo=DB.rotor_repo
     )
+    graphic_service = services.GraphicService(
+        exhausters_repo=DB.exhausters_repo, storage=Storage.storage_db
+    )
 
 
 class Aspects:
@@ -54,5 +56,6 @@ class Aspects:
 app = web_api.create_app(
     swagger_settings=Settings.web_api.SWAGGER,
     allow_origins=Settings.web_api.ALLOW_ORIGINS,
-    exhauster_service=Application.exhausers_service
+    exhauster_service=Application.exhausers_service,
+    graphic_service=Application.graphic_service
 )

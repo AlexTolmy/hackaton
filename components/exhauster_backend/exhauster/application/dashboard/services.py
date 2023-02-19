@@ -1,12 +1,9 @@
 import random
-from typing import List, Optional, Tuple
+from datetime import datetime
+from typing import List, Optional
 
-from classic.app import DTO, validate_with_dto
 from classic.aspects import PointCut
 from classic.components import component
-from classic.messaging import Message, Publisher
-from pydantic import validate_arguments
-
 from exhauster.adapters import sensor_storage
 from exhauster.adapters.database import dashboard
 from exhauster.application import entities, interfaces, constants
@@ -20,7 +17,6 @@ join_point = join_points.join_point
 
 @component
 class ExhausterService:
-
     exhausters_repo: interfaces.ExhausterRepo
     rotor_repo: dashboard.RotorRepo
     storage: sensor_storage.StorageDB
@@ -263,3 +259,32 @@ class ExhausterService:
         )
 
         return entities.Cooler(oil=oil, water=water)
+
+
+@component
+class GraphicService:
+    exhausters_repo: interfaces.ExhausterRepo
+    storage: sensor_storage.StorageDB
+
+    def get_lines(self, start: datetime, stop: datetime, filter: Optional[List['str']]):
+        start_ = int(round(start.timestamp()))
+        stop_ = int(round(stop.timestamp()))
+        result = [
+
+        ]
+        for exhauster_number in ['1', '2', '3', '4', '5', '6']:
+            result.append(
+                dto.GrapicParams(
+                    exhauster_id=exhauster_number,
+                    exhauster_name=
+                )
+            )
+
+
+        dto.Indicator
+        dto.GrapicParams
+
+
+
+    def get_sensors(self):
+        return

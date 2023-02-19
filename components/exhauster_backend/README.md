@@ -11,9 +11,6 @@ python -m exhauster.composites.alembic_runner revision --autogenerate -m "Added 
 Добавить пользователя в группу БД postgres
 ALTER GROUP backend ADD USER username;
 
-Запуск API 
-gunicorn -b 127.0.0.1:8000 exhauster.composites.web_api:app --log-level='debug'
-
 ### Все необходимые переменные окружения находятся в файле .env.example
 
 
@@ -24,3 +21,14 @@ pip install python_libs/spectree-1.0.3.tar.gz
 
 #### Путь до документации:
 `/apidoc/swagger`
+
+Запуск проекта, проект моно запустить используюя deployment/docker-compose.yml
+
+так же команды для локального запуска проекта:
+python -m exhauster.composites.etl - etl
+gunicorn -b 127.0.0.1:8001 exhauster.composites.web_api:app - api
+python -m exhauster.composites.prediction - prediction service
+
+так же для проекта требуется поднять rabbit и influx, бд postgress 
+
+примеры переменных окружения лежат в .env.exaples

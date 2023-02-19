@@ -7,7 +7,8 @@ from spectree.models import Tag
 from exhauster.application import entities
 from exhauster.application.dashboard import services
 
-from .models import ExhausterRequest
+from .models import ExhausterRequest, LinesRequest
+from .join_points import join_point
 from .spec import spectree
 
 tags = (Tag(name='заголовок'), )
@@ -120,3 +121,25 @@ class Dashboard:
                     } for indicator in sensor.indicators
                 ]
             }
+
+@component
+class Graphics:
+    service: services.GraphicService
+
+    @join_point
+    @spectree.validate(
+        tags=tags
+    )
+    def on_get_sensors(self, request, response):
+        self.service.get_sensors()
+        return
+
+    @join_point
+    @spectree.validate(
+        query=LinesRequest, tags=tags,
+    )
+    def on_get_lines(self, request, response):
+        query: LinesRequest = request.context.query
+        self.service.get_lines(**query.dict(exclude_none=True))
+
+        return

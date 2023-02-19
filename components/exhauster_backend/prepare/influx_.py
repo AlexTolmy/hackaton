@@ -69,7 +69,7 @@ def create_point(signal, value_, time_):
     point = Point(signal['measurement_name']
                   ).field(signal['field_name'], value_).time(time_)
     return point
-
+timestamp = int(round(datetime.datetime.utcnow().timestamp()))
 
 points_prepare = []
 with open('data.csv', newline='') as csvfile:
