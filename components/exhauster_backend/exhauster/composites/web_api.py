@@ -38,7 +38,7 @@ class Storage:
 
 class Application:
     exhausers_service = services.ExhausterService(
-        exhausters_repo=DB.exhausters_repo
+        exhausters_repo=DB.exhausters_repo, storage=Storage.storage_db
     )
 
 

@@ -7,6 +7,7 @@ class IndicatorState(Enum):
     DEFAULT = 'default'
     WARNING = 'warning'
     CRITICAL = 'critical'
+    NODATA = 'nodata'
 
 
 class IndicatorVariant(Enum):
@@ -18,20 +19,24 @@ class IndicatorVariant(Enum):
 STATE_PRIORITET = {
     IndicatorState.CRITICAL: 3,
     IndicatorState.WARNING: 2,
-    IndicatorState.DEFAULT: 1
+    IndicatorState.DEFAULT: 1,
+    IndicatorState.NODATA: 0
 }
 
 
 @dataclass
 class ParamsSetpoint:
-    value: float
-    alarm_max: float
-    alarm_min: float
-    warning_max: float
-    warning_min: float
+    value: Optional[float] = None
+    alarm_max: Optional[float] = None
+    alarm_min: Optional[float] = None
+    warning_max: Optional[float] = None
+    warning_min: Optional[float] = None
 
     @property
     def state(self) -> IndicatorState:
+
+        if self.value is None:
+            return IndicatorState.NODATA
 
         if self.value <= self.alarm_min or self.value >= self.alarm_max:
             return IndicatorState.CRITICAL

@@ -25,7 +25,7 @@ class ExhausterRepo(BaseRepository, interfaces.ExhausterRepo):
             exhausters.append(
                 dto.Exhauster(
                     id=row.id,
-                    number=row.number,
+                    number=str(row.number),
                     name=row.name,
                     aglomachine=row.aglomachine
                 )
