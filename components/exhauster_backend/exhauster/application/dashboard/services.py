@@ -8,8 +8,8 @@ from classic.messaging import Message, Publisher
 from pydantic import validate_arguments
 
 from exhauster.adapters import sensor_storage
-from exhauster.application import entities, interfaces
-from exhauster.application.sensors import VibrationTypeTag
+from exhauster.application import entities, interfaces, constants
+from exhauster.application import sensors
 
 from . import dto
 
@@ -17,18 +17,6 @@ join_points = PointCut()
 join_point = join_points.join_point
 
 
-class TEMPERATURE_SET_DEFAULT:
-    ALARM_MAX = 75
-    ALARM_MIN = 0
-    WARN_MAX = 65
-    WARN_MIN = 0
-
-
-class VIBRATION_SET_DEFAULT:
-    ALARM_MAX = 7.099999904632568
-    ALARM_MIN = 0
-    WARN_MAX = 4.5
-    WARN_MIN = 0
 
 
 @component
@@ -38,7 +26,7 @@ class ExhausterService:
     storage: sensor_storage.StorageDB
 
     @join_point
-    def get_all(self) -> List[dto.Exhauster]:
+    def get_all(self) -> List[entities.Exhauster]:
 
         exchauster_dtos = self.exhausters_repo.all()
 
@@ -49,6 +37,8 @@ class ExhausterService:
     def _create_exhauster(
         self, exhauster_dto: dto.Exhauster
     ) -> entities.Exhauster:
+
+        cooler = self._get_cooler(exhauster_dto.number)
 
         return entities.Exhauster(
             id=exhauster_dto.id,
@@ -200,13 +190,13 @@ class ExhausterService:
         )
 
         if point.alarm_max is None:
-            point.alarm_max = TEMPERATURE_SET_DEFAULT.ALARM_MAX
+            point.alarm_max = constants.TEMPERATURE_SET_DEFAULT.ALARM_MAX
         if point.alarm_min is None:
-            point.alarm_min = TEMPERATURE_SET_DEFAULT.ALARM_MIN
+            point.alarm_min = constants.TEMPERATURE_SET_DEFAULT.ALARM_MIN
         if point.warning_max is None:
-            point.warning_max = TEMPERATURE_SET_DEFAULT.WARN_MIN
+            point.warning_max = constants.TEMPERATURE_SET_DEFAULT.WARN_MIN
         if point.warning_min is None:
-            point.warning_min = TEMPERATURE_SET_DEFAULT.WARN_MIN
+            point.warning_min = constants.TEMPERATURE_SET_DEFAULT.WARN_MIN
 
         return point
 
@@ -221,12 +211,20 @@ class ExhausterService:
         )
 
         if point.alarm_max is None:
-            point.alarm_max = VIBRATION_SET_DEFAULT.ALARM_MAX
+            point.alarm_max = constants.VIBRATION_SET_DEFAULT.ALARM_MAX
         if point.alarm_min is None:
-            point.alarm_min = VIBRATION_SET_DEFAULT.ALARM_MIN
+            point.alarm_min = constants.VIBRATION_SET_DEFAULT.ALARM_MIN
         if point.warning_max is None:
-            point.warning_max = VIBRATION_SET_DEFAULT.WARN_MIN
+            point.warning_max = constants.VIBRATION_SET_DEFAULT.WARN_MIN
         if point.warning_min is None:
-            point.warning_min = VIBRATION_SET_DEFAULT.WARN_MIN
+            point.warning_min = constants.VIBRATION_SET_DEFAULT.WARN_MIN
 
         return point
+
+    def _get_cooler(self, exhauster_id: str) -> entities.Cooler:
+
+        oil = self.storage.get_cooler_temperature(exhauster_id=exhauster_id, cooler_type=sensors.CoolerTypeTag.oil)
+        water = self.storage.get_cooler_temperature(exhauster_id=exhauster_id, cooler_type=sensors.CoolerTypeTag.water)
+
+        return entities.Cooler(oil=oil, water=water)
+

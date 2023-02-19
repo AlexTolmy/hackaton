@@ -124,8 +124,8 @@ class StorageDB:
             result[row.values['_field']] = row.get_value()
         if result:
             return entities.Temperature(
-                after=result.pop('temperature_after'),
-                before=result.pop('temperature_before')
+                after=result.pop('temperature_after', None),
+                before=result.pop('temperature_before', None)
             )
 
     def get_gas_collector_temperature(self, exhauster_id: str) -> float:
