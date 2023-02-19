@@ -51,5 +51,4 @@ consumer = kafka.create_consumer(
     password=Settings.kafka.PASSWORD,
 )
 
-
 consumer()

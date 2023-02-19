@@ -7,6 +7,7 @@ import pmdarima as pm
 from classic.components import component
 
 from exhauster.application import interfaces
+
 from .dto import ActualDataTable, Prediction, Rotor
 from .settings import Settings
 
@@ -55,7 +56,9 @@ class Predictor(interfaces.PredictService):
             expressions_dict = self._get_linear_expressions(rolled_data)
 
             if len(fact_failures) >= 10:
-                remains = self._calc_failure_errors(fact_failures, pred_failures)
+                remains = self._calc_failure_errors(
+                    fact_failures, pred_failures
+                )
                 expressions_dict = self._fined_model(remains, expressions_dict)
 
             failure_days_by_col = self._calc_failure_days(
@@ -70,7 +73,8 @@ class Predictor(interfaces.PredictService):
         )
         self.predictions_repo.save(prediction)
 
-    def _fined_model(self, remains: List[int], expressions) -> Tuple[float, float]:
+    def _fined_model(self, remains: List[int],
+                     expressions) -> Tuple[float, float]:
         """
         штраф модели (изменения угла линейной регрессии) в зависимости
         от того, в какую сторону ошибались в последнее время,
@@ -199,7 +203,8 @@ class Predictor(interfaces.PredictService):
             if 'vibration' in vibration_val.field_name:
                 if vibration_val.moment not in data_by_time:
                     data_by_time[vibration_val.moment] = dict()
-                data_by_time[vibration_val.moment][col_name] = vibration_val.value
+                data_by_time[vibration_val.moment
+                             ][col_name] = vibration_val.value
             elif 'warning' in vibration_val.field_name:
                 if col_name not in warnings:
                     warnings[col_name] = vibration_val.value

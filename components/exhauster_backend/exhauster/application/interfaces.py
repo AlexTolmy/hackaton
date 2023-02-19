@@ -15,7 +15,7 @@ class PredictService(ABC):
 class RotorRepo(ABC):
 
     @abstractmethod
-    def all(self) -> List[dto.Rotor]:
+    def all(self, exhauster_id: str) -> List[dto.Rotor]:
         ...
 
     @abstractmethod

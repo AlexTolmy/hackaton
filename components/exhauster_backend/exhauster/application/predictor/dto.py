@@ -19,10 +19,10 @@ class ActualDataTable(DTO):
 
 
 class Prediction(DTO):
-    exhauster_id: int    # номер эксгаустера
-    days_to_failure: int
-    message: str
+    exhauster_id: int
+    stop_at: datetime
     created_at: Optional[datetime]
+
 
 @attr.dataclass
 class Rotor:
