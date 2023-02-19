@@ -103,11 +103,7 @@ function ExhausterSensors(props: ExhausterSensorsProps) {
   return (
     <div className={styles.exhauster_sensors}>
       <ExhausterScheme exhausterName={exhausterName} />
-      <Table
-        columns={tableData.columns}
-        data={tableData.data}
-        primaryKey={exhausterName}
-      />
+      <Table columns={tableData.columns} data={tableData.data} />
     </div>
   );
 }
