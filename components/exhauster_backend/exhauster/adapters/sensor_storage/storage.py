@@ -3,14 +3,14 @@ from classic.components import component
 from exhauster.application import entities, sensors
 from exhauster.application.predictor.dto import VibrationValue
 
-from ...application.sensors import CoolerTypeTag, Measurement
+from exhauster.application.sensors import CoolerTypeTag, Measurement
 from .client import InfluxClient
 
 
 @component
 class StorageDB:
     influxdb_client: InfluxClient
-    start: str = '-10m'
+    start: str = '-2m'
 
     def get_vibrations(self, exhauster_id: str, bearing_id: str, start):
         query_api, bucket = self.influxdb_client.create_reader()
