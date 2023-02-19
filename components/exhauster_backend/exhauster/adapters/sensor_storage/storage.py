@@ -96,7 +96,7 @@ class StorageDB:
             if result.get('temperature'):
                 result['value'] = result.pop('temperature')
 
-            return entities.ParamsSetpoint(**result)
+        return entities.ParamsSetpoint(**result)
 
     def get_cooler_temperature(
         self, exhauster_id: str, cooler_type: CoolerTypeTag
