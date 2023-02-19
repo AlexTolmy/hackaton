@@ -40,6 +40,7 @@ function fetchExhaustersRequest(sensorDate?: Date): RequestAction {
         createErrorNotification(store.dispatch, error);
         throw error;
       },
+      takeLatest: true,
     },
   };
 }

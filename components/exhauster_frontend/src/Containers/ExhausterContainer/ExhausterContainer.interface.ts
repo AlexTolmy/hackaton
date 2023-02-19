@@ -8,6 +8,7 @@ export enum IndicatorState {
   Default = 'default',
   Warning = 'warning',
   Critical = 'critical',
+  NoData = 'noData',
 }
 
 export type IndicatorType = {
@@ -18,6 +19,7 @@ export type IndicatorType = {
 export type SensorType = {
   sensorName: string;
   indicators: IndicatorType[];
+  isHovered?: boolean;
 };
 
 export default {};

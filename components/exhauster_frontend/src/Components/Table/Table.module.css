@@ -69,3 +69,11 @@
     visibility: hidden;
   }
 }
+
+.interaction {
+  background-color: var(--color-gray-6);
+  border-radius: 5px;
+  width: max-content;
+  padding: 0em 0.5em;
+  cursor: help;
+}

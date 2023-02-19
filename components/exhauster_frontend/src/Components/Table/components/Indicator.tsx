@@ -36,9 +36,13 @@ export function Indicator(props: IndicatorProps) {
 
   const className = clsx(styles.indicator, state);
 
+  const value = `${variant[0].toUpperCase()}${
+    state === IndicatorState.NoData ? ' Нет данных' : ''
+  }`;
+
   return (
     <div className={className}>
-      <span>{variant[0].toUpperCase()}</span>
+      <span>{value}</span>
       {icon}
     </div>
   );

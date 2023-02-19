@@ -14,4 +14,5 @@ export type ExhaustersMonitorReducerType = {
   exhausters: Record<string, ExhausterType>;
   lastUpdateDate: Date;
   sensorsDataUpdateDate: Date;
+  hoveredSensors: Record<string, Record<string, boolean>>;
 };

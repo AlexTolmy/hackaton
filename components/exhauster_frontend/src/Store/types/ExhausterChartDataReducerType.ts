@@ -1,8 +1,4 @@
-enum IndicatorState {
-  Default = 'default',
-  Warning = 'warning',
-  Critical = 'critical',
-}
+import { IndicatorState } from '../../Containers/ExhausterContainer/ExhausterContainer.interface';
 
 export type ChartIndicatorType = {
   name: string;

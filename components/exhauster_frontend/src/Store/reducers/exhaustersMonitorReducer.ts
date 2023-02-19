@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { SensorType } from '../../Containers/ExhausterContainer/ExhausterContainer.interface';
 import {
   ExhaustersMonitorReducerType,
   ExhausterType,
@@ -11,6 +12,7 @@ const initialState: ExhaustersMonitorReducerType = {
   exhausters: {},
   lastUpdateDate: defaultDate,
   sensorsDataUpdateDate: null,
+  hoveredSensors: {},
 };
 
 const slice = createSlice({
@@ -28,6 +30,20 @@ const slice = createSlice({
     },
     setSensorsDataUpdateDate: (state, action: PayloadAction<Date>) => {
       state.sensorsDataUpdateDate = action.payload;
+    },
+    setSensorHoverState: (
+      state,
+      action: PayloadAction<{
+        exhausterName: string;
+        sensorName: string;
+        isHovered: boolean;
+      }>,
+    ) => {
+      const { exhausterName, sensorName, isHovered } = action.payload;
+      if (!state.hoveredSensors[exhausterName]) {
+        state.hoveredSensors[exhausterName] = {};
+      }
+      state.hoveredSensors[exhausterName][sensorName] = isHovered;
     },
   },
 });
@@ -58,16 +74,28 @@ export const getExhausterData =
   (store: RootStoreType): ExhausterType =>
     store.exhaustersMonitor.exhausters[name];
 
+export const getExhausterSensorsData =
+  (name: string) =>
+  (store: RootStoreType): SensorType[] =>
+    store.exhaustersMonitor.exhausters[name].sensors;
+
 export const getLastUpdateDate = (store: RootStoreType) =>
   store.exhaustersMonitor.lastUpdateDate;
+
 export const getSensorsDataUpdateDate = (store: RootStoreType) =>
   store.exhaustersMonitor.sensorsDataUpdateDate;
+
+export const getExhausterHoveredSensors =
+  (name: string) =>
+  (store: RootStoreType): Record<string, boolean> =>
+    store.exhaustersMonitor.hoveredSensors[name] || {};
 
 // Actions
 export const {
   setExhaustersAction,
   setLastUpdateDateAction,
   setSensorsDataUpdateDate,
+  setSensorHoverState,
 } = slice.actions;
 
 export default slice.reducer;
