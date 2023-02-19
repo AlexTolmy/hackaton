@@ -1,6 +1,5 @@
 from datetime import datetime
-from datetime import datetime
-from typing import List, Dict, Any
+from typing import Any, Dict, List
 
 import attr
 

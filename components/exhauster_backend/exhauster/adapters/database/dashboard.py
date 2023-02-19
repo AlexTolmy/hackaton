@@ -34,3 +34,12 @@ class RotorRepo(BaseRepository):
 
         if res:
             return res.stop_at
+
+    def update_at(self, installed_at: datetime, exhauster_id: int):
+        query = tables.rotors.update(
+            {
+                'installed_at': installed_at,
+                'exhauster_id': exhauster_id,
+            }
+        )
+        self.session.execute(query)

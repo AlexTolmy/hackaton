@@ -1,14 +1,13 @@
 from typing import List
 
 from classic.components import component
-from spectree import Response
 from spectree.models import Tag
 
 from exhauster.application import entities
 from exhauster.application.dashboard import services
 
-from .models import ExhausterRequest, LinesRequest
 from .join_points import join_point
+from .models import ExhausterRequest, LinesRequest, RotorUpdateRequest
 from .spec import spectree
 
 tags = (Tag(name='заголовок'), )
@@ -121,6 +120,11 @@ class Dashboard:
                     } for indicator in sensor.indicators
                 ]
             }
+
+    @spectree.validate(query=RotorUpdateRequest, tags=tags)
+    def on_post_rotor_update(self, request, response):
+        json_body: LinesRequest = request.context.json
+        self.service.update_rotor_install(**json_body.dict(exclude_none=False))
 
 
 @component

@@ -37,8 +37,10 @@ class Storage:
     )
     storage_db = sensor_storage.StorageDB(influxdb_client=influx)
 
+
 class Aspects:
     service.join_points.join(DB.context)
+
 
 class Application:
     predictor = service.Predictor(

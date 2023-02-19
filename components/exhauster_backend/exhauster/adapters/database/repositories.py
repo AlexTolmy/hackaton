@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import List, Optional
 
 from classic.components import component
@@ -54,9 +55,8 @@ class RotorRepo(BaseRepository, core_interfaces.RotorRepo):
     def get(self, exhauster_number: str) -> List[predictor_dto.Rotor]:
 
         stmt = select(tables.rotors
-                      ).where(tables.rotors.c.exhauster_id == exhauster_number).order_by(
-            tables.rotors.c.installed_at
-        )
+                      ).where(tables.rotors.c.exhauster_id == exhauster_number
+                              ).order_by(tables.rotors.c.installed_at)
 
         result = self.session.execute(stmt)
 

@@ -4,18 +4,19 @@ from typing import Dict, List, Tuple
 import numpy as np
 import pandas as pd
 import pmdarima as pm
-from classic.components import component
 from classic.aspects import PointCut
+from classic.components import component
 
 from exhauster.application import interfaces
 
-from .dto import VibrationValue, Prediction, Rotor
+from .dto import Prediction, Rotor, VibrationValue
 from .settings import Settings
 
 join_points = PointCut()
 join_point = join_points.join_point
 
 np.random.seed(42)
+
 
 @component
 class Predictor(interfaces.PredictService):
@@ -39,8 +40,9 @@ class Predictor(interfaces.PredictService):
             all_rotors_start_date, exhauster_id
         )
 
-        rotor_start_diff_h = (datetime.datetime.now() -
-                              rotor_start_date).days * 24
+        rotor_start_diff_h = (
+            datetime.datetime.now() - rotor_start_date
+        ).days * 24
         actual_data = self.vibration_repo.get_vibrations(
             exhauster_id=str(exhauster_id),
             bearing_id=str(7),
@@ -80,8 +82,8 @@ class Predictor(interfaces.PredictService):
 
         prediction = Prediction(
             exhauster_id=self.exhauster_repo.get(str(exhauster_id)).id,
-            stop_at=datetime.datetime.now() +
-                            datetime.timedelta(days=days_to_failure),
+            stop_at=datetime.datetime.now()
+            + datetime.timedelta(days=days_to_failure),
         )
         self.predictions_repo.save(prediction)
 
@@ -144,10 +146,13 @@ class Predictor(interfaces.PredictService):
 
         return expressions_dict
 
-    def _calc_failure_days(self, expressions, warnings, data_start) -> Dict[str, int]:
+    def _calc_failure_days(self, expressions, warnings,
+                           data_start) -> Dict[str, int]:
         failures_dict = dict()
         for col, expression in expressions.items():
-            failures_dict[col] = self._predict_grid(expression, warnings[col], data_start=data_start)
+            failures_dict[col] = self._predict_grid(
+                expression, warnings[col], data_start=data_start
+            )
         return failures_dict
 
     def _predict_grid(self, model, warning, data_start):
@@ -162,7 +167,8 @@ class Predictor(interfaces.PredictService):
 
         for i in range(data_start, depth_prediction + day_step, day_step):
             pred_vibration = poly(i)
-            if pred_vibration > warning - Settings().WARNING_VIBRATION_SENSITIVITY:
+            if pred_vibration > warning - Settings(
+            ).WARNING_VIBRATION_SENSITIVITY:
                 break
             else:
                 days_wo_failure = i
@@ -217,8 +223,7 @@ class Predictor(interfaces.PredictService):
             if 'vibration' in val.field_name:
                 if val.moment not in data_by_time:
                     data_by_time[val.moment] = dict()
-                data_by_time[val.moment
-                             ][col_name] = val.value
+                data_by_time[val.moment][col_name] = val.value
             elif 'warning' in val.field_name:
                 if col_name not in warnings:
                     warnings[col_name] = val.value

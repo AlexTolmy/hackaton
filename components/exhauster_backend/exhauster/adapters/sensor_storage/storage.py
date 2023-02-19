@@ -4,8 +4,8 @@ from classic.components import component
 
 from exhauster.application import entities, sensors
 from exhauster.application.predictor.dto import VibrationValue
-
 from exhauster.application.sensors import CoolerTypeTag, Measurement
+
 from .client import InfluxClient
 
 

@@ -4,10 +4,10 @@ from typing import List, Optional
 
 from classic.aspects import PointCut
 from classic.components import component
+
 from exhauster.adapters import sensor_storage
 from exhauster.adapters.database import dashboard
-from exhauster.application import entities, interfaces, constants
-from exhauster.application import sensors
+from exhauster.application import constants, entities, interfaces, sensors
 
 from . import dto
 
@@ -249,6 +249,14 @@ class ExhausterService:
         )
 
         return entities.Cooler(oil=oil, water=water)
+
+    def update_rotor_install(
+        self, exhauster_number: int, installed_at: datetime
+    ):
+        exhauster = self.exhausters_repo.get(exhauster_number)
+        self.rotor_repo.update_at(
+            exhauster_id=exhauster.id, installed_at=installed_at
+        )
 
 
 @component

@@ -2,8 +2,8 @@ from classic.sql_storage import TransactionContext
 from sqlalchemy import create_engine
 
 from exhauster.adapters import database, log, sensor_storage, settings, web_api
-from exhauster.application.dashboard import services
 from exhauster.adapters.database import dashboard as dashboard_repos
+from exhauster.application.dashboard import services
 
 
 class Settings:
