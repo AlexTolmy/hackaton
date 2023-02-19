@@ -14,7 +14,9 @@
 .app_navigation {
   display: flex;
   width: auto;
-  max-width: 80%;
+  max-width: stretch;
+  max-width: -webkit-fill-available;
+  max-width: -moz-available;
   box-sizing: border-box;
   flex-grow: 1;
   min-height: 0;
@@ -44,6 +46,10 @@
 /*AppCustomBreadcrumb*/
 .breadcrumb_item {
   padding: 0.2em;
+  display: flex;
+}
+.breadcrumb_item p {
+  margin: 0;
 }
 
 .breadcrumb_item:hover {

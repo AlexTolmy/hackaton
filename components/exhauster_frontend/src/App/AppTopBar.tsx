@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import DateTickTimer from '../Components/DateTickTimer';
+import EvrazLogo from '../Components/EvrazLogo/EvrazLogo';
 import ThemeSwitcherContainer from '../Containers/ThemeSwitcherContainer';
 import {
   getLastUpdateDate,
@@ -21,6 +22,7 @@ function AppTopBar() {
 
   return (
     <div className={styles.app_top_bar}>
+      <EvrazLogo />
       <AppNavigation />
       {isTimerVisible && (
         <div className={styles.app_top_bar_date}>
