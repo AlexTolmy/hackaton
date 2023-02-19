@@ -54,7 +54,10 @@ class RotorRepo(BaseRepository, core_interfaces.RotorRepo):
 
     def get(self, exhauster_number: str) -> List[predictor_dto.Rotor]:
 
-        stmt = select(tables.rotors).order_by(tables.rotors.c.created_at)
+        stmt = select(tables.rotors
+                      ).where(tables.rotors.c.exhauster_id == exhauster_number).order_by(
+            tables.rotors.c.installed_at
+        )
 
         result = self.session.execute(stmt)
 
@@ -71,7 +74,7 @@ class RotorRepo(BaseRepository, core_interfaces.RotorRepo):
         return rotors
 
     def get_10_failures(self, exhauster_id: str):
-        ...
+        return None, None
 
 
 class PredictionsRepo(BaseRepository, interfaces.PredictionsRepo):

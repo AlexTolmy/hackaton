@@ -1,0 +1,27 @@
+@startuml
+title ЕВРАЗ. Цифровой двойник эксгаустеров агломашины
+
+actor user as user
+
+rectangle prod{
+    database influx_db as influx
+    [backend api] as api
+    [User Interface] as ui
+    [Predictor] as predictor
+    [kafka consumer] as kafka_c
+}
+[kafka producer] as kafka_p
+
+cloud "cloud"{
+    database postgresql as psql
+}
+
+user <--> ui
+api <--> ui
+api <--> psql
+api <-- influx
+psql <--> predictor
+kafka_c --> influx
+kafka_p --> kafka_c
+
+@enduml
