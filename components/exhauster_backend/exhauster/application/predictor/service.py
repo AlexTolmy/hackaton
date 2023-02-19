@@ -64,11 +64,12 @@ class Predictor(interfaces.PredictService):
             )
 
         days_to_failure = min(failure_days_by_col.values())
+        days_to_failure = days_to_failure if days_to_failure < 30 else 30
 
         prediction = Prediction(
             exhauster_id=self.exhauster_repo.get(str(exhauster_id)),
-            days_to_failure=days_to_failure,
-            message=str(days_to_failure) if days_to_failure <= 30 else '>30'
+            stop_at=datetime.datetime.now() +
+                            datetime.timedelta(days=days_to_failure),
         )
         self.predictions_repo.save(prediction)
 
