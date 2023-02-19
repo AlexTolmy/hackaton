@@ -1,3 +1,5 @@
+import { addMinutes } from 'date-fns';
+
 import DatesPeriodSelectorReducerType from '../types/DatesPeriodSelectorReducerType';
 
 const CACHE_KEY_PREFIX = 'DATES_PERIOD_SELECTOR';
@@ -34,3 +36,8 @@ export function saveDatesPeriodToCache(state: DatesPeriodSelectorReducerType) {
     );
   }
 }
+
+export const defaultDate = addMinutes(
+  new Date().getTime() + Math.floor(Math.random() * 3 * 1000),
+  new Date().getTimezoneOffset(),
+);

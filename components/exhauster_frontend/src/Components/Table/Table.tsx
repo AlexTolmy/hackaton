@@ -9,11 +9,12 @@ type TableProps = {
     section: { key: string; name: string };
     rows: Record<string, () => React.ReactNode>[];
   }[];
+  primaryKey?: string;
   className?: string;
 };
 
 function Table(props: TableProps) {
-  const { columns, data, className } = props;
+  const { columns, data, primaryKey, className } = props;
 
   return (
     <table className={clsx(styles.table, className)}>
@@ -25,21 +26,21 @@ function Table(props: TableProps) {
         </tr>
       </thead>
       {data.map((dataItem) => (
-        <tbody key={dataItem.section.key}>
+        <tbody key={`${primaryKey}-${dataItem.section.key}`}>
           <tr className={styles.table_section_title}>
             <th colSpan={columns.length + 1}>{dataItem.section.name}</th>
           </tr>
           {dataItem.rows.map((row) => {
-            const rowKey = JSON.stringify(row);
-
             return (
               <tr
                 className={styles.table_section_row}
-                key={JSON.stringify(row)}
+                key={`${primaryKey}-${dataItem.section.name}-${row}`}
               >
                 <td className={styles.table_section_indent} />
                 {columns.map((column) => (
-                  <td key={`${rowKey}${column.key}`}>{row[column.key]()}</td>
+                  <td key={`${primaryKey}-${row}-${column.key}`}>
+                    {row[column.key]()}
+                  </td>
                 ))}
               </tr>
             );

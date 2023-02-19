@@ -10,6 +10,10 @@ const translateDictionary = new Map([
   ['week', 'Неделя'],
   ['month', 'Месяц'],
   ['manual', 'Период'],
+  ['unknown', 'Неизвестно'],
+  ['requestUrl', 'Адрес запроса'],
+  ['errorCode', 'Код ошибки'],
+  ['errorDescription', 'Описание ошибки'],
 ]);
 
 function getTranslation(key: string): string {

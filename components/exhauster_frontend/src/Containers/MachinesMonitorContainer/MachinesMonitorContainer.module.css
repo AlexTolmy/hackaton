@@ -3,5 +3,7 @@
   justify-content: space-between;
   gap: 1em;
   flex-wrap: wrap;
-  padding: 0.2em;
+  padding-top: 0.2em;
+  background-color: var(--color-gray-f);
+  min-height: 20vh;
 }

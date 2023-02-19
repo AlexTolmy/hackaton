@@ -5,8 +5,8 @@ Revises: 510ad9936a96
 Create Date: 2023-02-18 14:25:15.757617+00:00
 
 """
-from alembic import op
 import sqlalchemy as sa
+from alembic import op
 
 # revision identifiers, used by Alembic.
 revision = '0b1b1e0625cf'
@@ -26,6 +26,11 @@ def upgrade():
     op.add_column(
         'rotors',
         sa.Column('exhauster_id', sa.Integer(), nullable=True),
+        schema='app'
+    )
+    op.add_column(
+        'rotors',
+        sa.Column('installed_at', sa.DateTime(), nullable=False),
         schema='app'
     )
     op.create_foreign_key(

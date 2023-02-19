@@ -11,6 +11,7 @@
   padding: 0.8em;
   --body-padding: 1em;
   border-radius: 5px 5px 0 0;
+  height: 1em;
 }
 
 .panel_title h5 {
@@ -18,9 +19,6 @@
 }
 
 .panel_body {
-  background-color: var(--color-gray-1);
+  background-color: var(--color-gray-2);
   padding: var(--body-padding);
-  height: stretch;
-  height: -webkit-fill-available;
-  height: -moz-available;
 }

@@ -1,8 +1,13 @@
 from datetime import datetime
-from exhauster.application import entities
+
 from sqlalchemy import (
-    Boolean, Column, DateTime, Float, ForeignKey, Integer, MetaData, String,
-    Table, Enum
+    Column,
+    DateTime,
+    ForeignKey,
+    Integer,
+    MetaData,
+    String,
+    Table,
 )
 
 naming_convention = {
@@ -19,6 +24,7 @@ metadata = MetaData(schema=APP_SCHEMA, naming_convention=naming_convention)
 rotors = Table(
     'rotors', metadata, Column('id', Integer, primary_key=True),
     Column('created_at', DateTime, nullable=False, default=datetime.utcnow),
+    Column('installed_at', DateTime, nullable=False),
     Column(
         'name',
         String(length=150),

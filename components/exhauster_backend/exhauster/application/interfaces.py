@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import List, Tuple
 
-from exhauster.application.predictor import dto
 from exhauster.application.dashboard import dto as dashboard_dto
+from exhauster.application.predictor import dto
 
 
 class PredictService(ABC):
@@ -15,7 +15,7 @@ class PredictService(ABC):
 class RotorRepo(ABC):
 
     @abstractmethod
-    def all(self) -> List[dto.Rotor]:
+    def get(self, exhauster_id: str) -> List[dto.Rotor]:
         ...
 
     @abstractmethod

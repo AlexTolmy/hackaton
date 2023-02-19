@@ -1,4 +1,5 @@
 import logging
+from time import sleep
 
 from classic.sql_storage import TransactionContext
 from sqlalchemy import create_engine
@@ -22,8 +23,8 @@ class Logger:
 class DB:
     engine = create_engine(Settings.db.DATABASE_URL)
     context = TransactionContext(bind=engine, expire_on_commit=False)
-    rotor_repo = ...
-    predictions_repo = ...
+    rotor_repo = database.repositories.RotorRepo(context=context)
+    predictions_repo = database.repositories.PredictionsRepo(context=context)
 
 
 class Storage:
@@ -38,7 +39,14 @@ class Storage:
 
 class Application:
     predictor = service.Predictor(
-        DB.rotor_repo,
-        DB.predictions_repo,
-        Storage.storage_db,
+        rotor_repo=DB.rotor_repo,
+        predictions_repo=DB.predictions_repo,
+        vibration_repo=Storage.storage_db,
     )
+
+
+if __name__ == '__main__':
+    while True:
+        for i in ['1', '2', '3', '4', '5', '6']:
+            Application.predictor.predict(i)
+        sleep(60 * 60)    # 1h

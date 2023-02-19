@@ -18,11 +18,12 @@ import ExhausterScheme from './ExhausterScheme';
 import styles from './ExhausterContainer.module.css';
 
 type ExhausterSensorsProps = {
+  exhausterName: string;
   sensors: SensorType[];
 };
 
 function ExhausterSensors(props: ExhausterSensorsProps) {
-  const { sensors } = props;
+  const { exhausterName, sensors } = props;
 
   const tableData = useMemo(() => {
     const columns = SENSORS_TABLE_COLUMNS.map((column) => ({
@@ -44,7 +45,7 @@ function ExhausterSensors(props: ExhausterSensorsProps) {
           const { sensorName, indicators } = sensor;
 
           if (
-            indicators.some((indicator) =>
+            indicators?.some((indicator) =>
               allowedIndicators.includes(indicator.state),
             )
           ) {
@@ -64,7 +65,7 @@ function ExhausterSensors(props: ExhausterSensorsProps) {
           const { sensorName, indicators } = sensor;
 
           if (
-            indicators.every((indicator) =>
+            indicators?.every((indicator) =>
               allowedIndicators.includes(indicator.state),
             )
           ) {
@@ -85,7 +86,11 @@ function ExhausterSensors(props: ExhausterSensorsProps) {
   return (
     <div className={styles.exhauster_sensors}>
       <ExhausterScheme />
-      <Table columns={tableData.columns} data={tableData.data} />
+      <Table
+        columns={tableData.columns}
+        data={tableData.data}
+        primaryKey={exhausterName}
+      />
     </div>
   );
 }
