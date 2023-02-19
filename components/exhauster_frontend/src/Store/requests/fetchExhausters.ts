@@ -55,12 +55,14 @@ function fetchExhaustersRequest(sensorDate?: Date): RequestAction {
           });
         });
 
-        store.dispatch(
-          addNotification({
-            message: addBreakLines(message),
-            type: NotificationType.Error,
-          }),
-        );
+        if (message) {
+          store.dispatch(
+            addNotification({
+              message: addBreakLines(message),
+              type: NotificationType.Error,
+            }),
+          );
+        }
 
         return response;
       },
