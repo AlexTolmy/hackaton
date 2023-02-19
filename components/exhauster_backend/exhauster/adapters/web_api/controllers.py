@@ -57,9 +57,9 @@ class Dashboard:
                     'state': 'default'
                 },
                 'discharge': exhauster.gas_collector.under_pressure_before,
-                'dustLevel': '15',
+                'dustLevel': '',
             },
-            'smokePipeState': 45,
+            'smokePipeState': '',
             'oilTank': {
                 'value': exhauster.oil_system.level,
                 'state': 'default'
@@ -72,13 +72,13 @@ class Dashboard:
             },
             'mainDrive': {
                 'oilPressure': {
-                    'value': 2.5,
+                    'value': '',
                     'state': 'default'
                 },
-                'amperage': '234',
-                'engineAmperage': '212',
-                'rotorVoltage': '455',
-                'starterVoltage': '123',
+                'amperage': '',
+                'engineAmperage': '',
+                'rotorVoltage': '',
+                'starterVoltage': '',
             },
         }
 
