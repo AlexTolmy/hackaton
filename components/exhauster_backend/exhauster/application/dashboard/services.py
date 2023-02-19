@@ -8,6 +8,7 @@ from classic.messaging import Message, Publisher
 from pydantic import validate_arguments
 
 from exhauster.adapters import sensor_storage
+from exhauster.adapters.database import dashboard
 from exhauster.application import entities, interfaces, constants
 from exhauster.application import sensors
 
@@ -23,12 +24,27 @@ join_point = join_points.join_point
 class ExhausterService:
 
     exhausters_repo: interfaces.ExhausterRepo
+    rotor_repo: dashboard.RotorRepo
     storage: sensor_storage.StorageDB
 
     @join_point
+    def get_exhausters(self) -> List[dto.Exhauster]:
+        return self.exhausters_repo.all()
+
+    @join_point
+    def get_rotor(self, exhauster: dto.Exhauster) -> dto.Rotor:
+        rotor_dto =  self.rotor_repo.get(exhauster_id=exhauster.id)
+        prediction = self.rotor_repo.get_prediction(exhauster_id=exhauster.id)
+
+        return entities.Rotor(
+            name=f'Ротор № {rotor_dto.name}',
+            installed_at=rotor_dto.installed_at,
+            stop_at=prediction
+        )
+
     def get_all(self) -> List[entities.Exhauster]:
 
-        exchauster_dtos = self.exhausters_repo.all()
+        exchauster_dtos = self.get_exhausters()
 
         exhausters = map(self._create_exhauster, exchauster_dtos)
 
@@ -53,7 +69,8 @@ class ExhausterService:
             main_drive=None,
             oil_system=entities.OilSystem(
                 level=random.random() * 100, pressure=random.random() * 100
-            )
+            ),
+            rotor=self.get_rotor(exhauster_dto)
         )
 
     def _create_bearing(self, exhauster_number: str) -> entities.Bearing:
