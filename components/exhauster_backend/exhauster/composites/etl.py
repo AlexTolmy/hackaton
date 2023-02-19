@@ -51,5 +51,7 @@ consumer = kafka.create_consumer(
     password=Settings.kafka.PASSWORD,
 )
 
-Storage.storage.get_graphics_vibrations(exhauster_id='1', bearing_id='1', start='', stop='')
+Storage.storage.get_graphics_vibrations(
+    exhauster_id='1', bearing_id='1', start='', stop=''
+)
 # consumer()

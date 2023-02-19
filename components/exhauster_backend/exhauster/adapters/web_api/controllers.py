@@ -122,24 +122,24 @@ class Dashboard:
                 ]
             }
 
+
 @component
 class Graphics:
     service: services.GraphicService
 
     @join_point
-    @spectree.validate(
-        tags=tags
-    )
+    @spectree.validate(tags=tags)
     def on_get_sensors(self, request, response):
         self.service.get_sensors()
         return
 
     @join_point
     @spectree.validate(
-        query=LinesRequest, tags=tags,
+        query=LinesRequest,
+        tags=tags,
     )
-    def on_get_lines(self, request, response):
-        query: LinesRequest = request.context.query
-        self.service.get_lines(**query.dict(exclude_none=True))
+    def on_post_lines(self, request, response):
+        json_body: LinesRequest = request.context.json
+        self.service.get_lines(**json_body.dict(exclude_none=False))
 
         return

@@ -9,7 +9,8 @@ from .spec import setup_spectree
 
 
 def create_app(
-    swagger_settings: SwaggerSettings, allow_origins,
+    swagger_settings: SwaggerSettings,
+    allow_origins,
     exhauster_service: services.ExhausterService,
     graphic_service: services.GraphicService,
 ) -> App:

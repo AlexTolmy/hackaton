@@ -1,5 +1,3 @@
-from typing import Optional, List
-
 from pydantic import BaseModel
 from datetime import datetime
 
@@ -11,11 +9,4 @@ class ExhausterRequest(BaseModel):
 class LinesRequest(BaseModel):
     start: datetime
     stop: datetime
-    filter: Optional[List['str']]
-
-    class Config:
-        schema_extra = {
-            'example': {
-                'number': '7',
-            }
-        }
+    win: str = '1h'

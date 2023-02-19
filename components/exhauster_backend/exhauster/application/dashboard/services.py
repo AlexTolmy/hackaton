@@ -199,16 +199,6 @@ class ExhausterService:
             ),
         )
 
-    # def _create_random_setpoint(self) -> entities.ParamsSetpoint:
-
-    #     return entities.ParamsSetpoint(
-    #         value=random.randint(0, 100),
-    #         alarm_min=random.randint(0, 10),
-    #         alarm_max=random.randint(90, 100),
-    #         warning_min=random.randint(10, 30),
-    #         warning_max=random.randint(70, 90)
-    #     )
-
     def _create_temp_point(
         self, exhauster_id: str, bearing_id: str
     ) -> entities.ParamsSetpoint:
@@ -266,25 +256,37 @@ class GraphicService:
     exhausters_repo: interfaces.ExhausterRepo
     storage: sensor_storage.StorageDB
 
-    def get_lines(self, start: datetime, stop: datetime, filter: Optional[List['str']]):
+    def get_lines(
+        self,
+        start: datetime,
+        stop: datetime,
+        win: str,
+    ):
         start_ = int(round(start.timestamp()))
         stop_ = int(round(stop.timestamp()))
-        result = [
+        result = []
 
-        ]
-        for exhauster_number in ['1', '2', '3', '4', '5', '6']:
+        for exhauster in self.exhausters_repo.all():
+            indicators = []
+            for bearing_id in ('1', '2', '3', '4', '5', '6', '7', '8', '9'):
+                chart_sensors = self.storage.get_graphics_vibrations(
+                    exhauster_id=exhauster.number,
+                    bearing_id=bearing_id,
+                    start=start_,
+                    stop=stop_,
+                    win=win
+                )
+                indicators.append(dto.Indicator(name=f'bearing_{bearing_id}', ))
             result.append(
                 dto.GrapicParams(
-                    exhauster_id=exhauster_number,
-                    exhauster_name=
+                    exhauster_id=exhauster.number,
+                    exhauster_name=exhauster.name,
+                    sensor_name=f'breading_{1}',
+                    indicators=indicators,
+                    chart_sensors=chart_sensors,
                 )
             )
-
-
-        dto.Indicator
-        dto.GrapicParams
-
-
+        return result
 
     def get_sensors(self):
         return
