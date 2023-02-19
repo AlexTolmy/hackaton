@@ -1,0 +1,13 @@
+.logo {
+  align-items: flex-end;
+  display: flex;
+  flex-shrink: 0;
+  position: relative;
+  margin-right: 3em;
+}
+
+.logo_svg {
+  height: 1.357em;
+  width: 8.571em;
+  fill: var(--color-gray-0);
+}
