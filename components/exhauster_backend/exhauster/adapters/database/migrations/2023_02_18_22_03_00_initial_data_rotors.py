@@ -78,7 +78,7 @@ def upgrade():
             exghauser_id = conn.execute(stmt).one().id
             rotor_values.append(
                 {
-                    'created_at': datetime.fromisoformat(rotor['created_at']),
+                    'installed_at': datetime.fromisoformat(rotor['created_at']),
                     'name': rotor['name'],
                     'exhauster_id': exghauser_id
                 }

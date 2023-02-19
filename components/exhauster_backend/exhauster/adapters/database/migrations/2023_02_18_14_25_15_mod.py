@@ -28,6 +28,11 @@ def upgrade():
         sa.Column('exhauster_id', sa.Integer(), nullable=True),
         schema='app'
     )
+    op.add_column(
+        'rotors',
+        sa.Column('installed_at', sa.DateTime(), nullable=False),
+        schema='app'
+    )
     op.create_foreign_key(
         op.f('fk_rotors_exhauster_id_exhausters'),
         'rotors',
