@@ -51,6 +51,7 @@ deploy dev:
     DB_NAME: hackaton-dev
     KAFKA_GROUP_ID: best_team_et_dev
     INFLUXDB_BUCKET_NAME: test_load
+    INFLUX_LOCAL_TOKEN: ${INFLUX_TOKEN_LOCAL}
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
@@ -69,6 +70,7 @@ deploy prod:
     DB_NAME: hackaton-prod
     KAFKA_GROUP_ID: best_team_et_prod
     INFLUXDB_BUCKET_NAME: PROD
+    INFLUX_LOCAL_TOKEN: ${INFLUX_TOKEN_LOCAL_PROD}
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
