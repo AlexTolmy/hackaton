@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import clsx from 'clsx';
 
@@ -9,12 +10,11 @@ type TableProps = {
     section: { key: string; name: string };
     rows: Record<string, () => React.ReactNode>[];
   }[];
-  primaryKey?: string;
   className?: string;
 };
 
 function Table(props: TableProps) {
-  const { columns, data, primaryKey, className } = props;
+  const { columns, data, className } = props;
 
   return (
     <table className={clsx(styles.table, className)}>
@@ -25,20 +25,20 @@ function Table(props: TableProps) {
           ))}
         </tr>
       </thead>
-      {data.map((dataItem) => (
-        <tbody key={`${primaryKey}-${dataItem.section.key}`}>
+      {data.map((dataItem, main) => (
+        <tbody key={main}>
           <tr className={styles.table_section_title}>
             <th colSpan={columns.length + 1}>{dataItem.section.name}</th>
           </tr>
-          {dataItem.rows.map((row) => {
+          {dataItem.rows.map((row, secondary) => {
             return (
               <tr
                 className={styles.table_section_row}
-                key={`${primaryKey}-${dataItem.section.name}-${row}`}
+                key={`${main}-${secondary}`}
               >
                 <td className={styles.table_section_indent} />
-                {columns.map((column) => (
-                  <td key={`${primaryKey}-${row}-${column.key}`}>
+                {columns.map((column, third) => (
+                  <td key={`${main}-${secondary}-${third}`}>
                     {row[column.key]()}
                   </td>
                 ))}
