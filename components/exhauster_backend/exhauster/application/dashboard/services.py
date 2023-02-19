@@ -48,6 +48,12 @@ class ExhausterService:
 
         return exhausters
 
+    def get(self, number: str) -> entities.Exhauster:
+
+        exhauster = self.exhausters_repo.get(number)
+
+        return self._create_exhauster(exhauster)
+
     def _create_exhauster(
         self, exhauster_dto: dto.Exhauster
     ) -> entities.Exhauster:

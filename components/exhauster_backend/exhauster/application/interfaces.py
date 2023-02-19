@@ -48,3 +48,7 @@ class ExhausterRepo(ABC):
     @abstractmethod
     def all(self) -> List[dashboard_dto.Exhauster]:
         ...
+
+    @abstractmethod
+    def get(self, number: str) -> dashboard_dto.Exhauster:
+        ...
