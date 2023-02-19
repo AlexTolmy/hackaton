@@ -17,7 +17,6 @@ join_point = join_points.join_point
 
 np.random.seed(42)
 
-
 @component
 class Predictor(interfaces.PredictService):
     """
