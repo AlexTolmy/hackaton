@@ -3,7 +3,6 @@
 import { Client } from '@stomp/stompjs';
 import { AnyAction, Dispatch, MiddlewareAPI } from 'redux';
 
-import { setLastUpdateDateAction } from '../reducers/exhaustersMonitorReducer';
 import { fetchExhaustersAction } from '../requests/fetchExhausters';
 
 interface WebsocketServiceInterface {
@@ -57,8 +56,7 @@ class WebsocketService implements WebsocketServiceInterface {
     this._client.subscribe('/exchange/ui_exchange', (msg) => {
       const body: MessageBody = JSON.parse(msg.body);
       const backendUpdateDate = new Date(body.update_at);
-      this._store.dispatch(setLastUpdateDateAction(backendUpdateDate));
-      this._store.dispatch(fetchExhaustersAction());
+      this._store.dispatch(fetchExhaustersAction(backendUpdateDate));
     });
   }
 }

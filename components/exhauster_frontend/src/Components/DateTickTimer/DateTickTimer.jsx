@@ -47,7 +47,7 @@ function DateTickTimer(props) {
 
   return (
     <div className={clsx('date-tick-timer', className)}>
-      <span>{currentTime / TIME_MULTIPLIER}</span>
+      <span>{Math.round(currentTime / TIME_MULTIPLIER)}</span>
     </div>
   );
 }

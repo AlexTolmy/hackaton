@@ -5,10 +5,12 @@ import {
   ExhausterType,
 } from '../types/ExhaustersMonitorReducerType';
 import RootStoreType from '../types/RootStoreType';
+import { defaultDate } from '../utils/datesPeriodSelectorCache';
 
 const initialState: ExhaustersMonitorReducerType = {
   exhausters: {},
-  lastUpdateDate: new Date(),
+  lastUpdateDate: defaultDate,
+  sensorsDataUpdateDate: null,
 };
 
 const slice = createSlice({
@@ -23,6 +25,9 @@ const slice = createSlice({
     },
     setLastUpdateDateAction: (state, action: PayloadAction<Date>) => {
       state.lastUpdateDate = action.payload;
+    },
+    setSensorsDataUpdateDate: (state, action: PayloadAction<Date>) => {
+      state.sensorsDataUpdateDate = action.payload;
     },
   },
 });
@@ -55,8 +60,14 @@ export const getExhausterData =
 
 export const getLastUpdateDate = (store: RootStoreType) =>
   store.exhaustersMonitor.lastUpdateDate;
+export const getSensorsDataUpdateDate = (store: RootStoreType) =>
+  store.exhaustersMonitor.sensorsDataUpdateDate;
 
 // Actions
-export const { setExhaustersAction, setLastUpdateDateAction } = slice.actions;
+export const {
+  setExhaustersAction,
+  setLastUpdateDateAction,
+  setSensorsDataUpdateDate,
+} = slice.actions;
 
 export default slice.reducer;
