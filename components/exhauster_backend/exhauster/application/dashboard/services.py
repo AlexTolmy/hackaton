@@ -8,8 +8,9 @@ from classic.messaging import Message, Publisher
 from pydantic import validate_arguments
 
 from exhauster.adapters import sensor_storage
-from exhauster.application import entities, interfaces
-from exhauster.application.sensors import VibrationTypeTag
+from exhauster.adapters.database import dashboard
+from exhauster.application import entities, interfaces, constants
+from exhauster.application import sensors
 
 from . import dto
 
@@ -17,30 +18,33 @@ join_points = PointCut()
 join_point = join_points.join_point
 
 
-class TEMPERATURE_SET_DEFAULT:
-    ALARM_MAX = 75
-    ALARM_MIN = 0
-    WARN_MAX = 65
-    WARN_MIN = 0
-
-
-class VIBRATION_SET_DEFAULT:
-    ALARM_MAX = 7.099999904632568
-    ALARM_MIN = 0
-    WARN_MAX = 4.5
-    WARN_MIN = 0
 
 
 @component
 class ExhausterService:
 
     exhausters_repo: interfaces.ExhausterRepo
+    rotor_repo: dashboard.RotorRepo
     storage: sensor_storage.StorageDB
 
     @join_point
-    def get_all(self) -> List[dto.Exhauster]:
+    def get_exhausters(self) -> List[dto.Exhauster]:
+        return self.exhausters_repo.all()
 
-        exchauster_dtos = self.exhausters_repo.all()
+    @join_point
+    def get_rotor(self, exhauster: dto.Exhauster) -> dto.Rotor:
+        rotor_dto =  self.rotor_repo.get(exhauster_id=exhauster.id)
+        prediction = self.rotor_repo.get_prediction(exhauster_id=exhauster.id)
+
+        return entities.Rotor(
+            name=f'Ротор № {rotor_dto.name}',
+            installed_at=rotor_dto.installed_at,
+            stop_at=prediction
+        )
+
+    def get_all(self) -> List[entities.Exhauster]:
+
+        exchauster_dtos = self.get_exhausters()
 
         exhausters = map(self._create_exhauster, exchauster_dtos)
 
@@ -49,6 +53,8 @@ class ExhausterService:
     def _create_exhauster(
         self, exhauster_dto: dto.Exhauster
     ) -> entities.Exhauster:
+
+        cooler = self._get_cooler(exhauster_dto.number)
 
         return entities.Exhauster(
             id=exhauster_dto.id,
@@ -63,7 +69,8 @@ class ExhausterService:
             main_drive=None,
             oil_system=entities.OilSystem(
                 level=random.random() * 100, pressure=random.random() * 100
-            )
+            ),
+            rotor=self.get_rotor(exhauster_dto)
         )
 
     def _create_bearing(self, exhauster_number: str) -> entities.Bearing:
@@ -200,13 +207,13 @@ class ExhausterService:
         )
 
         if point.alarm_max is None:
-            point.alarm_max = TEMPERATURE_SET_DEFAULT.ALARM_MAX
+            point.alarm_max = constants.TEMPERATURE_SET_DEFAULT.ALARM_MAX
         if point.alarm_min is None:
-            point.alarm_min = TEMPERATURE_SET_DEFAULT.ALARM_MIN
+            point.alarm_min = constants.TEMPERATURE_SET_DEFAULT.ALARM_MIN
         if point.warning_max is None:
-            point.warning_max = TEMPERATURE_SET_DEFAULT.WARN_MIN
+            point.warning_max = constants.TEMPERATURE_SET_DEFAULT.WARN_MIN
         if point.warning_min is None:
-            point.warning_min = TEMPERATURE_SET_DEFAULT.WARN_MIN
+            point.warning_min = constants.TEMPERATURE_SET_DEFAULT.WARN_MIN
 
         return point
 
@@ -221,12 +228,20 @@ class ExhausterService:
         )
 
         if point.alarm_max is None:
-            point.alarm_max = VIBRATION_SET_DEFAULT.ALARM_MAX
+            point.alarm_max = constants.VIBRATION_SET_DEFAULT.ALARM_MAX
         if point.alarm_min is None:
-            point.alarm_min = VIBRATION_SET_DEFAULT.ALARM_MIN
+            point.alarm_min = constants.VIBRATION_SET_DEFAULT.ALARM_MIN
         if point.warning_max is None:
-            point.warning_max = VIBRATION_SET_DEFAULT.WARN_MIN
+            point.warning_max = constants.VIBRATION_SET_DEFAULT.WARN_MIN
         if point.warning_min is None:
-            point.warning_min = VIBRATION_SET_DEFAULT.WARN_MIN
+            point.warning_min = constants.VIBRATION_SET_DEFAULT.WARN_MIN
 
         return point
+
+    def _get_cooler(self, exhauster_id: str) -> entities.Cooler:
+
+        oil = self.storage.get_cooler_temperature(exhauster_id=exhauster_id, cooler_type=sensors.CoolerTypeTag.oil)
+        water = self.storage.get_cooler_temperature(exhauster_id=exhauster_id, cooler_type=sensors.CoolerTypeTag.water)
+
+        return entities.Cooler(oil=oil, water=water)
+

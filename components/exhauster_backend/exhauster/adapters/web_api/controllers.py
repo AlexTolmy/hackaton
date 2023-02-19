@@ -31,9 +31,9 @@ class Dashboard:
                 'aglomachine': exhauster.aglomachine.value,
                 'name': exhauster.name,
                 'is_active': exhauster.is_active,
-                'rotor_name': 'Ротор № 24',
-                'rotor_last_change': '2023-02-13T10:00:00.00',
-                'rotor_next_change': '2023-02-23T10:00:00.00',
+                'rotor_name': exhauster.rotor.name,
+                'rotor_last_change': exhauster.rotor.installed_at.isoformat(),
+                'rotor_next_change': exhauster.rotor.stop_at.isoformat() if exhauster.rotor.stop_at else None,
                 'sensors': list(self._sensors(exhauster))
             } for exhauster in exhausters
         ]
