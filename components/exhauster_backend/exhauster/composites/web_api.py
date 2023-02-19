@@ -5,6 +5,7 @@ from exhauster.adapters import database, log, sensor_storage, settings, web_api
 from exhauster.application.dashboard import services
 from exhauster.adapters.database import dashboard as dashboard_repos
 
+
 class Settings:
     db = database.Settings()
     common_settings = settings.Settings()
@@ -39,7 +40,9 @@ class Storage:
 
 class Application:
     exhausers_service = services.ExhausterService(
-        exhausters_repo=DB.exhausters_repo, storage=Storage.storage_db, rotor_repo=DB.rotor_repo
+        exhausters_repo=DB.exhausters_repo,
+        storage=Storage.storage_db,
+        rotor_repo=DB.rotor_repo
     )
 
 
