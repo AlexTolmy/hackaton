@@ -80,7 +80,7 @@ class Predictor(interfaces.PredictService):
         days_to_failure = days_to_failure if days_to_failure < 30 else 30
 
         prediction = Prediction(
-            exhauster_id=self.exhauster_repo.get(str(exhauster_id)),
+            exhauster_id=self.exhauster_repo.get(str(exhauster_id)).id,
             stop_at=datetime.datetime.now() +
                             datetime.timedelta(days=days_to_failure),
         )
