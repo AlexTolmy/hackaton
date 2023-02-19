@@ -21,6 +21,7 @@ class Predictor(interfaces.PredictService):
     rotor_repo: interfaces.RotorRepo
     predictions_repo: interfaces.PredictionsRepo
     vibration_repo: interfaces.VibrationsRepo
+    exhauster_repo: interfaces.ExhausterRepo
 
     def predict(self, exhauster_id: str, arima=False):
         all_rotors_start_date = self.rotor_repo.all()
@@ -63,8 +64,9 @@ class Predictor(interfaces.PredictService):
             )
 
         days_to_failure = min(failure_days_by_col.values())
+
         prediction = Prediction(
-            exhauster_id=exhauster_id,
+            exhauster_id=self.exhauster_repo.get(str(exhauster_id)),
             days_to_failure=days_to_failure,
             message=str(days_to_failure) if days_to_failure <= 30 else '>30'
         )
