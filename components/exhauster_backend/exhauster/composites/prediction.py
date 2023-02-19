@@ -25,6 +25,7 @@ class DB:
     context = TransactionContext(bind=engine, expire_on_commit=False)
     rotor_repo = database.repositories.RotorRepo(context=context)
     predictions_repo = database.repositories.PredictionsRepo(context=context)
+    exhausters_repo = database.repositories.ExhausterRepo(context=context)
 
 
 class Storage:
@@ -42,6 +43,7 @@ class Application:
         rotor_repo=DB.rotor_repo,
         predictions_repo=DB.predictions_repo,
         vibration_repo=Storage.storage_db,
+        exhauster_repo=DB.exhausters_repo,
     )
 
 
@@ -49,4 +51,4 @@ if __name__ == '__main__':
     while True:
         for i in ['1', '2', '3', '4', '5', '6']:
             Application.predictor.predict(i)
-        sleep(60 * 60)    # 1h
+        sleep(60 * 60 * 3)    # 3h
