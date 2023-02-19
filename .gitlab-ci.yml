@@ -78,3 +78,21 @@ deploy prod:
     - docker compose -f deployment/docker-compose.yaml up -d
   only:
     - main
+
+deploy dev new:
+  stage: deploy
+  tags:
+    - dev-new
+  image: docker:latest
+  variables:
+    DB_NAME: hackaton-dev-new
+    KAFKA_GROUP_ID: best_team_et_dev-new
+    INFLUXDB_BUCKET_NAME: dev-new
+    INFLUX_LOCAL_TOKEN: ${INFLUX_TOKEN_LOCAL_NEW}
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - docker compose -f deployment/docker-compose.yaml down
+    - docker compose -f deployment/docker-compose.yaml up -d
+  only:
+    - dev
