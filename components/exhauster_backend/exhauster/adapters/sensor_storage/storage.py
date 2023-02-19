@@ -21,11 +21,10 @@ class StorageDB:
 
         rows = query_api.query_stream(
             f'from(bucket:"{bucket}")'
-            f' |> range(start: {start})'
+            f' |> range(start: -{start}h)'
             f' |> filter(fn: (r) => r._measurement == "vibration")'
             f' |> filter(fn: (r) => r.{exhauster_field_name} == "{exhauster_id}")'
             f' |> filter(fn: (r) => r.{bearing_field_name} == "{bearing_id}")'
-            f' |> last()'
         )
         result = []
         for row in rows:

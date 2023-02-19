@@ -51,4 +51,4 @@ if __name__ == '__main__':
     while True:
         for i in ['1', '2', '3', '4', '5', '6']:
             Application.predictor.predict(i)
-        sleep(60 * 60)    # 1h
+        sleep(60 * 60 * 3)    # 3h

@@ -9,6 +9,7 @@ rectangle prod{
     [User Interface] as ui
     [Predictor] as predictor
     [kafka consumer] as kafka_c
+    [rabbit] as rabbit
 }
 [kafka producer] as kafka_p
 (kafka) as kafka
@@ -17,8 +18,8 @@ cloud "cloud"{
     database postgresql as psql
 }
 
-user <--> ui
-api <--> ui
+user <---> ui
+api <---> ui
 api <--> psql
 api <-- influx
 psql <--> predictor
@@ -26,5 +27,8 @@ predictor <-- influx
 kafka_c --> influx
 kafka_p --> kafka
 kafka --> kafka_c
+
+rabbit <-- kafka_c
+rabbit --> ui
 
 @enduml
