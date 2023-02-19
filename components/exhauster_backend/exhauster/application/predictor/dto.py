@@ -26,5 +26,5 @@ class Prediction(DTO):
 
 @attr.dataclass
 class Rotor:
-    exhauster_number: str
+    exhauster_id: id
     installed_at: datetime

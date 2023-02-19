@@ -52,7 +52,7 @@ class ExhausterRepo(BaseRepository, interfaces.ExhausterRepo):
 
 class RotorRepo(BaseRepository, core_interfaces.RotorRepo):
 
-    def all(self, exhauster_number: str) -> List[predictor_dto.Rotor]:
+    def get(self, exhauster_number: str) -> List[predictor_dto.Rotor]:
 
         stmt = select(tables.rotors).order_by(tables.rotors.c.created_at)
 
@@ -60,14 +60,18 @@ class RotorRepo(BaseRepository, core_interfaces.RotorRepo):
 
         rotors = []
 
-        for row in result:
+        for row in [dict(__) for __ in result]:
             rotors.append(
                 predictor_dto.Rotor(
-                    exhauster_number=row.number, installed_at=row.installed_at
+                    exhauster_id=row['exhauster_id'],
+                    installed_at=row['installed_at']
                 )
             )
 
         return rotors
+
+    def get_10_failures(self, exhauster_id: str):
+        ...
 
 
 class PredictionsRepo(BaseRepository, interfaces.PredictionsRepo):

@@ -24,7 +24,7 @@ class Predictor(interfaces.PredictService):
     vibration_repo: interfaces.VibrationsRepo
 
     def predict(self, exhauster_id: str, arima=False):
-        all_rotors_start_date = self.rotor_repo.all()
+        all_rotors_start_date = self.rotor_repo.get(exhauster_id)
         fact_failures, pred_failures = self.rotor_repo.\
             get_10_failures(exhauster_id)
 

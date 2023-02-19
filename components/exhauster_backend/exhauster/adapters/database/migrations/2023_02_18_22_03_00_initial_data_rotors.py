@@ -54,8 +54,11 @@ exhausters_table = Table(
 rotors_table = Table(
     'rotors', metadata, Column('id', Integer, primary_key=True),
     Column('created_at', DateTime, nullable=False, default=datetime.utcnow),
-    Column('installed_at', DateTime, nullable=False, ),
     Column(
+        'installed_at',
+        DateTime,
+        nullable=False,
+    ), Column(
         'name',
         String(length=150),
         nullable=False,
