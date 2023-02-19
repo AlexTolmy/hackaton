@@ -1,18 +1,58 @@
-from functools import partial
-
 from alembic import context
-from sqlalchemy import engine_from_config, pool
+from sqlalchemy import create_engine, pool
 
-from exhauster.adapters.database import APP_SCHEMA, metadata
+from exhauster.adapters.database import metadata
+
+# this is the Alembic Config object, which provides
+# access to the values within the .ini file in use.
 
 config = context.config
+
+# add your model's MetaData object here
+# for 'autogenerate' support
+# from myapp import mymodel
+# target_metadata = mymodel.Base.metadata
 target_metadata = metadata
+
+# other values from the config, defined by the needs of env.py,
+# can be acquired:
+# my_important_option = config.get_main_option("my_important_option")
+# ... etc.
+
+
+def run_migrations_offline():
+    """Run migrations in 'offline' mode.
+
+    This configures the context with just a URL
+    and not an Engine, though an Engine is acceptable
+    here as well.  By skipping the Engine creation
+    we don't even need a DBAPI to be available.
+
+    Calls to context.execute() here emit the given string to the
+    script output.
+
+    """
+    url = config.get_main_option("sqlalchemy.url")
+    context.configure(
+        url=url,
+        include_schemas=True,
+        version_table_schema=target_metadata.schema,
+        target_metadata=target_metadata,
+        literal_binds=True,
+        dialect_opts={"paramstyle": "named"},
+    )
+
+    with context.begin_transaction():
+        context.run_migrations()
 
 
 def run_migrations_online():
+    """Run migrations in 'online' mode.
 
-    def check_schema(object, name, type_, reflected, compare_to, db_schema):
-        return type_ == 'table' and object.schema == db_schema
+    In this scenario we need to create an Engine
+    and associate a connection with the context.
+
+    """
 
     def include_name(name, type_, parent_names):
         if type_ == "schema":
@@ -20,52 +60,31 @@ def run_migrations_online():
         else:
             return True
 
-    connectable = config.attributes.get('connection', None)
-    if connectable is None:
-        connectable = engine_from_config(
-            config.get_section(config.config_ini_section),
-            prefix="sqlalchemy.",
-            poolclass=pool.NullPool,
-        )
+    connectable = create_engine(
+        config.get_main_option('sqlalchemy.url'), poolclass=pool.NullPool
+    )
 
     with connectable.connect() as connection:
         context.configure(
             connection=connection,
             target_metadata=target_metadata,
             include_schemas=True,
-            include_object=partial(
-                check_schema, db_schema=target_metadata.schema
-            ),
             version_table_schema=target_metadata.schema,
-            include_name=include_name,
-            compare_type=True,
+            include_name=include_name
         )
 
         with context.begin_transaction():
-            # TODO: раскоменить для локальной разработки для удобства перовго запуска
-            # schema_exists = connection.execute(
-            #     "select exists (select schema_name "
-            #     "from information_schema.schemata "
-            #     f"where schema_name = '{APP_SCHEMA}');"
-            # ).scalar()
-            # group_pg = 'backend'
-            # if not schema_exists:
-            #     # TODO: сменить имя группы если нужно
-            #     connection.execute(
-            #         'create schema app;'
-            #         'grant all privileges on schema app '
-            #         f'to group "{group_pg}";'
-            #     )
-            # group_exist = connection.execute(
-            #     f"select exists "
-            #     f"(select pg_roles.rolname from pg_roles "
-            #     f"where pg_roles.rolname = '{group_pg}');"
+            # этот костыль только для БД MSSQL
+            # связано с инфраструктурными особенностями
+            # connection.execute(
+            #     f"if schema_id('{target_metadata.schema}') is null "
+            #     f"execute('create schema {target_metadata.schema}')"
             # )
-            # if not group_exist:
-            #     connection.execute(
-            #         f'CREATE GROUP {group_pg} WITH USER postgres;'
-            #     )
+
             context.run_migrations()
 
 
-run_migrations_online()
+if context.is_offline_mode():
+    run_migrations_offline()
+else:
+    run_migrations_online()
